@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cesAna xmlns="http://www.xces.org/schema/2003" version="1.0.4">
+   <struct type="VG" from="123" to="127">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="191" to="207">
+      <feat name="type" value="FVG"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="voice" value="passive"/>
+      <feat name="neg" value="yes"/>
+   </struct>
+   <struct type="VG" from="213" to="223">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="318" to="320">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="414" to="425">
+      <feat name="voice" value="none"/>
+      <feat name="tense" value="none"/>
+      <feat name="type" value="MODAL"/>
+   </struct>
+   <struct type="VG" from="449" to="453">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="500" to="510">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="657" to="666">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="685" to="691">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="718" to="727">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="824" to="828">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="860" to="866">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="991" to="1003">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="PrePer"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1015" to="1021">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="1041" to="1043">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1072" to="1077">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1254" to="1258">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1273" to="1277">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="1286" to="1290">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1323" to="1327">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1349" to="1358">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="1410" to="1417">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="1455" to="1459">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1481" to="1487">
+      <feat name="type" value="FVG"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="voice" value="active"/>
+      <feat name="neg" value="yes"/>
+   </struct>
+   <struct type="VG" from="1507" to="1520">
+      <feat name="voice" value="passive"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1537" to="1540">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1591" to="1598">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="1672" to="1676">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1685" to="1689">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1690" to="1697">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="1716" to="1722">
+      <feat name="type" value="FVG"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="voice" value="active"/>
+      <feat name="neg" value="yes"/>
+   </struct>
+   <struct type="VG" from="1737" to="1741">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1759" to="1765">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="1819" to="1825">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1839" to="1845">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="1882" to="1891">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1911" to="1915">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1925" to="1931">
+      <feat name="voice" value="none"/>
+      <feat name="tense" value="Pas"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="1947" to="1951">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1966" to="1975">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1992" to="1995">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="1996" to="2000">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2004" to="2008">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2036" to="2040">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2055" to="2058">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2062" to="2068">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2130" to="2134">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2243" to="2251">
+      <feat name="voice" value="none"/>
+      <feat name="tense" value="none"/>
+      <feat name="type" value="MODAL"/>
+   </struct>
+   <struct type="VG" from="2300" to="2309">
+      <feat name="voice" value="none"/>
+      <feat name="tense" value="Pas"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="2329" to="2337">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="2345" to="2351">
+      <feat name="voice" value="none"/>
+      <feat name="tense" value="none"/>
+      <feat name="type" value="MODAL"/>
+   </struct>
+   <struct type="VG" from="2357" to="2364">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="2383" to="2388">
+      <feat name="voice" value="none"/>
+      <feat name="tense" value="Pas"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="2416" to="2421">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="2430" to="2432">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2463" to="2465">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2470" to="2478">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="2567" to="2583">
+      <feat name="voice" value="none"/>
+      <feat name="tense" value="BeVBN"/>
+      <feat name="type" value="MODAL"/>
+   </struct>
+   <struct type="VG" from="2653" to="2655">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2677" to="2686">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2687" to="2696">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="2749" to="2751">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2808" to="2815">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="2841" to="2854">
+      <feat name="voice" value="passive"/>
+      <feat name="tense" value="PrePer"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2865" to="2869">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="2906" to="2911">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3084" to="3088">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3118" to="3125">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3214" to="3227">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="PreCon"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3313" to="3321">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3333" to="3340">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="3367" to="3375">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="3376" to="3383">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Inf"/>
+      <feat name="type" value="NFVG"/>
+   </struct>
+   <struct type="VG" from="3456" to="3473">
+      <feat name="type" value="FVG"/>
+      <feat name="tense" value="PrePer"/>
+      <feat name="voice" value="active"/>
+      <feat name="neg" value="yes"/>
+   </struct>
+   <struct type="VG" from="3516" to="3529">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="PrePer"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3543" to="3545">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3581" to="3588">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="PrePer"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3601" to="3610">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="Pre"/>
+      <feat name="type" value="PART"/>
+   </struct>
+   <struct type="VG" from="3664" to="3667">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3734" to="3745">
+      <feat name="voice" value="passive"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3773" to="3779">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3802" to="3813">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimFut"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3878" to="3881">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3900" to="3906">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3929" to="3945">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="PrePer"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="3991" to="4003">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="PrePer"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="4018" to="4024">
+      <feat name="type" value="FVG"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="voice" value="active"/>
+      <feat name="neg" value="yes"/>
+   </struct>
+   <struct type="VG" from="4062" to="4063">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="4069" to="4072">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="4128" to="4131">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPas"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="4182" to="4188">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="4224" to="4230">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="4234" to="4236">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+   <struct type="VG" from="4260" to="4262">
+      <feat name="voice" value="active"/>
+      <feat name="tense" value="SimPre"/>
+      <feat name="type" value="FVG"/>
+   </struct>
+</cesAna>

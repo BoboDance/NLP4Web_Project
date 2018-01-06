@@ -1,0 +1,2589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cesAna xmlns="http://www.xces.org/schema/2003" version="1.0.4">
+   <struct type="tok" from="18" to="23">
+      <feat name="base" value="march"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="24" to="26">
+      <feat name="base" value="16"/>
+      <feat name="msd" value="CD"/>
+   </struct>
+   <struct type="tok" from="26" to="27">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="28" to="32">
+      <feat name="base" value="2000"/>
+      <feat name="msd" value="CD"/>
+   </struct>
+   <struct type="tok" from="39" to="43">
+      <feat name="base" value="name"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="44" to="51">
+      <feat name="msd" value="NNP"/>
+      <feat name="base" value="address"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="52" to="56">
+      <feat name="base" value="city"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="56" to="57">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="58" to="60">
+      <feat name="base" value="st"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="60" to="61">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="62" to="65">
+      <feat name="base" value="zip"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="72" to="76">
+      <feat name="base" value="dear"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="77" to="82">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="name"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="82" to="83">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="90" to="91">
+      <feat name="base" value="&quot;"/>
+      <feat name="msd" value="''"/>
+   </struct>
+   <struct type="tok" from="91" to="98">
+      <feat name="base" value="amazing"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="99" to="104">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="104" to="105">
+      <feat name="base" value="!"/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="106" to="109">
+      <feat name="base" value="how"/>
+      <feat name="msd" value="WRB"/>
+   </struct>
+   <struct type="tok" from="110" to="115">
+      <feat name="base" value="sweet"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="116" to="119">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="120" to="125">
+      <feat name="base" value="sound"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="125" to="126">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="126" to="127">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="127" to="128">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="128" to="129">
+      <feat name="base" value="&quot;"/>
+      <feat name="msd" value="''"/>
+   </struct>
+   <struct type="tok" from="136" to="139">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="140" to="145">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="word"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="146" to="148">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="149" to="153">
+      <feat name="msd" value="DT"/>
+      <feat name="base" value="this"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="154" to="162">
+      <feat name="base" value="familiar"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="163" to="167">
+      <feat name="base" value="hymn"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="168" to="172">
+      <feat name="base" value="have"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="173" to="179">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="echo"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="180" to="187">
+      <feat name="base" value="through"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="188" to="196">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="church"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="197" to="200">
+      <feat name="base" value="all"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="207" to="213">
+      <feat name="msd" value="IN"/>
+      <feat name="base" value="across"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="214" to="217">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="218" to="223">
+      <feat name="base" value="globe"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="224" to="227">
+      <feat name="base" value="for"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="228" to="232">
+      <feat name="base" value="over"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="233" to="236">
+      <feat name="base" value="200"/>
+      <feat name="msd" value="CD"/>
+   </struct>
+   <struct type="tok" from="236" to="241">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="year"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="241" to="242">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="243" to="248">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="249" to="251">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="252" to="261">
+      <feat name="msd" value="RB"/>
+      <feat name="base" value="sometime"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="262" to="269">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="define"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="270" to="272">
+      <feat name="msd" value="IN"/>
+      <feat name="base" value="as"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="279" to="289">
+      <feat name="base" value="undeserved"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="290" to="295">
+      <feat name="base" value="favor"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="295" to="296">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="297" to="301">
+      <feat name="base" value="have"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="302" to="305">
+      <feat name="base" value="you"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="306" to="310">
+      <feat name="base" value="ever"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="311" to="318">
+      <feat name="msd" value="VBD"/>
+      <feat name="base" value="stop"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="319" to="321">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="322" to="330">
+      <feat name="base" value="consider"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="331" to="334">
+      <feat name="base" value="how"/>
+      <feat name="msd" value="WRB"/>
+   </struct>
+   <struct type="tok" from="335" to="340">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="341" to="343">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="344" to="349">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="give"/>
+      <feat name="affix" value="en"/>
+   </struct>
+   <struct type="tok" from="350" to="352">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="359" to="365">
+      <feat name="base" value="people"/>
+      <feat name="msd" value="NNS"/>
+   </struct>
+   <struct type="tok" from="365" to="366">
+      <feat name="base" value="?"/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="373" to="374">
+      <feat name="base" value="i"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="375" to="379">
+      <feat name="base" value="like"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="380" to="382">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="383" to="388">
+      <feat name="base" value="think"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="389" to="391">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="392" to="395">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="396" to="405">
+      <feat name="base" value="salvation"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="406" to="410">
+      <feat name="base" value="army"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="411" to="413">
+      <feat name="msd" value="IN"/>
+      <feat name="base" value="as"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="414" to="415">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="416" to="421">
+      <feat name="base" value="place"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="422" to="424">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="425" to="430">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="431" to="432">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="432" to="433">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="433" to="438">
+      <feat name="base" value="where"/>
+      <feat name="msd" value="WRB"/>
+   </struct>
+   <struct type="tok" from="445" to="456">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="individual"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="457" to="460">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="461" to="469">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="family"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="470" to="474">
+      <feat name="base" value="find"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="475" to="479">
+      <feat name="base" value="love"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="480" to="483">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="484" to="488">
+      <feat name="base" value="help"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="489" to="491">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="492" to="497">
+      <feat name="base" value="their"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="498" to="502">
+      <feat name="base" value="time"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="503" to="505">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="506" to="510">
+      <feat name="msd" value="VBP"/>
+      <feat name="base" value="need"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="510" to="511">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="518" to="528">
+      <feat name="msd" value="RB"/>
+      <feat name="base" value="regardless"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="529" to="531">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="532" to="535">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="536" to="546">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="situation"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="547" to="551">
+      <feat name="base" value="that"/>
+      <feat name="msd" value="WDT"/>
+   </struct>
+   <struct type="tok" from="552" to="557">
+      <feat name="msd" value="VBP"/>
+      <feat name="base" value="bring"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="558" to="562">
+      <feat name="base" value="them"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="563" to="565">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="566" to="568">
+      <feat name="msd" value="PRP"/>
+      <feat name="base" value="us"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="568" to="569">
+      <feat name="base" value="!"/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="576" to="577">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="577" to="578">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="578" to="579">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="579" to="582">
+      <feat name="msd" value="NN"/>
+      <feat name="base" value="man"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="583" to="586">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="587" to="592">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="woman"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="593" to="603">
+      <feat name="msd" value="VBG"/>
+      <feat name="base" value="struggle"/>
+      <feat name="affix" value="ing"/>
+   </struct>
+   <struct type="tok" from="604" to="608">
+      <feat name="base" value="with"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="609" to="619">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="addiction"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="620" to="624">
+      <feat name="base" value="find"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="625" to="632">
+      <feat name="base" value="healing"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="632" to="633">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="634" to="645">
+      <feat name="msd" value="NN"/>
+      <feat name="base" value="forgiveness"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="652" to="655">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="656" to="659">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="660" to="666">
+      <feat name="base" value="chance"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="667" to="669">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="670" to="674">
+      <feat name="base" value="make"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="675" to="676">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="677" to="680">
+      <feat name="base" value="new"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="681" to="686">
+      <feat name="base" value="start"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="687" to="689">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="690" to="694">
+      <feat name="base" value="life"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="694" to="695">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="695" to="696">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="696" to="697">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="698" to="706">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="family"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="707" to="713">
+      <feat name="msd" value="VBG"/>
+      <feat name="base" value="live"/>
+      <feat name="affix" value="ing"/>
+   </struct>
+   <struct type="tok" from="714" to="718">
+      <feat name="base" value="from"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="725" to="733">
+      <feat name="base" value="paycheck"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="734" to="736">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="737" to="745">
+      <feat name="base" value="paycheck"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="746" to="750">
+      <feat name="base" value="find"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="751" to="758">
+      <feat name="base" value="comfort"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="758" to="759">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="760" to="764">
+      <feat name="base" value="food"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="765" to="768">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="769" to="778">
+      <feat name="base" value="emergency"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="779" to="789">
+      <feat name="base" value="assistance"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="789" to="790">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="790" to="791">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="791" to="792">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="793" to="796">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="803" to="818">
+      <feat name="base" value="underprivileged"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="819" to="827">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="child"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="828" to="832">
+      <feat name="base" value="have"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="833" to="836">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="837" to="848">
+      <feat name="base" value="opportunity"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="849" to="851">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="852" to="855">
+      <feat name="base" value="eat"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="856" to="869">
+      <feat name="base" value="well-balanced"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="870" to="875">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="meal"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="882" to="885">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="886" to="897">
+      <feat name="base" value="participate"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="898" to="900">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="901" to="908">
+      <feat name="base" value="special"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="909" to="919">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="activity"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="919" to="920">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="927" to="930">
+      <feat name="base" value="god"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="930" to="932">
+      <feat name="base" value="'s"/>
+      <feat name="msd" value="POS"/>
+   </struct>
+   <struct type="tok" from="933" to="938">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="939" to="941">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="942" to="947">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="find"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="948" to="950">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="951" to="954">
+      <feat name="msd" value="PRP$"/>
+      <feat name="base" value="his"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="955" to="966">
+      <feat name="msd" value="NN"/>
+      <feat name="base" value="forgiveness"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="967" to="970">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="971" to="984">
+      <feat name="base" value="unconditional"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="985" to="989">
+      <feat name="base" value="love"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="989" to="990">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="991" to="993">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1000" to="1004">
+      <feat name="base" value="turn"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1004" to="1005">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="1006" to="1008">
+      <feat name="base" value="we"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1009" to="1013">
+      <feat name="base" value="have"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="1014" to="1017">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1018" to="1029">
+      <feat name="base" value="opportunity"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1030" to="1032">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="1033" to="1039">
+      <feat name="base" value="extend"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="1040" to="1044">
+      <feat name="base" value="that"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1045" to="1050">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1051" to="1053">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="1054" to="1060">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="other"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1061" to="1063">
+      <feat name="base" value="by"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1064" to="1071">
+      <feat name="msd" value="VBG"/>
+      <feat name="base" value="meet"/>
+      <feat name="affix" value="ing"/>
+   </struct>
+   <struct type="tok" from="1078" to="1083">
+      <feat name="base" value="their"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="1084" to="1092">
+      <feat name="base" value="physical"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1093" to="1096">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="1097" to="1106">
+      <feat name="base" value="spiritual"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1107" to="1112">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="need"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1113" to="1117">
+      <feat name="base" value="with"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1118" to="1126">
+      <feat name="msd" value="NN"/>
+      <feat name="base" value="kindness"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="1127" to="1130">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="1131" to="1141">
+      <feat name="base" value="compassion"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1141" to="1142">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1149" to="1153">
+      <feat name="base" value="here"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="1154" to="1156">
+      <feat name="base" value="at"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1157" to="1160">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1161" to="1170">
+      <feat name="base" value="salvation"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="1171" to="1175">
+      <feat name="base" value="army"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="1175" to="1176">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="1177" to="1181">
+      <feat name="msd" value="DT"/>
+      <feat name="base" value="this"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="1182" to="1184">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1185" to="1188">
+      <feat name="base" value="our"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="1189" to="1199">
+      <feat name="msd" value="JJ"/>
+      <feat name="base" value="continuous"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="1200" to="1204">
+      <feat name="base" value="goal"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1204" to="1205">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1212" to="1217">
+      <feat name="base" value="maybe"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="1218" to="1221">
+      <feat name="base" value="you"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1222" to="1225">
+      <feat name="base" value="can"/>
+      <feat name="msd" value="MD"/>
+   </struct>
+   <struct type="tok" from="1226" to="1234">
+      <feat name="base" value="remember"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="1235" to="1236">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1237" to="1241">
+      <feat name="base" value="time"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1242" to="1244">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1245" to="1249">
+      <feat name="base" value="your"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="1250" to="1253">
+      <feat name="base" value="own"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1254" to="1258">
+      <feat name="base" value="life"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1259" to="1263">
+      <feat name="base" value="when"/>
+      <feat name="msd" value="WRB"/>
+   </struct>
+   <struct type="tok" from="1264" to="1267">
+      <feat name="base" value="you"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1268" to="1272">
+      <feat name="msd" value="VBD"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="1273" to="1278">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="show"/>
+      <feat name="affix" value="en"/>
+   </struct>
+   <struct type="tok" from="1285" to="1290">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1290" to="1291">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1291" to="1292">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1292" to="1293">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1294" to="1298">
+      <feat name="base" value="when"/>
+      <feat name="msd" value="WRB"/>
+   </struct>
+   <struct type="tok" from="1299" to="1306">
+      <feat name="base" value="someone"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1307" to="1314">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="reach"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="1315" to="1318">
+      <feat name="base" value="out"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1319" to="1321">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="1322" to="1325">
+      <feat name="base" value="you"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1326" to="1330">
+      <feat name="base" value="with"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1331" to="1338">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="answer"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1339" to="1342">
+      <feat name="base" value="you"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1343" to="1348">
+      <feat name="base" value="could"/>
+      <feat name="msd" value="MD"/>
+   </struct>
+   <struct type="tok" from="1348" to="1351">
+      <feat name="base" value="n't"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="1352" to="1356">
+      <feat name="base" value="find"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="1363" to="1371">
+      <feat name="base" value="yourself"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1371" to="1372">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1373" to="1375">
+      <feat name="base" value="or"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="1376" to="1383">
+      <feat name="msd" value="RB"/>
+      <feat name="base" value="perhap"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1384" to="1385">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1386" to="1394">
+      <feat name="base" value="specific"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1395" to="1401">
+      <feat name="base" value="person"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1402" to="1407">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="come"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1408" to="1410">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="1411" to="1415">
+      <feat name="base" value="mind"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="1416" to="1417">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="1417" to="1418">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="1418" to="1422">
+      <feat name="base" value="such"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1423" to="1425">
+      <feat name="msd" value="IN"/>
+      <feat name="base" value="as"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="1426" to="1427">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1428" to="1434">
+      <feat name="base" value="sister"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1434" to="1435">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="1442" to="1443">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1444" to="1455">
+      <feat name="base" value="grandfather"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1456" to="1458">
+      <feat name="base" value="or"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="1459" to="1460">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1461" to="1469">
+      <feat name="base" value="daughter"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1470" to="1471">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="1471" to="1472">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="1472" to="1477">
+      <feat name="base" value="whose"/>
+      <feat name="msd" value="WP$"/>
+   </struct>
+   <struct type="tok" from="1478" to="1482">
+      <feat name="base" value="life"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1483" to="1485">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1486" to="1499">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="characterize"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="1500" to="1502">
+      <feat name="base" value="by"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1503" to="1508">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1508" to="1509">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1516" to="1520">
+      <feat name="base" value="when"/>
+      <feat name="msd" value="WRB"/>
+   </struct>
+   <struct type="tok" from="1521" to="1522">
+      <feat name="base" value="i"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1523" to="1528">
+      <feat name="base" value="think"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="1529" to="1531">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1532" to="1537">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1537" to="1538">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="1539" to="1540">
+      <feat name="base" value="i"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1541" to="1543">
+      <feat name="msd" value="VBP"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value=""/>
+   </struct>
+   <struct type="tok" from="1544" to="1552">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="remind"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="1553" to="1555">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1556" to="1559">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1560" to="1564">
+      <feat name="base" value="many"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1565" to="1574">
+      <feat name="base" value="salvation"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="1575" to="1579">
+      <feat name="base" value="army"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="1586" to="1594">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="officer"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1595" to="1598">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="1599" to="1608">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="employee"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1609" to="1612">
+      <feat name="base" value="who"/>
+      <feat name="msd" value="WP"/>
+   </struct>
+   <struct type="tok" from="1613" to="1623">
+      <feat name="base" value="selflessly"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="1624" to="1632">
+      <feat name="base" value="dedicate"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1633" to="1638">
+      <feat name="base" value="their"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="1639" to="1644">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="life"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1645" to="1647">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="1648" to="1651">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1652" to="1656">
+      <feat name="base" value="poor"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1663" to="1666">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="1667" to="1680">
+      <feat name="base" value="brokenhearted"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1680" to="1681">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1682" to="1684">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1685" to="1687">
+      <feat name="base" value="my"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="1688" to="1693">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="year"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1694" to="1696">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1697" to="1704">
+      <feat name="msd" value="VBG"/>
+      <feat name="base" value="work"/>
+      <feat name="affix" value="ing"/>
+   </struct>
+   <struct type="tok" from="1705" to="1709">
+      <feat name="base" value="with"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1710" to="1713">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1714" to="1723">
+      <feat name="base" value="salvation"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="1724" to="1728">
+      <feat name="base" value="army"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="1728" to="1729">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="1730" to="1731">
+      <feat name="base" value="i"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1731" to="1734">
+      <feat name="msd" value="VBP"/>
+      <feat name="affix" value=""/>
+      <feat name="base" value="have"/>
+   </struct>
+   <struct type="tok" from="1741" to="1745">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="see"/>
+      <feat name="affix" value="en"/>
+   </struct>
+   <struct type="tok" from="1746" to="1751">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1752" to="1761">
+      <feat name="base" value="transform"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="1762" to="1765">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1766" to="1771">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="life"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1772" to="1774">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1775" to="1779">
+      <feat name="base" value="many"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1780" to="1786">
+      <feat name="base" value="people"/>
+      <feat name="msd" value="NNS"/>
+   </struct>
+   <struct type="tok" from="1786" to="1787">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1788" to="1793">
+      <feat name="base" value="often"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="1793" to="1794">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="1795" to="1800">
+      <feat name="base" value="those"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1801" to="1804">
+      <feat name="base" value="who"/>
+      <feat name="msd" value="WP"/>
+   </struct>
+   <struct type="tok" from="1805" to="1809">
+      <feat name="base" value="come"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="1810" to="1812">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="1819" to="1821">
+      <feat name="msd" value="PRP"/>
+      <feat name="base" value="us"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="1822" to="1825">
+      <feat name="base" value="for"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1826" to="1830">
+      <feat name="base" value="help"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1831" to="1835">
+      <feat name="base" value="have"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="1836" to="1845">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="exhaust"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="1846" to="1849">
+      <feat name="base" value="all"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1850" to="1855">
+      <feat name="base" value="other"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="1856" to="1865">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="resource"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="1865" to="1866">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1867" to="1870">
+      <feat name="base" value="but"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="1871" to="1874">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1875" to="1879">
+      <feat name="base" value="love"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1879" to="1880">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="1881" to="1891">
+      <feat name="base" value="assistance"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1898" to="1901">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="1902" to="1910">
+      <feat name="base" value="guidance"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1911" to="1915">
+      <feat name="base" value="that"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1916" to="1918">
+      <feat name="base" value="we"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1919" to="1924">
+      <feat name="base" value="offer"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="1925" to="1929">
+      <feat name="base" value="them"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1930" to="1934">
+      <feat name="base" value="hope"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="1935" to="1938">
+      <feat name="base" value="for"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1939" to="1940">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1941" to="1947">
+      <feat name="base" value="better"/>
+      <feat name="msd" value="JJR"/>
+   </struct>
+   <struct type="tok" from="1948" to="1956">
+      <feat name="base" value="tomorrow"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1956" to="1957">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="1964" to="1965">
+      <feat name="base" value="i"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="1966" to="1969">
+      <feat name="base" value="can"/>
+      <feat name="msd" value="MD"/>
+   </struct>
+   <struct type="tok" from="1970" to="1975">
+      <feat name="base" value="think"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="1976" to="1978">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="1979" to="1981">
+      <feat name="base" value="no"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="1982" to="1988">
+      <feat name="base" value="better"/>
+      <feat name="msd" value="JJR"/>
+   </struct>
+   <struct type="tok" from="1989" to="1993">
+      <feat name="base" value="time"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="1994" to="1996">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="1997" to="2005">
+      <feat name="base" value="continue"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="2006" to="2015">
+      <feat name="msd" value="VBG"/>
+      <feat name="base" value="extend"/>
+      <feat name="affix" value="ing"/>
+   </struct>
+   <struct type="tok" from="2016" to="2021">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2022" to="2024">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="2025" to="2031">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="other"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2038" to="2042">
+      <feat name="base" value="than"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2043" to="2045">
+      <feat name="base" value="at"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2046" to="2052">
+      <feat name="base" value="easter"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2052" to="2053">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2054" to="2058">
+      <feat name="msd" value="DT"/>
+      <feat name="base" value="this"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2059" to="2066">
+      <feat name="base" value="special"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2067" to="2073">
+      <feat name="base" value="season"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2074" to="2081">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="remind"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2082" to="2084">
+      <feat name="msd" value="PRP"/>
+      <feat name="base" value="us"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2085" to="2089">
+      <feat name="base" value="that"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2090" to="2093">
+      <feat name="base" value="god"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2093" to="2095">
+      <feat name="base" value="'s"/>
+      <feat name="msd" value="POS"/>
+   </struct>
+   <struct type="tok" from="2096" to="2101">
+      <feat name="base" value="mercy"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2102" to="2104">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2111" to="2120">
+      <feat name="base" value="available"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2121" to="2123">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="2124" to="2128">
+      <feat name="base" value="each"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2129" to="2131">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2132" to="2134">
+      <feat name="msd" value="PRP"/>
+      <feat name="base" value="us"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2135" to="2136">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="2136" to="2137">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="2137" to="2147">
+      <feat name="msd" value="RB"/>
+      <feat name="base" value="regardless"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2148" to="2150">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2151" to="2154">
+      <feat name="base" value="who"/>
+      <feat name="msd" value="WP"/>
+   </struct>
+   <struct type="tok" from="2155" to="2157">
+      <feat name="base" value="we"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="2158" to="2161">
+      <feat name="msd" value="VBP"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value=""/>
+   </struct>
+   <struct type="tok" from="2162" to="2164">
+      <feat name="base" value="or"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2165" to="2169">
+      <feat name="base" value="what"/>
+      <feat name="msd" value="WP"/>
+   </struct>
+   <struct type="tok" from="2170" to="2172">
+      <feat name="base" value="we"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="2173" to="2175">
+      <feat name="base" value="we"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="2175" to="2178">
+      <feat name="msd" value="VBP"/>
+      <feat name="affix" value=""/>
+      <feat name="base" value="have"/>
+   </struct>
+   <struct type="tok" from="2185" to="2189">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="do"/>
+      <feat name="affix" value="en"/>
+   </struct>
+   <struct type="tok" from="2189" to="2190">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2197" to="2199">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2200" to="2203">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2204" to="2208">
+      <feat name="base" value="same"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2209" to="2212">
+      <feat name="base" value="way"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2212" to="2213">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="2214" to="2217">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2218" to="2227">
+      <feat name="base" value="salvation"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2228" to="2232">
+      <feat name="base" value="army"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2233" to="2239">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="offer"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2240" to="2245">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2246" to="2249">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2250" to="2260">
+      <feat name="base" value="compassion"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2261" to="2263">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="2270" to="2275">
+      <feat name="base" value="those"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2276" to="2278">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2279" to="2283">
+      <feat name="msd" value="NN"/>
+      <feat name="base" value="need"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2284" to="2286">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2287" to="2290">
+      <feat name="base" value="our"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="2291" to="2300">
+      <feat name="base" value="community"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2301" to="2302">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="2302" to="2303">
+      <feat name="base" value="-"/>
+      <feat name="msd" value=":"/>
+   </struct>
+   <struct type="tok" from="2303" to="2313">
+      <feat name="msd" value="RB"/>
+      <feat name="base" value="regardless"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2314" to="2316">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2317" to="2320">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2321" to="2333">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="difficulty"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2334" to="2338">
+      <feat name="base" value="they"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="2339" to="2342">
+      <feat name="base" value="may"/>
+      <feat name="msd" value="MD"/>
+   </struct>
+   <struct type="tok" from="2349" to="2351">
+      <feat name="base" value="be"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="2352" to="2358">
+      <feat name="msd" value="VBG"/>
+      <feat name="base" value="face"/>
+      <feat name="affix" value="ing"/>
+   </struct>
+   <struct type="tok" from="2358" to="2359">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2360" to="2363">
+      <feat name="base" value="you"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="2363" to="2366">
+      <feat name="msd" value="VBP"/>
+      <feat name="affix" value=""/>
+      <feat name="base" value="have"/>
+   </struct>
+   <struct type="tok" from="2367" to="2371">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value="en"/>
+   </struct>
+   <struct type="tok" from="2372" to="2374">
+      <feat name="base" value="so"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="2375" to="2383">
+      <feat name="msd" value="JJ"/>
+      <feat name="base" value="generous"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2384" to="2388">
+      <feat name="base" value="with"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2389" to="2393">
+      <feat name="base" value="your"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="2394" to="2400">
+      <feat name="msd" value="VBG"/>
+      <feat name="base" value="give"/>
+      <feat name="affix" value="ing"/>
+   </struct>
+   <struct type="tok" from="2401" to="2403">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2404" to="2407">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2408" to="2412">
+      <feat name="base" value="past"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2412" to="2413">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="2414" to="2417">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2418" to="2420">
+      <feat name="base" value="we"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="2427" to="2430">
+      <feat name="msd" value="VBP"/>
+      <feat name="base" value="be"/>
+      <feat name="affix" value=""/>
+   </struct>
+   <struct type="tok" from="2431" to="2439">
+      <feat name="base" value="grateful"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2439" to="2440">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2441" to="2445">
+      <feat name="base" value="your"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="2446" to="2456">
+      <feat name="base" value="additional"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2457" to="2461">
+      <feat name="base" value="gift"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2462" to="2467">
+      <feat name="base" value="today"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2468" to="2472">
+      <feat name="base" value="will"/>
+      <feat name="msd" value="MD"/>
+   </struct>
+   <struct type="tok" from="2473" to="2479">
+      <feat name="base" value="enable"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="2480" to="2482">
+      <feat name="msd" value="PRP"/>
+      <feat name="base" value="us"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2483" to="2485">
+      <feat name="base" value="to"/>
+      <feat name="msd" value="TO"/>
+   </struct>
+   <struct type="tok" from="2486" to="2493">
+      <feat name="base" value="provide"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="2494" to="2498">
+      <feat name="base" value="food"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2505" to="2508">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2509" to="2517">
+      <feat name="base" value="clothing"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2518" to="2521">
+      <feat name="base" value="for"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2522" to="2530">
+      <feat name="base" value="physical"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2531" to="2536">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="need"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2536" to="2537">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2537" to="2538">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2538" to="2539">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2540" to="2549">
+      <feat name="base" value="emergency"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2550" to="2560">
+      <feat name="base" value="assistance"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2561" to="2567">
+      <feat name="msd" value="IN"/>
+      <feat name="base" value="during"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2568" to="2573">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="time"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2574" to="2576">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2583" to="2589">
+      <feat name="msd" value="NN"/>
+      <feat name="base" value="crisis"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2589" to="2590">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2590" to="2591">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2591" to="2592">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2593" to="2602">
+      <feat name="base" value="spiritual"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2603" to="2611">
+      <feat name="base" value="guidance"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2612" to="2615">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2616" to="2629">
+      <feat name="base" value="encouragement"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2629" to="2630">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2630" to="2631">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2631" to="2632">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2633" to="2636">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2637" to="2641">
+      <feat name="base" value="much"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="2642" to="2646">
+      <feat name="base" value="more"/>
+      <feat name="msd" value="JJR"/>
+   </struct>
+   <struct type="tok" from="2646" to="2647">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2654" to="2655">
+      <feat name="base" value="&quot;"/>
+      <feat name="msd" value="''"/>
+   </struct>
+   <struct type="tok" from="2655" to="2662">
+      <feat name="base" value="amazing"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2663" to="2668">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2668" to="2669">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="2670" to="2673">
+      <feat name="base" value="how"/>
+      <feat name="msd" value="WRB"/>
+   </struct>
+   <struct type="tok" from="2674" to="2679">
+      <feat name="base" value="sweet"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2680" to="2683">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2684" to="2689">
+      <feat name="base" value="sound"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2689" to="2690">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2690" to="2691">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2691" to="2692">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2692" to="2693">
+      <feat name="base" value="&quot;"/>
+      <feat name="msd" value="''"/>
+   </struct>
+   <struct type="tok" from="2694" to="2699">
+      <feat name="base" value="these"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2700" to="2705">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="word"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2706" to="2710">
+      <feat name="msd" value="VBP"/>
+      <feat name="base" value="ring"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2711" to="2715">
+      <feat name="base" value="true"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2716" to="2718">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2719" to="2722">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2729" to="2735">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="heart"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2736" to="2739">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2740" to="2745">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="life"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2746" to="2748">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2749" to="2756">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="change"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="2757" to="2763">
+      <feat name="base" value="people"/>
+      <feat name="msd" value="NNS"/>
+   </struct>
+   <struct type="tok" from="2764" to="2768">
+      <feat name="base" value="here"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="2769" to="2771">
+      <feat name="base" value="at"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2772" to="2775">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2776" to="2785">
+      <feat name="base" value="salvation"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2786" to="2790">
+      <feat name="base" value="army"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2790" to="2791">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2792" to="2795">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2796" to="2800">
+      <feat name="base" value="just"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="2807" to="2809">
+      <feat name="msd" value="IN"/>
+      <feat name="base" value="as"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2810" to="2813">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2814" to="2820">
+      <feat name="base" value="writer"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2821" to="2823">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2824" to="2828">
+      <feat name="msd" value="DT"/>
+      <feat name="base" value="this"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2829" to="2838">
+      <feat name="base" value="beautiful"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="2839" to="2843">
+      <feat name="base" value="hymn"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2844" to="2854">
+      <feat name="msd" value="VBZ"/>
+      <feat name="base" value="celebrate"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2855" to="2858">
+      <feat name="base" value="god"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2858" to="2860">
+      <feat name="base" value="'s"/>
+      <feat name="msd" value="POS"/>
+   </struct>
+   <struct type="tok" from="2861" to="2866">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2866" to="2867">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="2868" to="2870">
+      <feat name="base" value="so"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="2871" to="2873">
+      <feat name="base" value="do"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="2880" to="2882">
+      <feat name="base" value="we"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="2882" to="2883">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="2890" to="2892">
+      <feat name="base" value="on"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2893" to="2899">
+      <feat name="base" value="behalf"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="2900" to="2902">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2903" to="2906">
+      <feat name="base" value="all"/>
+      <feat name="msd" value="PDT"/>
+   </struct>
+   <struct type="tok" from="2907" to="2910">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="2911" to="2914">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="man"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2914" to="2915">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="2916" to="2921">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="woman"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2922" to="2925">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="2926" to="2934">
+      <feat name="msd" value="NNS"/>
+      <feat name="base" value="child"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="2935" to="2937">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2938" to="2945">
+      <feat name="base" value="central"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2946" to="2953">
+      <feat name="base" value="indiana"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="2954" to="2957">
+      <feat name="base" value="who"/>
+      <feat name="msd" value="WP"/>
+   </struct>
+   <struct type="tok" from="2964" to="2968">
+      <feat name="base" value="will"/>
+      <feat name="msd" value="MD"/>
+   </struct>
+   <struct type="tok" from="2969" to="2976">
+      <feat name="base" value="benefit"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="2977" to="2981">
+      <feat name="base" value="from"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="2982" to="2986">
+      <feat name="base" value="your"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="2987" to="2995">
+      <feat name="msd" value="NN"/>
+      <feat name="base" value="kindness"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="2995" to="2996">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="2997" to="3002">
+      <feat name="base" value="thank"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="3003" to="3006">
+      <feat name="base" value="you"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="3006" to="3007">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="3008" to="3011">
+      <feat name="base" value="may"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3012" to="3015">
+      <feat name="base" value="you"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="3016" to="3026">
+      <feat name="base" value="experience"/>
+      <feat name="msd" value="VBP"/>
+   </struct>
+   <struct type="tok" from="3027" to="3030">
+      <feat name="base" value="god"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3030" to="3032">
+      <feat name="base" value="'s"/>
+      <feat name="msd" value="POS"/>
+   </struct>
+   <struct type="tok" from="3039" to="3044">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3045" to="3049">
+      <feat name="msd" value="DT"/>
+      <feat name="base" value="this"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="3050" to="3056">
+      <feat name="base" value="easter"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3057" to="3063">
+      <feat name="base" value="season"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3064" to="3067">
+      <feat name="base" value="and"/>
+      <feat name="msd" value="CC"/>
+   </struct>
+   <struct type="tok" from="3068" to="3078">
+      <feat name="base" value="throughout"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="3079" to="3082">
+      <feat name="base" value="the"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="3083" to="3087">
+      <feat name="base" value="year"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3087" to="3088">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="3095" to="3104">
+      <feat name="msd" value="NNP"/>
+      <feat name="base" value="blessing"/>
+      <feat name="affix" value="s"/>
+   </struct>
+   <struct type="tok" from="3104" to="3105">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="3112" to="3114">
+      <feat name="base" value="lt"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3114" to="3115">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="3116" to="3123">
+      <feat name="base" value="colonel"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3124" to="3134">
+      <feat name="base" value="divisional"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3135" to="3144">
+      <feat name="base" value="commander"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3151" to="3152">
+      <feat name="base" value="p"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3152" to="3153">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="3153" to="3154">
+      <feat name="base" value="s"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3154" to="3155">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="3156" to="3162">
+      <feat name="base" value="please"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="3163" to="3167">
+      <feat name="base" value="send"/>
+      <feat name="msd" value="VB"/>
+   </struct>
+   <struct type="tok" from="3168" to="3172">
+      <feat name="base" value="your"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="3173" to="3177">
+      <feat name="base" value="gift"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3178" to="3183">
+      <feat name="base" value="today"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3183" to="3184">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="3185" to="3187">
+      <feat name="base" value="so"/>
+      <feat name="msd" value="RB"/>
+   </struct>
+   <struct type="tok" from="3188" to="3192">
+      <feat name="base" value="many"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="3193" to="3199">
+      <feat name="base" value="people"/>
+      <feat name="msd" value="NNS"/>
+   </struct>
+   <struct type="tok" from="3200" to="3204">
+      <feat name="msd" value="VBP"/>
+      <feat name="base" value="need"/>
+      <feat name="affix" value=" "/>
+   </struct>
+   <struct type="tok" from="3205" to="3208">
+      <feat name="base" value="our"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="3209" to="3219">
+      <feat name="base" value="assistance"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3219" to="3220">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="3227" to="3229">
+      <feat name="base" value="in"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="3230" to="3242">
+      <feat name="base" value="appreciation"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3243" to="3245">
+      <feat name="base" value="of"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="3246" to="3250">
+      <feat name="base" value="your"/>
+      <feat name="msd" value="PRP$"/>
+   </struct>
+   <struct type="tok" from="3251" to="3261">
+      <feat name="base" value="generosity"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3261" to="3262">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="3263" to="3264">
+      <feat name="base" value="i"/>
+      <feat name="msd" value="PRP"/>
+   </struct>
+   <struct type="tok" from="3264" to="3267">
+      <feat name="msd" value="VBP"/>
+      <feat name="affix" value=""/>
+      <feat name="base" value="have"/>
+   </struct>
+   <struct type="tok" from="3268" to="3276">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="enclose"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="3277" to="3278">
+      <feat name="base" value="a"/>
+      <feat name="msd" value="DT"/>
+   </struct>
+   <struct type="tok" from="3279" to="3286">
+      <feat name="base" value="special"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="3287" to="3295">
+      <feat name="base" value="bookmark"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3302" to="3309">
+      <feat name="msd" value="VBN"/>
+      <feat name="base" value="print"/>
+      <feat name="affix" value="ed"/>
+   </struct>
+   <struct type="tok" from="3310" to="3314">
+      <feat name="base" value="with"/>
+      <feat name="msd" value="IN"/>
+   </struct>
+   <struct type="tok" from="3315" to="3319">
+      <feat name="base" value="john"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3320" to="3326">
+      <feat name="base" value="newton"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3326" to="3328">
+      <feat name="base" value="'s"/>
+      <feat name="msd" value="POS"/>
+   </struct>
+   <struct type="tok" from="3329" to="3337">
+      <feat name="base" value="familiar"/>
+      <feat name="msd" value="JJ"/>
+   </struct>
+   <struct type="tok" from="3338" to="3342">
+      <feat name="base" value="hymn"/>
+      <feat name="msd" value="NN"/>
+   </struct>
+   <struct type="tok" from="3342" to="3343">
+      <feat name="base" value=","/>
+      <feat name="msd" value=","/>
+   </struct>
+   <struct type="tok" from="3344" to="3345">
+      <feat name="base" value="&quot;"/>
+      <feat name="msd" value="''"/>
+   </struct>
+   <struct type="tok" from="3345" to="3352">
+      <feat name="base" value="amazing"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3353" to="3358">
+      <feat name="base" value="grace"/>
+      <feat name="msd" value="NNP"/>
+   </struct>
+   <struct type="tok" from="3358" to="3359">
+      <feat name="base" value="."/>
+      <feat name="msd" value="."/>
+   </struct>
+   <struct type="tok" from="3359" to="3360">
+      <feat name="base" value="&quot;"/>
+      <feat name="msd" value="''"/>
+   </struct>
+</cesAna>

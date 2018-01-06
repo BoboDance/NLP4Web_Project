@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cesAna xmlns="http://www.xces.org/schema/2003" version="1.0.4">
+   <struct type="cesDoc" from="0" to="3400">
+      <feat name="xmlns:xlink" value="http://www.w3.org/1999/xlink"/>
+      <feat name="xmlns:xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+      <feat name="xmlns" value="http://www.xces.org/schema/2003"/>
+      <feat name="version" value="1.0.4"/>
+   </struct>
+   <struct type="text" from="8" to="3399"/>
+   <struct type="body" from="15" to="3395"/>
+   <struct type="div" from="25" to="3388">
+      <feat name="type" value="article"/>
+   </struct>
+   <struct type="head" from="38" to="50">
+      <feat name="type" value="headline"/>
+   </struct>
+   <struct type="p" from="64" to="810">
+      <feat name="id" value="p1"/>
+   </struct>
+   <struct type="p" from="824" to="1444">
+      <feat name="id" value="p2"/>
+   </struct>
+   <struct type="hi" from="927" to="942">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="hi" from="1053" to="1067">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="hi" from="1336" to="1341">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="p" from="1458" to="1873">
+      <feat name="id" value="p3"/>
+   </struct>
+   <struct type="hi" from="1483" to="1486">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="hi" from="1550" to="1552">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="hi" from="1598" to="1603">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="hi" from="1671" to="1675">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="p" from="1887" to="2481">
+      <feat name="id" value="p4"/>
+   </struct>
+   <struct type="hi" from="1891" to="1910">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="p" from="2495" to="2811">
+      <feat name="id" value="p5"/>
+   </struct>
+   <struct type="hi" from="2511" to="2583">
+      <feat name="rend" value="bold"/>
+   </struct>
+   <struct type="hi" from="2666" to="2669">
+      <feat name="rend" value="ital"/>
+   </struct>
+   <struct type="p" from="2825" to="3377">
+      <feat name="id" value="p6"/>
+   </struct>
+   <struct type="hi" from="2850" to="2852">
+      <feat name="rend" value="ital"/>
+   </struct>
+</cesAna>

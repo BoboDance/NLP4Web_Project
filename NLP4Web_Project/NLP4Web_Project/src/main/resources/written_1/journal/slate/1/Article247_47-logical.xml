@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cesAna xmlns="http://www.xces.org/schema/2003" version="1.0.4">
+   <struct type="cesDoc" from="0" to="1956">
+      <feat name="xmlns:xlink" value="http://www.w3.org/1999/xlink"/>
+      <feat name="xmlns:xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+      <feat name="xmlns" value="http://www.xces.org/schema/2003"/>
+      <feat name="version" value="1.0.4"/>
+   </struct>
+   <struct type="text" from="8" to="1955"/>
+   <struct type="body" from="15" to="1951"/>
+   <struct type="head" from="38" to="79">
+      <feat name="type" value="headline"/>
+   </struct>
+   <struct type="p" from="93" to="600">
+      <feat name="id" value="p1"/>
+   </struct>
+   <struct type="hi" from="141" to="155">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="title"/>
+   </struct>
+   <struct type="p" from="614" to="1092">
+      <feat name="id" value="p2"/>
+   </struct>
+   <struct type="p" from="1106" to="1480">
+      <feat name="id" value="p3"/>
+   </struct>
+   <struct type="hi" from="1114" to="1119">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="title"/>
+   </struct>
+   <struct type="p" from="1494" to="1811">
+      <feat name="id" value="p4"/>
+   </struct>
+   <struct type="p" from="1825" to="1933">
+      <feat name="id" value="p5"/>
+   </struct>
+</cesAna>

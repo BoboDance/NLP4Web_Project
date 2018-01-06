@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cesHeader creator="KBS" date.created="2005-09-06" version="1.0.4" xmlns="http://www.xces.org/schema/2003">
+    <fileDesc>
+        <titleStmt>
+            <respStmt>
+                <resp>
+                    <type>Part of speech tagging (Biber)</type>
+                    <name type="person">Randi Reppen</name>
+                </resp>
+                <resp>
+                    <type>Header file creation.</type>
+                    <name type="person">Paulo Quaglio</name>
+                    <name type="person">Keith Suderman</name>
+                </resp>
+                <resp>
+                    <type>Sentence splitting</type>
+                    <type>Part of speech tagging (Hepple)</type>
+                    <name type="person">Keith Suderman</name>
+                </resp>
+            </respStmt>
+        </titleStmt>
+        <publicationStmt>
+            <distributor>American National Corpus</distributor>
+            <pubAddress>     Department of Computer Science, Vassar College,     124 Raymond Avenue,      Poughkeepsie NY,      USA    </pubAddress>
+            <availability>CORPUS-1R</availability>
+            <pubDate>2004</pubDate>
+        </publicationStmt>
+        <sourceDesc>
+            <biblStruct>
+                <monogr>
+                    <title>ICIC Corpus of Philanthropic Fundraising Discourse</title>
+                    <imprint>
+                        <publisher>ICIC</publisher>
+                        <pubAddress>        620 Union Drive, Room 407,        Indianapolis, Indiana 46202,        U.S.A.       </pubAddress>
+                        <eAddress type="email">icic@iupui.edu</eAddress>
+                        <eAddress type="web">www.iupui.edu/~icic</eAddress>
+                        <pubDate>September, 2003</pubDate>
+                    </imprint>
+                </monogr>
+            </biblStruct>
+        </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+        <annotations>
+            <annotation ann.loc="109CYL023.txt" type="content">Document content</annotation>
+            <annotation ann.loc="109CYL023-logical.xml" type="logical">Logical markup</annotation>
+            <annotation ann.loc="109CYL023-s.xml" type="s">Sentence boundaries</annotation>
+            <annotation ann.loc="109CYL023-hepple.xml" type="hepple">Hepple POS tags</annotation>
+            <annotation ann.loc="109CYL023-np.xml" type="np">Noun chunks</annotation>
+            <annotation ann.loc="109CYL023-vp.xml" type="vp">Verb chunks</annotation>
+        </annotations>
+    </profileDesc>
+</cesHeader>
