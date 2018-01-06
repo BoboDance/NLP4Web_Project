@@ -1,0 +1,67 @@
+\documentclass{scrartcl}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{soul}
+
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\lhead{Group 1 (F. Otto, C. Biehl, P. Kapelle, D. Wehner)}
+\rhead{\today}
+
+\begin{document}
+
+\enlargethispage{4\baselineskip}
+\section{NLP Project Preproposal}
+
+\vspace*{-3mm}
+\subsection{Research Problem}
+\vspace*{-3mm}
+The research problem our group wants to investigate is detection of authors of texts. To do so we want to analyze texts from various authors and classify these texts according to their style of writing (vocabulary, grammar, etc.)
+
+\vspace*{-3mm}
+\subsection{Approach + Evaluation}
+\vspace*{-3mm}
+In order to obtain a data set we are planning to apply a web crawler (prototype from internet) to crawl blogs on the internet. The set is then split into training and test data sets. Before a classifier (e.\,g. Naive-Bayes, Neural Networks, etc.) is trained on the training data set and evaluated (Precision, Recall, etc.) using the test data set we need to engineer proper features that are useful for classification the texts.
+
+\vspace*{-3mm}
+\subsection{Resources + Frameworks}
+\vspace*{-3mm}
+Possible frameworks that are conceivable for solving the task: \\
+\caps{Weka}, \caps{DeepLearning4J}, $\dots$
+
+Some references: \\
+\textbf{News Authorship Identification with Deep Learning} \\
+\url{https://cs224d.stanford.edu/reports/ZhouWang.pdf} \\
+\textbf{ILSP Focued Crawler} \\
+\url{http://nlp.ilsp.gr/redmine/projects/ilsp-fc/wiki/Getting_Started} \\
+\textbf{Crawler4J}: \\
+\url{https://github.com/yasserg/crawler4j/} \\
+\textbf{Reuters corpus} (instead of crawling)
+
+\vspace*{-3mm}
+\subsection{Organization (Responsibilities + Timeline)}
+\vspace*{-3mm}
+
+\begin{itemize}
+\item Data provisioning (crawler, corpus,  $\dots$)
+	$\Rightarrow$ \textbf{Philipp Kapelle}
+\item Data preprocessing (format of data, feature engineering, $\dots$) 
+	$\Rightarrow$ \textbf{Fabian Otto}
+\item Analysis (train and choose classifiers, $\dots$)
+	$\Rightarrow$ \textbf{Clemens Biehl, Daniel Wehner}
+\item Evaluation
+	$\Rightarrow$ \textbf{Clemens Biehl, Daniel Wehner}
+\end{itemize}
+
+\vspace*{-2mm}
+\textbf{Coarse Timeline:} \\
+Calendar Week 2: Provision of crawled data or corpus \\
+Calendar Week 4: First trained machine learning models \\
+Calendar Week 5: Comparison of trained models \\
+Calendar Week 6 (08.02.): Final presentation
+
+\end{document}
