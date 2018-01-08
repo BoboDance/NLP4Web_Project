@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cesAna xmlns="http://www.xces.org/schema/2003" version="1.0.4">
+   <struct type="cesDoc" from="0" to="5999">
+      <feat name="xmlns:xlink" value="http://www.w3.org/1999/xlink"/>
+      <feat name="xmlns:xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+      <feat name="xmlns" value="http://www.xces.org/schema/2003"/>
+      <feat name="version" value="1.0.4"/>
+   </struct>
+   <struct type="text" from="8" to="5998"/>
+   <struct type="body" from="15" to="5994"/>
+   <struct type="head" from="38" to="58">
+      <feat name="type" value="headline"/>
+   </struct>
+   <struct type="p" from="72" to="613">
+      <feat name="id" value="p1"/>
+   </struct>
+   <struct type="hi" from="251" to="265">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="title"/>
+   </struct>
+   <struct type="hi" from="373" to="392">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="title"/>
+   </struct>
+   <struct type="p" from="627" to="940">
+      <feat name="id" value="p2"/>
+   </struct>
+   <struct type="p" from="954" to="1856">
+      <feat name="id" value="p3"/>
+   </struct>
+   <struct type="hi" from="957" to="984">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="item of list"/>
+   </struct>
+   <struct type="hi" from="1331" to="1345">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="title"/>
+   </struct>
+   <struct type="p" from="1870" to="2395">
+      <feat name="id" value="p4"/>
+   </struct>
+   <struct type="hi" from="1873" to="1892">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="item of list"/>
+   </struct>
+   <struct type="p" from="2409" to="3047">
+      <feat name="id" value="p5"/>
+   </struct>
+   <struct type="hi" from="2412" to="2428">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="item of list"/>
+   </struct>
+   <struct type="hi" from="2765" to="2771">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="emphasis"/>
+   </struct>
+   <struct type="p" from="3061" to="4364">
+      <feat name="id" value="p6"/>
+   </struct>
+   <struct type="hi" from="3064" to="3080">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="item of list"/>
+   </struct>
+   <struct type="p" from="4378" to="4906">
+      <feat name="id" value="p7"/>
+   </struct>
+   <struct type="p" from="4920" to="4942">
+      <feat name="id" value="p8"/>
+   </struct>
+   <struct type="p" from="4956" to="5976">
+      <feat name="id" value="p9"/>
+   </struct>
+   <struct type="hi" from="4972" to="4988">
+      <feat name="rend" value="bold"/>
+      <feat name="type" value="emphasis"/>
+   </struct>
+   <struct type="hi" from="5775" to="5778">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="emphasis"/>
+   </struct>
+</cesAna>

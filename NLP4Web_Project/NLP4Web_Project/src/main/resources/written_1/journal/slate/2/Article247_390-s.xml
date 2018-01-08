@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cesAna xmlns="http://www.xces.org/schema/2003" version="1.0.4">
+   <struct type="s" from="38" to="50"/>
+   <struct type="s" from="64" to="112">
+      <feat name="id" value="p1s1"/>
+   </struct>
+   <struct type="s" from="113" to="265">
+      <feat name="id" value="p1s2"/>
+   </struct>
+   <struct type="s" from="265" to="469">
+      <feat name="id" value="p1s3"/>
+   </struct>
+   <struct type="s" from="470" to="525">
+      <feat name="id" value="p1s4"/>
+   </struct>
+   <struct type="s" from="526" to="810">
+      <feat name="id" value="p1s5"/>
+   </struct>
+   <struct type="s" from="824" to="913">
+      <feat name="id" value="p2s1"/>
+   </struct>
+   <struct type="s" from="914" to="1039">
+      <feat name="id" value="p2s2"/>
+   </struct>
+   <struct type="s" from="1040" to="1322">
+      <feat name="id" value="p2s3"/>
+   </struct>
+   <struct type="s" from="1323" to="1444">
+      <feat name="id" value="p2s4"/>
+   </struct>
+   <struct type="s" from="1458" to="1583">
+      <feat name="id" value="p3s1"/>
+   </struct>
+   <struct type="s" from="1584" to="1873">
+      <feat name="id" value="p3s2"/>
+   </struct>
+   <struct type="s" from="1887" to="2017">
+      <feat name="id" value="p4s1"/>
+   </struct>
+   <struct type="s" from="2018" to="2347">
+      <feat name="id" value="p4s2"/>
+   </struct>
+   <struct type="s" from="2348" to="2481">
+      <feat name="id" value="p4s3"/>
+   </struct>
+   <struct type="s" from="2511" to="2583">
+      <feat name="id" value="p5s1"/>
+   </struct>
+   <struct type="s" from="2584" to="2811">
+      <feat name="id" value="p5s2"/>
+   </struct>
+   <struct type="s" from="2825" to="2947">
+      <feat name="id" value="p6s1"/>
+   </struct>
+   <struct type="s" from="2948" to="3136">
+      <feat name="id" value="p6s2"/>
+   </struct>
+   <struct type="s" from="3137" to="3213">
+      <feat name="id" value="p6s3"/>
+   </struct>
+   <struct type="s" from="3214" to="3377">
+      <feat name="id" value="p6s4"/>
+   </struct>
+</cesAna>

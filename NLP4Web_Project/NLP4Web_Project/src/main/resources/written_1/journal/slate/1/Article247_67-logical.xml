@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cesAna xmlns="http://www.xces.org/schema/2003" version="1.0.4">
+   <struct type="cesDoc" from="0" to="1947">
+      <feat name="xmlns:xlink" value="http://www.w3.org/1999/xlink"/>
+      <feat name="xmlns:xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+      <feat name="xmlns" value="http://www.xces.org/schema/2003"/>
+      <feat name="version" value="1.0.4"/>
+   </struct>
+   <struct type="text" from="8" to="1946"/>
+   <struct type="body" from="15" to="1942"/>
+   <struct type="head" from="38" to="61">
+      <feat name="type" value="headline"/>
+   </struct>
+   <struct type="p" from="75" to="614">
+      <feat name="id" value="p1"/>
+   </struct>
+   <struct type="hi" from="179" to="194">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="title"/>
+   </struct>
+   <struct type="hi" from="419" to="459">
+      <feat name="rend" value="bold"/>
+      <feat name="type" value="emphasis"/>
+   </struct>
+   <struct type="hi" from="438" to="443">
+      <feat name="rend" value="ital"/>
+      <feat name="type" value="title"/>
+   </struct>
+   <struct type="p" from="628" to="1253">
+      <feat name="id" value="p2"/>
+   </struct>
+   <struct type="p" from="1267" to="1315">
+      <feat name="id" value="p3"/>
+   </struct>
+   <struct type="p" from="1329" to="1417">
+      <feat name="id" value="p4"/>
+   </struct>
+   <struct type="p" from="1431" to="1452">
+      <feat name="id" value="p5"/>
+   </struct>
+   <struct type="p" from="1466" to="1767">
+      <feat name="id" value="p6"/>
+   </struct>
+   <struct type="p" from="1781" to="1810">
+      <feat name="id" value="p7"/>
+   </struct>
+   <struct type="p" from="1824" to="1889">
+      <feat name="id" value="p8"/>
+   </struct>
+   <struct type="p" from="1903" to="1924">
+      <feat name="id" value="p9"/>
+   </struct>
+</cesAna>
