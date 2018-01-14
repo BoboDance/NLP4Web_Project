@@ -47,15 +47,15 @@ public class TwitterCrawler {
 		.setOAuthConsumerSecret("TBc8MPxVezWus9lcDpP3OYf6r3uyKs5qckCYXskDNYKYm4SCCF")
 		.setOAuthAccessToken("952170518513373189-o7jeHc3uQRGiYuYBc49tosaUAQRrh2D")
 		.setOAuthAccessTokenSecret("w4Q7ETZrmwRIK0dQoI4v5DkD3zpae2cmRMbYC6Y2LBYJl")
-		.setJSONStoreEnabled(true)
-		.setIncludeExtAltTextEnabled(false)
-		.setIncludeEntitiesEnabled(false)
-		.setTrimUserEnabled(true)
-		.setTweetModeExtended(false)
+		.setJSONStoreEnabled(true)			//stores data in JSON format
+		.setIncludeExtAltTextEnabled(false) //dont know
+		.setIncludeEntitiesEnabled(true) //think whether or nor hashtags and other entitites are included
+		.setTrimUserEnabled(true)	//supposed to cut metadata from user - dont know if necessary
+		.setTweetModeExtended(true) //unshorten long tweets
 		;
 		
 		checkFrequ = 20; 		//Check every x Requests, how many remain. Needed to avoid Limit exhaustion
-		writeToConsFrequ = 100; 	//Write every x entries to console. (e.g. wrote "x" to ...)
+		writeToConsFrequ = 1000; 	//Write every x entries to console. (e.g. wrote "x" to ...)
 		maxCnt = 400;			//Max number of Pages per author (per page 100 tweets, however with retweets, that will get filtered. Usually 10-15 is enough for high output authors.
 		debug = false;			//Debug-flag. Omits writing crawled tweets in files 
 		
