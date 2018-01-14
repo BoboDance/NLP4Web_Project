@@ -48,10 +48,14 @@ public class TwitterCrawler {
 		.setOAuthAccessToken("952170518513373189-o7jeHc3uQRGiYuYBc49tosaUAQRrh2D")
 		.setOAuthAccessTokenSecret("w4Q7ETZrmwRIK0dQoI4v5DkD3zpae2cmRMbYC6Y2LBYJl")
 		.setJSONStoreEnabled(true)
+		.setIncludeExtAltTextEnabled(false)
+		.setIncludeEntitiesEnabled(false)
+		.setTrimUserEnabled(true)
+		.setTweetModeExtended(false)
 		;
 		
 		checkFrequ = 20; 		//Check every x Requests, how many remain. Needed to avoid Limit exhaustion
-		writeToConsFrequ = 50; 	//Write every x entries to console. (e.g. wrote "x" to ...)
+		writeToConsFrequ = 100; 	//Write every x entries to console. (e.g. wrote "x" to ...)
 		maxCnt = 400;			//Max number of Pages per author (per page 100 tweets, however with retweets, that will get filtered. Usually 10-15 is enough for high output authors.
 		debug = false;			//Debug-flag. Omits writing crawled tweets in files 
 		
@@ -67,7 +71,8 @@ public class TwitterCrawler {
 				"realDonaldTrump", "BarackObama", "ChuckGrassley", "RepJaredPolis", "BorisJohnson", 
 				"clairecmc", "ChrisChristie", "jahimes", "jeremycorbyn", "CarolineLucas",
 				"David_Cameron", "BernieSanders", "RonPaul", "SpeakerRyan", "mike_pence",
-				"DavidLammy", "timfarron", "Ed_Miliband", "ChukaUmunna", "tom_watson"};
+				"DavidLammy", "timfarron", "Ed_Miliband", "ChukaUmunna", "tom_watson"
+				};
 		
 		//Quick an dirty. Could be optimized(e.g. read from file instead of String array)
 		for(String s:user) {
@@ -148,14 +153,17 @@ public class TwitterCrawler {
 	    List<Status> statuses = new ArrayList<Status>();
 	    System.out.println("Trying to get min " + Integer.toString(numOfTweets) + " Tweets from @" + user);
 	    int  cnt =0;
+	    
 	    while (true) {
 	        //int size = statuses.size(); //For max tweets possible (ca. 3200)
 	    	int size = numOfTweets;
 	        Paging page = new Paging(pageno++, 100);
 	        statuses.addAll(twitter.getUserTimeline(user, page));
 	        for(int i = statuses.size()-100;i<statuses.size();i++) {
+	        	//if(isReply(statuses.get(i))) {
 	        	if(statuses.get(i).isRetweet()) {
 	        		statuses.remove(i);
+	        		i--;
 	        	}
 	        }
 	        cnt++;
@@ -287,7 +295,7 @@ public class TwitterCrawler {
 		 String formatArg1 = "%1$-30s %2$,13.2f";
 		 String formatArg1a = "%1$-30s %2$,13d";
 		 String formatArg2 = "%1$-20s %2$-20s %3$-20s %4$-20s";
-		 String formatArg3 = "%1$-20s %2$-,20d %3$-,20d %4$-,20f";
+		 String formatArg3 = "%1$-20s %2$-,20d %3$-,20d %4$,20.2f";
 		 
 		 sb.append("Statistics for Domain " + domain);
 		 sb.append(LF);
@@ -317,7 +325,8 @@ public class TwitterCrawler {
 		 fm.format(formatArg2, "Name", "#Tweets", "#Chars", "Chars/Tweet");
 		 for(StatContainer s : tweetsPerAuthor) {
 			 sb.append(LF);
-			 fm.format(formatArg3, s.getName(), s.getTweets(), s.getchars(), s.getchars()/s.getTweets());
+			 double charTweet = s.getchars()/s.getTweets();
+			 fm.format(formatArg3, s.getName(), s.getTweets(), s.getchars(), charTweet);
 		 }
 		
 		 fm.close();
@@ -340,6 +349,20 @@ public class TwitterCrawler {
 		System.out.println(sb.toString()); 
 		 
 	 }
+	 
+	 public boolean isReply(Status tweet) {
+		  if ( tweet.getRetweetedStatus()!=null
+		    || tweet.getInReplyToStatusId()!=0 
+		    || tweet.getInReplyToUserId()!=0 
+		    || tweet.getInReplyToScreenName()!=null) {
+			  return true;  
+		  }
+		  else {
+			  return false;
+		  }
+		    
+		}
+	 
 	 public void checkExisting() {
 		 //Method to check if the to be crawled users have been crawled already
 		 // if so, it Deletes it from user list 
@@ -366,7 +389,7 @@ public class TwitterCrawler {
 //		 float avgCharsPerTweet = (float) 200.85;
 //		 int cntchar=40000;
 //		 
-//		 List<StatContainer> list= new ArrayList<StatContainer>();
+//		 List<StatContainer> list= new ArrayList<StatContainer>
 //		 StatContainer a = new StatContainer("A",200,200);
 //		 StatContainer b = new StatContainer("B",200,200);
 //		 StatContainer c = new StatContainer("C",200,200);
