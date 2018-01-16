@@ -3,6 +3,7 @@ package pipeline;
 import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
 
 import java.io.File;
+import java.text.BreakIterator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +26,8 @@ import org.dkpro.tc.ml.crfsuite.CRFSuiteAdapter;
 import org.dkpro.tc.ml.report.BatchCrossValidationReport;
 import org.dkpro.tc.ml.report.BatchTrainTestReport;
 
+import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import reader.TweetReader;
 
 // TODO: classifiers
@@ -89,6 +92,15 @@ public class Pipeline implements Constants {
 			
 		}else if (clf == Classifier.DeepRNN) {
 			// TODO
+//			DemoUtils.setDkproHome(DeepLearning4jDocumentTrainTest.class.getSimpleName());
+//
+//	        DeepLearningExperimentTrainTest batch = new DeepLearningExperimentTrainTest("DeepLearning", Deeplearning4jAdapter.class);
+//	        batch.setPreprocessing(getPreprocessing());
+//	        batch.setParameterSpace(pSpace);
+//	        batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
+//
+//	        // Run
+//	        Lab.getInstance().run(batch);
 		}
 
 	}
@@ -113,7 +125,12 @@ public class Pipeline implements Constants {
 	}
 
 	protected AnalysisEngineDescription getPreprocessing() throws ResourceInitializationException {
-		return createEngineDescription(NoOpAnnotator.class); //TODO: preprocessing
+		//return createEngineDescription(NoOpAnnotator.class);
+		
+		return createEngineDescription(
+				createEngineDescription(BreakIteratorSegmenter.class),
+                createEngineDescription(ArktweetPosTagger.class, ArktweetPosTagger.PARAM_LANGUAGE,
+                        "en", ArktweetPosTagger.PARAM_VARIANT, "default"));
 	}
 	
 }
