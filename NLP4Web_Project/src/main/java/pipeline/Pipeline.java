@@ -1,8 +1,8 @@
 package pipeline;
 
-import static de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase.INCLUDE_PREFIX;
 import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,9 +12,9 @@ import org.apache.uima.fit.component.NoOpAnnotator;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.dkpro.lab.Lab;
+import org.dkpro.lab.task.BatchTask.ExecutionPolicy;
 import org.dkpro.lab.task.Dimension;
 import org.dkpro.lab.task.ParameterSpace;
-import org.dkpro.lab.task.BatchTask.ExecutionPolicy;
 import org.dkpro.tc.api.features.TcFeatureFactory;
 import org.dkpro.tc.api.features.TcFeatureSet;
 import org.dkpro.tc.core.Constants;
@@ -25,18 +25,20 @@ import org.dkpro.tc.ml.crfsuite.CRFSuiteAdapter;
 import org.dkpro.tc.ml.report.BatchCrossValidationReport;
 import org.dkpro.tc.ml.report.BatchTrainTestReport;
 
+import reader.TweetReader;
+
 // TODO: classifiers
 enum Classifier {
 	CRFSuite,
 	DeepRNN
 }
 
-public class Pipeline {
+public class Pipeline implements Constants {
 	
 	//TODO: path to data folders
-	private static final String corpusFilePathTrain = "src/main/resources/data/train";
-	private static final String corpusFilePathDev = "src/main/resources/data/test";
-	private static final String corpusFilePathTest = "TODO";
+	private static final String PATH_TO_TWEETS = new File(
+		Pipeline.class.getResource("/tweets_raw/").getFile()
+	).getAbsolutePath();
 	
 	public static void main(String[] args) {
 		System.setProperty("java.util.logging.config.file", "src/main/resources/logging.properties");
@@ -94,25 +96,20 @@ public class Pipeline {
 	// TODO: readers and features
 	public static ParameterSpace getParameterSpace() throws ResourceInitializationException {
 		
-//		CollectionReaderDescription readerTrain = CollectionReaderFactory.createReaderDescription(NERDemoReader.class,
-//				NERDemoReader.PARAM_LANGUAGE, "en", NERDemoReader.PARAM_SOURCE_LOCATION, corpusFilePathTrain,
-//				NERDemoReader.PARAM_PATTERNS, INCLUDE_PREFIX + "*.txt");
+		CollectionReaderDescription readerTrain = CollectionReaderFactory.createReaderDescription(
+				TweetReader.class, TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS);
 
-//		Map<String, Object> dimReaders = new HashMap<String, Object>();
-//		dimReaders.put(DIM_READER_TRAIN, readerTrain);
-//		dimReaders.put(DIM_READER_TEST, readerDev);
-//		dimReaders.put(DIM_READER_TEST, readerTest);
+		Map<String, Object> dimReaders = new HashMap<String, Object>();
+		dimReaders.put(DIM_READER_TRAIN, readerTrain);
 
-//		Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET, new TcFeatureSet(
-//				TcFeatureFactory.create(NrOfChars.class)));
+		Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET, new TcFeatureSet(
+				TcFeatureFactory.create(NrOfChars.class)));
 
-//		ParameterSpace pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
-//				Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
-//				Dimension.create(DIM_FEATURE_MODE, Constants.FM_SEQUENCE), dimFeatureSets);
+		ParameterSpace pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
+				Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
+				Dimension.create(DIM_FEATURE_MODE, Constants.FM_SEQUENCE), dimFeatureSets);
 
-//		return pSpace;
-		
-		return null;
+		return pSpace;
 	}
 
 	protected AnalysisEngineDescription getPreprocessing() throws ResourceInitializationException {
