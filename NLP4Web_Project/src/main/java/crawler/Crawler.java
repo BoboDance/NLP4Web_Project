@@ -1,4 +1,4 @@
-package milestone2.NLP4Web_Project;
+package crawler;
 
 import java.io.File;
 import java.io.FileWriter;

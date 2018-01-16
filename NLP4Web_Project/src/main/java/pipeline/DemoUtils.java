@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see http://www.gnu.org/licenses/.
  */
-package milestone2.NLP4Web_Project;
+package pipeline;
 
 import java.io.File;
 import java.util.Map;
