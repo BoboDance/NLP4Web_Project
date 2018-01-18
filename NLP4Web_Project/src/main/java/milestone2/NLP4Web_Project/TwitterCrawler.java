@@ -550,7 +550,7 @@ public class TwitterCrawler {
 		 String formatArg1 = "%1$-30s %2$,13.2f";
 		 String formatArg1a = "%1$-30s %2$,13d";
 		 String formatArg2 = "%1$-20s %2$-20s %3$-20s %4$-20s";
-		 String formatArg3 = "%1$-20s %2$-,20d %3$-,20d %4$,20.2f";
+		 String formatArg3 = "%1$-20s %2$-,20d %3$-,20d %4$-0,20.2f";
 		 
 		 sb.append("Statistics for Domain " + domain);
 		 sb.append(LF);
