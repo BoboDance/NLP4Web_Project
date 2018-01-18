@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Formatter;
@@ -17,6 +18,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 import twitter4j.json.DataObjectFactory;
@@ -32,7 +36,7 @@ public class TwitterCrawler {
 	int pageno;
 	int numOfTweets;
 	Twitter twitter;
-	HashMap<String, List<Status>> tweets; 
+	HashMap<String, HashMap<List<Status>,List<String> > > tweets; 
 	int checkFrequ;
 	int writeToConsFrequ;
 	int maxCnt;
@@ -51,7 +55,7 @@ public class TwitterCrawler {
 		.setOAuthAccessTokenSecret("w4Q7ETZrmwRIK0dQoI4v5DkD3zpae2cmRMbYC6Y2LBYJl")
 		.setJSONStoreEnabled(true)			//stores data in JSON format
 		.setIncludeExtAltTextEnabled(false) //dont know
-		.setIncludeEntitiesEnabled(true) //think whether or nor hashtags and other entitites are included
+		.setIncludeEntitiesEnabled(false) //think whether or nor hashtags and other entitites are included
 		.setTrimUserEnabled(true)	//supposed to cut metadata from user - dont know if necessary
 		.setTweetModeExtended(true) //unshorten long tweets
 		;
@@ -62,15 +66,15 @@ public class TwitterCrawler {
 		
 		debug = false;			//Debug-flag. Checks if folder exist. If so crwaled data will be included in new folder(twitterhandle+unixtime of crawl). Also reduces tweets and accounts crawled 
 		
-		tweets = new HashMap<String, List<Status>>();
+		tweets = new HashMap<String, HashMap<List<Status>,List<String> > >();
 		twitter = new TwitterFactory(cb.build()).getInstance();
 		users = new ArrayList<String>();
 		pageno = 1;
 		if(debug) {
-			write=false;			//Write crawled tweets? 
+			write=true;			//Write crawled tweets? 
 			numOfTweets = 10;
 			user = new String [] {
-					"realDonaldTrump", "BarackObama", "ChuckGrassley", "RepJaredPolis", "BorisJohnson"//, 
+					"realDonaldTrump", "BarackObama"//, "ChuckGrassley", "RepJaredPolis", "BorisJohnson"//, 
 //					"clairecmc", "ChrisChristie", "jahimes", "jeremycorbyn", "CarolineLucas",
 //					"David_Cameron", "BernieSanders", "RonPaul", "SpeakerRyan", "mike_pence",
 //					"DavidLammy", "timfarron", "Ed_Miliband", "ChukaUmunna", "tom_watson"
@@ -124,7 +128,7 @@ public class TwitterCrawler {
 		sleepCheck();
 		for(String user : users) {
 			try {
-				List<Status> t = getTweetsFromUser(twitter, user);
+				HashMap<List<Status>, List<String>> t = getTweetsFromUser(twitter, user);
 				tweets.put(user, t);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -154,9 +158,15 @@ public class TwitterCrawler {
 				Thread.sleep((sleep)*1000);
 			}
 			
-		} catch (TwitterException | InterruptedException e) {
+		} catch (TwitterException e) {
+			System.out.println("TwitterException: Maybe Twitter is Down!");
+			e.printStackTrace();
+			System.out.println("TwitterException: Maybe Twitter is Down!");
+			System.exit(-1);
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.exit(-1);
 		}
 	}
 	
@@ -168,11 +178,12 @@ public class TwitterCrawler {
 		}
 	
 	
-
-	
-	public List getTweetsFromUser (Twitter twitter, String user) throws JSONException, TwitterException {
-	    int pageno = 1;
+	public HashMap<List<Status>, List<String>> getTweetsFromUser(Twitter twitter, String user) throws JSONException, TwitterException {
+		int pageno = 1;
 	    List<Status> statuses = new ArrayList<Status>();
+	    List<String> rawJSONObjects = new ArrayList<String>();
+	    HashMap<List<Status>, List<String>> kombi = new HashMap<List<Status>, List<String>>();
+	    
 	    int num = users.indexOf(user)+1;
 	    System.out.println("Trying to get min " + Integer.toString(numOfTweets) + " Tweets from @" + user + " (" + num + "/" + users.size() + ")");
 	    int  cnt =0;
@@ -182,13 +193,24 @@ public class TwitterCrawler {
 	    	int size = numOfTweets;
 	        Paging page = new Paging(pageno++, 100);
 	        statuses.addAll(twitter.getUserTimeline(user, page));
+	        
+	        //String s1 = TwitterObjectFactory.getRawJSON(statuses);
+	        
+	        //Need to directly save all Statuses as JSON
+	        
 	        for(int i = statuses.size()-100;i<statuses.size();i++) {
 	        	//if(isReply(statuses.get(i))) {
 	        	if(statuses.get(i).isRetweet()) {
 	        		statuses.remove(i);
 	        		i--;
 	        	}
+	        	else {
+	        		String s2 = TwitterObjectFactory.getRawJSON(statuses.get(i));
+	        		rawJSONObjects.add(s2);
+	        	}
+
 	        }
+	        //String s2 = TwitterObjectFactory.getRawJSON(statuses);
 	        cnt++;
 	        if(cnt % checkFrequ == 0) {
 	        	sleepCheck();
@@ -202,7 +224,7 @@ public class TwitterCrawler {
 	        }
 	      
 	    } 
-	  
+	    kombi.put(statuses, rawJSONObjects);
 	    System.out.println("Crawled "+statuses.size() + " Tweets from @" + user);
 	    Status latest = statuses.get(0);	    
 	    Status oldest = statuses.get(statuses.size()-1);
@@ -211,91 +233,223 @@ public class TwitterCrawler {
 	    first_date.toString();
 	    
 	    System.out.println("Oldest Tweet: " + last_date.toString()+ " \nLatest Tweet: " + first_date.toString() );
-		return statuses;
+		return kombi;
 	}
 	
-	public void writeToFile(String source, HashMap<String, List<Status>> tweets, boolean debug) {
+
+	
+//	public List getTweetsFromUser (Twitter twitter, String user) throws JSONException, TwitterException {
+//	    int pageno = 1;
+//	    List<Status> statuses = new ArrayList<Status>();
+//	    int num = users.indexOf(user)+1;
+//	    System.out.println("Trying to get min " + Integer.toString(numOfTweets) + " Tweets from @" + user + " (" + num + "/" + users.size() + ")");
+//	    int  cnt =0;
+//	    
+//	    while (true) {
+//	        //int size = statuses.size(); //For max tweets possible (ca. 3200)
+//	    	int size = numOfTweets;
+//	        Paging page = new Paging(pageno++, 100);
+//	        statuses.addAll(twitter.getUserTimeline(user, page));
+//	        
+//	        String s1 = TwitterObjectFactory.getRawJSON(statuses);
+//	        
+//	        //Need to directly save all Statuses als JSON
+//	        
+//	        for(int i = statuses.size()-100;i<statuses.size();i++) {
+//	        	//if(isReply(statuses.get(i))) {
+//	        	if(statuses.get(i).isRetweet()) {
+//	        		statuses.remove(i);
+//	        		i--;
+//	        	}
+//	        	else {
+//	        		String s2 = TwitterObjectFactory.getRawJSON(statuses.get(i));
+//	        	}
+//
+//	        }
+//	        String s2 = TwitterObjectFactory.getRawJSON(statuses);
+//	        cnt++;
+//	        if(cnt % checkFrequ == 0) {
+//	        	sleepCheck();
+//	        }
+//	        if(cnt % writeToConsFrequ == 0) {
+//	        	System.out.println("Got " + Integer.toString(statuses.size()) + " Tweets from @" + user + "(cnt: " + Integer.toString(cnt) + ")");
+//	        }
+//	        if (statuses.size()-1 >= size || cnt>=maxCnt) {
+//	        	System.out.println("cnt "+ Integer.toString(cnt) + " bei " + user);
+//	          	break;
+//	        }
+//	      
+//	    } 
+//	  
+//	    System.out.println("Crawled "+statuses.size() + " Tweets from @" + user);
+//	    Status latest = statuses.get(0);	    
+//	    Status oldest = statuses.get(statuses.size()-1);
+//	    Date first_date = latest.getCreatedAt();
+//	    Date last_date = oldest.getCreatedAt();
+//	    first_date.toString();
+//	    
+//	    System.out.println("Oldest Tweet: " + last_date.toString()+ " \nLatest Tweet: " + first_date.toString() );
+//		return statuses;
+//	}
+	
+	public void writeToFile(String source, HashMap<String, HashMap<List<Status>,List<String> > > tweets, boolean debug) {
 		//this var is only used in debug mode
 		boolean dirExist = false;
-    			
-		for(Map.Entry<String, List<Status>> entry : tweets.entrySet()) {
-			String key =entry.getKey();
-			List<Status> userTweets = entry.getValue();		
-		
-	    	if(isDirectory(source, key, debug)) {       
-	    		for (Status a:userTweets) {
-				    try {
-				    	if(!debug) {
-					    	int cnt = userTweets.indexOf(a);			    	
-					    	String filename = source + "/" + key + "/" + Integer.toString(cnt) + ".txt";
-			
-					    	FileWriter writer = new FileWriter(filename);
-					    	if(cnt%writeToConsFrequ==0) {
-					    		String temp = "Wrote \"" + Integer.toString(cnt) + "\" to folder " +  source + "/" + key + "/" + "!";
-					    		System.out.println(temp);
-					    	}
-					        
-					        StringBuilder sb = new StringBuilder();
-					        String rawJSON = TwitterObjectFactory.getRawJSON(a);
-					        
-					        sb.append(rawJSON);
-					      					        
-					        writer.write(sb.toString());
-					        writer.close();
-				    	}
-				    	else if(debug) {
-				    		//Directory existiert, aber möglicherweise nicht leer.
-				    		int cnt = userTweets.indexOf(a);
-				    		String filename ="";
-				    		
-				    		if(!dirExist) {
-					    		File fl = new File(source + "/" + key + Long.toString(start));
-					    		if(fl.isDirectory()) {
-					    			dirExist = true;
-					    			filename=source + "/" + key+Long.toString(start) + "/" + Integer.toString(cnt) + ".txt";
-					    		}
-					    		else {
-					    			filename=source + "/" + key  + "/" + Integer.toString(cnt) + ".txt";
-					    		}
-				    		}
-				    		else{
-				    			filename=source + "/" + key+Long.toString(start) + "/" + Integer.toString(cnt) + ".txt";
-				    		}
-				    				    	
-					    	//String filename = source + "/" + key + "/" + Integer.toString(cnt) + ".txt";
-			
-					    	FileWriter writer = new FileWriter(filename);
-					    	if(cnt%writeToConsFrequ==0) {
-					    		String temp = "Wrote \"" + Integer.toString(cnt) + "\" to folder " +  source + "/" + key + "/" + "! Debug mode On!";
-					    		System.out.println(temp);
-					    	}
-					        
-					        StringBuilder sb = new StringBuilder();
-					        
-					        //Code from https://forum.processing.org/one/topic/saving-json-data-from-twitter4j.html
-					        String rawJSON = TwitterObjectFactory.getRawJSON(a);
-			                //String fileName = "statuses/" + status.getId() + ".json";
-			                //storeJSON(rawJSON, filename);
-			                //System.out.println(fileName + " - " + status.getText());
-					        
-					        sb.append(rawJSON);
-					        
-					        writer.write(sb.toString());
-					        writer.close();
-				    	}
-				    } catch (IOException e) {
-				        System.err.println(e.getMessage());
-				    }
+
+		for(Map.Entry<String, HashMap<List<Status>,List<String>>> tweetsPerUser : tweets.entrySet()) {
+				String key = tweetsPerUser.getKey();
+				HashMap<List<Status>,List<String>> tweetsFromSingleUser = tweetsPerUser.getValue();
+				for(Entry<List<Status>, List<String>> singleTweet: tweetsFromSingleUser.entrySet()) {
+					List<String> tweetsJSON = singleTweet.getValue();
+					//isdirectory chekcne
+					if(isDirectory(source, key, debug)){
+						for(String a : tweetsJSON) {
+							try {
+								if(!debug) {
+							    	int cnt = tweetsJSON.indexOf(a);			    	
+							    	String filename = source + "/" + key + "/" + Integer.toString(cnt) + ".txt";
+					
+							    	FileWriter writer = new FileWriter(filename);
+							    	if(cnt%writeToConsFrequ==0) {
+							    		String temp = "Wrote \"" + Integer.toString(cnt) + "\" to folder " +  source + "/" + key + "/" + "!";
+							    		System.out.println(temp);
+							    	}
+							        
+							        StringBuilder sb = new StringBuilder();
+							        
+							        sb.append(a);
+							      					        
+							        writer.write(sb.toString());
+							        writer.close();
+						    	}
+								else if(debug) {
+						    		//Directory existiert, aber möglicherweise nicht leer.
+						    		int cnt = tweetsJSON.indexOf(a);
+						    		String filename ="";
+						    		
+						    		if(!dirExist) {
+							    		File fl = new File(source + "/" + key + Long.toString(start));
+							    		if(fl.isDirectory()) {
+							    			dirExist = true;
+							    			filename=source + "/" + key+Long.toString(start) + "/" + Integer.toString(cnt) + ".txt";
+							    		}
+							    		else {
+							    			filename=source + "/" + key  + "/" + Integer.toString(cnt) + ".txt";
+							    		}
+						    		}
+						    		else{
+						    			filename=source + "/" + key+Long.toString(start) + "/" + Integer.toString(cnt) + ".txt";
+						    		}
+						    				    					
+							    	FileWriter writer = new FileWriter(filename);
+							    	if(cnt%writeToConsFrequ==0) {
+							    		String temp = "Wrote \"" + Integer.toString(cnt) + "\" to folder " +  source + "/" + key + "/" + "! Debug mode On!";
+							    		System.out.println(temp);
+							    	}
+							        
+							        StringBuilder sb = new StringBuilder();
+							        						        
+							        sb.append(a);
+							        
+							        writer.write(sb.toString());
+							        writer.close();
+						    	}
+							}catch (IOException e) {
+						        System.err.println(e.getMessage());
+							}	
+						
+						}
+					
+					}		
+			    	else {
+			    		System.out.println("###########################");
+			        	System.out.println("Error: Did not save "+ key+ " to files!");
+			        	System.out.println("isDirectory(String, String) returned false.");
+			        	System.out.println("Probably due to an Error in itself, resulting in the faliure to crate at least one necessary folder!");
+			        	System.out.println("###########################");
+			    	}
 				}
-	    	}
-	    	else {
-	    		System.out.println("###########################");
-	        	System.out.println("Error: Did not save "+ key+ " to files!");
-	        	System.out.println("isDirectory(String, String) returned false.");
-	        	System.out.println("Probably due to an Error in itself, resulting in the faliure to crate at least one necessary folder!");
-	        	System.out.println("###########################");
-	    	}
 		}
+//		for(Map.Entry<String, List<Status>> entry : tweets.entrySet()) {
+//			String key =entry.getKey();
+//			
+//			List<Status> userTweets = entry.getValue();		
+//		
+//	    	if(isDirectory(source, key, debug)) {       
+//	    		for (Status a:userTweets) {
+//				    try {
+//				    	if(!debug) {
+//					    	int cnt = userTweets.indexOf(a);			    	
+//					    	String filename = source + "/" + key + "/" + Integer.toString(cnt) + ".txt";
+//			
+//					    	FileWriter writer = new FileWriter(filename);
+//					    	if(cnt%writeToConsFrequ==0) {
+//					    		String temp = "Wrote \"" + Integer.toString(cnt) + "\" to folder " +  source + "/" + key + "/" + "!";
+//					    		System.out.println(temp);
+//					    	}
+//					        
+//					        StringBuilder sb = new StringBuilder();
+//					        
+//					        String rawJSON = TwitterObjectFactory.getRawJSON(a);
+//					        
+//					        sb.append(rawJSON);
+//					      					        
+//					        writer.write(sb.toString());
+//					        writer.close();
+//				    	}
+//				    	else if(debug) {
+//				    		//Directory existiert, aber möglicherweise nicht leer.
+//				    		int cnt = userTweets.indexOf(a);
+//				    		String filename ="";
+//				    		
+//				    		if(!dirExist) {
+//					    		File fl = new File(source + "/" + key + Long.toString(start));
+//					    		if(fl.isDirectory()) {
+//					    			dirExist = true;
+//					    			filename=source + "/" + key+Long.toString(start) + "/" + Integer.toString(cnt) + ".txt";
+//					    		}
+//					    		else {
+//					    			filename=source + "/" + key  + "/" + Integer.toString(cnt) + ".txt";
+//					    		}
+//				    		}
+//				    		else{
+//				    			filename=source + "/" + key+Long.toString(start) + "/" + Integer.toString(cnt) + ".txt";
+//				    		}
+//				    				    	
+//					    	//String filename = source + "/" + key + "/" + Integer.toString(cnt) + ".txt";
+//			
+//					    	FileWriter writer = new FileWriter(filename);
+//					    	if(cnt%writeToConsFrequ==0) {
+//					    		String temp = "Wrote \"" + Integer.toString(cnt) + "\" to folder " +  source + "/" + key + "/" + "! Debug mode On!";
+//					    		System.out.println(temp);
+//					    	}
+//					        
+//					        StringBuilder sb = new StringBuilder();
+//					        
+//					        //Code from https://forum.processing.org/one/topic/saving-json-data-from-twitter4j.html
+//					        String rawJSON = TwitterObjectFactory.getRawJSON(a);
+//			                //String fileName = "statuses/" + status.getId() + ".json";
+//			                //storeJSON(rawJSON, filename);
+//			                //System.out.println(fileName + " - " + status.getText());
+//					        
+//					        sb.append(rawJSON);
+//					        
+//					        writer.write(sb.toString());
+//					        writer.close();
+//				    	}
+//				    } catch (IOException e) {
+//				        System.err.println(e.getMessage());
+//				    }
+//				}
+//	    	}
+//	    	else {
+//	    		System.out.println("###########################");
+//	        	System.out.println("Error: Did not save "+ key+ " to files!");
+//	        	System.out.println("isDirectory(String, String) returned false.");
+//	        	System.out.println("Probably due to an Error in itself, resulting in the faliure to crate at least one necessary folder!");
+//	        	System.out.println("###########################");
+//	    	}
+//		}
 	}
 
 	 public boolean isDirectory(String source, String direc, boolean debug) {
@@ -363,7 +517,14 @@ public class TwitterCrawler {
 		 List<StatContainer> tweetsPerAuthor = new ArrayList<StatContainer>();
 		 
 		 for(int i=0; i< users.size(); i++) {
-			 List<Status> st = tweets.get(users.get(i));
+			 
+			 HashMap<List<Status>,List<String>> m = tweets.get(users.get(i));
+			 Set<List<Status>> sta = m.keySet();
+			 int cntSta = sta.size();
+			 List<Status> st= sta.iterator().next();
+			 
+			 
+			 //List<Status> st = new ArrayList<Status>(sta.); 						//new ArrayList<Status>((Collection<? extends Status>) m.keySet()); //tweets.get(users.get(i));
 			 int cntchar = 0;
 			 for(Status a : st) {
 				 cntchar += a.getText().length();
