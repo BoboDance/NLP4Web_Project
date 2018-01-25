@@ -38,8 +38,12 @@ enum Classifier {
 
 public class Pipeline implements Constants {
 	
-	private static final String PATH_TO_TWEETS = new File(
-		Pipeline.class.getResource("/tweets_raw/").getFile()
+	private static final String PATH_TO_TWEETS_TRAIN = new File(
+		Pipeline.class.getResource("/tweets_train/").getFile()
+	).getAbsolutePath().replace("target\\classes", "src\\main\\resources").replaceAll("%20", " ");
+	
+	private static final String PATH_TO_TWEETS_TEST = new File(
+		Pipeline.class.getResource("/tweets_test/").getFile()
 	).getAbsolutePath().replace("target\\classes", "src\\main\\resources").replaceAll("%20", " ");
 	
 	public static void main(String[] args) {
@@ -108,10 +112,14 @@ public class Pipeline implements Constants {
 	public static ParameterSpace getParameterSpace() throws ResourceInitializationException {
 		
 		CollectionReaderDescription readerTrain = CollectionReaderFactory.createReaderDescription(
-				TweetReader.class, TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS);
+				TweetReader.class, TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS_TRAIN);
+		
+		CollectionReaderDescription readerTest = CollectionReaderFactory.createReaderDescription(
+				TweetReader.class, TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS_TEST);
 
 		Map<String, Object> dimReaders = new HashMap<String, Object>();
 		dimReaders.put(DIM_READER_TRAIN, readerTrain);
+		dimReaders.put(DIM_READER_TEST, readerTest);
 
 		Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET, new TcFeatureSet(
 				TcFeatureFactory.create(NrOfChars.class)));

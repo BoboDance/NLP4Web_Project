@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
 import edu.stanford.nlp.ie.machinereading.structure.MachineReadingAnnotations.DocumentIdAnnotation;
 
@@ -63,31 +64,43 @@ public class TweetReader extends TextReader implements TCReaderSingleLabel {
 	 */
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
-		super.initialize(context);
+		//super.initialize(context);
 
 		// iterate over all files in the folder
-		for (File f : new File(pathToFolder).listFiles()) {
+		for (File d : new File(pathToFolder).listFiles()) {
 			// check if f is a file
-			if (f.isFile()) {
-				// create a buffered reader for each file
-				try (BufferedReader inputReader = new BufferedReader(new FileReader(f))) {
-					// read each file
-					String line;
-					while ((line = inputReader.readLine()) != null) {
-						String text = parse(line, "full_text");
-						System.out.println(text);
-						docs.add(text);
-						golds.add(new File(pathToFolder).getName());
+			if (d.isDirectory()) {
+				for(File d2 : d.listFiles()) {
+					if(d2.isDirectory()) {
+						for(File f : d2.listFiles()) {
+							// create a buffered reader for each file
+							try (BufferedReader inputReader = new BufferedReader(new FileReader(f))) {
+								// read each file
+								String line;
+								while ((line = inputReader.readLine()) != null) {
+									try {
+										String text = parse(line, "full_text");
+										docs.add(text);
+										golds.add(d.getName() + "-" + d2.getName());
+										System.out.println(d.getName() + "-" + d2.getName());
+										System.out.println(text);
+										
+									}catch(Exception e) {
+										e.printStackTrace();
+									}
+								}
+								
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
 					}
-					
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
 		}
 	}
 
-	public String parse(String jsonLine, String property) {
+	public String parse(String jsonLine, String property) throws Exception {
 	    JsonElement jelement = new JsonParser().parse(jsonLine);
 	    JsonObject  jobject = jelement.getAsJsonObject();
 	    String result = jobject.get(property).getAsString();
@@ -121,7 +134,7 @@ public class TweetReader extends TextReader implements TCReaderSingleLabel {
 	 */
 	@Override
 	public void getNext(CAS aCas) throws IOException, CollectionException {
-		
+				
 		JCas jCas = null;
 		
 		try {
@@ -132,16 +145,27 @@ public class TweetReader extends TextReader implements TCReaderSingleLabel {
 		
 		jCas.setDocumentText(docs.get(current));
 		
+		Sentence sentenceAnno = new Sentence(jCas);
+        sentenceAnno.setBegin(0);
+        sentenceAnno.setEnd(jCas.getDocumentText().length());
+        sentenceAnno.addToIndexes();
+        
+        TextClassificationTarget unit = new TextClassificationTarget(jCas, sentenceAnno.getBegin(), sentenceAnno.getEnd());
+		unit.addToIndexes();
+		
 		TextClassificationOutcome outcome = new TextClassificationOutcome(jCas);
 		outcome.setOutcome(golds.get(current));
+		outcome.setBegin(sentenceAnno.getBegin());
+		outcome.setEnd(sentenceAnno.getEnd());
 		outcome.addToIndexes();
 		
-		DocumentMetaData dmd = DocumentMetaData.get(jCas);
+		DocumentMetaData dmd = DocumentMetaData.create(jCas); //DocumentMetaData.get(jCas);
 		dmd.setDocumentId("RuegenwalderTeewurst - " + fileOffset);
 		dmd.setDocumentTitle(dmd.getDocumentTitle() + "-" + fileOffset);
 		dmd.setDocumentUri(dmd.getDocumentUri() + "-" + fileOffset);
 		
 		fileOffset++;
+		
 		current++;
 	}
 
@@ -149,7 +173,7 @@ public class TweetReader extends TextReader implements TCReaderSingleLabel {
 	public String getTextClassificationOutcome(JCas jcas) throws CollectionException {
 		try {
             String uriString = DocumentMetaData.get(jcas).getDocumentUri();
-            return new File(new URI(uriString).getPath()).getParentFile().getName();
+            return new File(new URI(uriString).getPath()).getParentFile().getName() + "-" + new File(new URI(uriString).getPath()).getParentFile().getParentFile().getName();
         }
         catch (URISyntaxException e) {
             throw new CollectionException(e);
