@@ -33,15 +33,14 @@ import reader.TweetReader;
 // TODO: classifiers
 enum Classifier {
 	CRFSuite,
-	DeepRNN
+	Deeplearning4j
 }
 
 public class Pipeline implements Constants {
 	
-	//TODO: path to data folders
 	private static final String PATH_TO_TWEETS = new File(
 		Pipeline.class.getResource("/tweets_raw/").getFile()
-	).getAbsolutePath();
+	).getAbsolutePath().replace("target\\classes", "src\\main\\resources").replaceAll("%20", " ");
 	
 	public static void main(String[] args) {
 		System.setProperty("java.util.logging.config.file", "src/main/resources/logging.properties");
@@ -64,7 +63,7 @@ public class Pipeline implements Constants {
 	protected void runCrossValidation(ParameterSpace pSpace, int num_folds, Classifier clf) throws Exception {
 		if(clf == Classifier.CRFSuite) {
 			// TODO
-			ExperimentCrossValidation batch = new ExperimentCrossValidation("TODO", CRFSuiteAdapter.class, num_folds);
+			ExperimentCrossValidation batch = new ExperimentCrossValidation("TwitterSherlockCRFSuite", CRFSuiteAdapter.class, num_folds);
 			batch.setPreprocessing(getPreprocessing());
 			batch.setParameterSpace(pSpace);
 			batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
@@ -72,7 +71,7 @@ public class Pipeline implements Constants {
 			
 			Lab.getInstance().run(batch);
 			
-		}else if (clf == Classifier.DeepRNN) {
+		}else if (clf == Classifier.Deeplearning4j) {
 			// TODO
 		}
 		
@@ -82,7 +81,7 @@ public class Pipeline implements Constants {
 	protected void runTrainTest(ParameterSpace pSpace, Classifier clf) throws Exception {
 		if(clf == Classifier.CRFSuite) {
 			// TODO
-			ExperimentTrainTest batch = new ExperimentTrainTest("TODO", CRFSuiteAdapter.class);
+			ExperimentTrainTest batch = new ExperimentTrainTest("TwitterSherlockCRFSuite", CRFSuiteAdapter.class);
 			batch.setPreprocessing(getPreprocessing());
 			batch.setParameterSpace(pSpace);
 			batch.addReport(BatchTrainTestReport.class);
@@ -90,11 +89,11 @@ public class Pipeline implements Constants {
 			
 			Lab.getInstance().run(batch);
 			
-		}else if (clf == Classifier.DeepRNN) {
+		}else if (clf == Classifier.Deeplearning4j) {
 			// TODO
 //			DemoUtils.setDkproHome(DeepLearning4jDocumentTrainTest.class.getSimpleName());
 //
-//	        DeepLearningExperimentTrainTest batch = new DeepLearningExperimentTrainTest("DeepLearning", Deeplearning4jAdapter.class);
+//	        DeepLearningExperimentTrainTest batch = new DeepLearningExperimentTrainTest("TwitterSherlockDeeplearning4j", Deeplearning4jAdapter.class);
 //	        batch.setPreprocessing(getPreprocessing());
 //	        batch.setParameterSpace(pSpace);
 //	        batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
@@ -125,12 +124,12 @@ public class Pipeline implements Constants {
 	}
 
 	protected AnalysisEngineDescription getPreprocessing() throws ResourceInitializationException {
-		//return createEngineDescription(NoOpAnnotator.class);
+		return createEngineDescription(NoOpAnnotator.class);
 		
-		return createEngineDescription(
-				createEngineDescription(BreakIteratorSegmenter.class),
-                createEngineDescription(ArktweetPosTagger.class, ArktweetPosTagger.PARAM_LANGUAGE,
-                        "en", ArktweetPosTagger.PARAM_VARIANT, "default"));
+//		return createEngineDescription(
+//				createEngineDescription(BreakIteratorSegmenter.class),
+//                createEngineDescription(ArktweetPosTagger.class, ArktweetPosTagger.PARAM_LANGUAGE,
+//                        "en", ArktweetPosTagger.PARAM_VARIANT, "default"));
 	}
 	
 }
