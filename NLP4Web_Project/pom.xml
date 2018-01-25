@@ -1,92 +1,88 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>milestone2</groupId>
-  <artifactId>NLP4Web_Project</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>milestone2</groupId>
+	<artifactId>NLP4Web_Project</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>NLP4Web_Project</name>
-  <url>http://maven.apache.org</url>
+	<name>NLP4Web_Project</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
-  <build>
-  	<plugins>
-	  	<plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-eclipse-plugin</artifactId>
-	        <configuration>
-	          <downloadSources>true</downloadSources>
-	          <downloadJavadocs>true</downloadJavadocs>
-	        </configuration>
-	      </plugin>
-	 </plugins>
-  </build>
-  
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>org.dkpro.tc</groupId>
-    	<artifactId>dkpro-tc-core</artifactId>
-    </dependency>
-    <dependency>
-    	<groupId>org.dkpro.tc</groupId>
-    	<artifactId>dkpro-tc-features</artifactId>
-    </dependency>
-    <dependency>
-    	<groupId>org.dkpro.tc</groupId>
-    	<artifactId>dkpro-tc-ml</artifactId>
-    </dependency>
-    <dependency>
-    	<groupId>org.dkpro.tc</groupId>
-    	<artifactId>dkpro-tc-ml-crfsuite</artifactId>
-    </dependency>
-    <!-- 
-    <dependency>
-    	<groupId>org.dkpro.tc</groupId>
-    	<artifactId>dkpro-tc-ml-deeplearning4j</artifactId>
-    </dependency>
-     -->
-    <dependency>
-    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-    	<artifactId>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dkpro.tc</groupId>
+			<artifactId>dkpro-tc-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.dkpro.tc</groupId>
+			<artifactId>dkpro-tc-features</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.dkpro.tc</groupId>
+			<artifactId>dkpro-tc-ml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.dkpro.tc</groupId>
+			<artifactId>dkpro-tc-ml-crfsuite</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>org.dkpro.tc</groupId> <artifactId>dkpro-tc-ml-deeplearning4j</artifactId> 
+			</dependency> -->
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.api.io-asl
     	</artifactId>
-    </dependency>
-    <dependency>
-		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-		<artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
  			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
  		</artifactId>
-	</dependency>
-    <dependency>
-    	<groupId>org.jsoup</groupId>
-    	<artifactId>jsoup</artifactId>
-    	<version>1.11.2</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.twitter4j</groupId>
-    	<artifactId>twitter4j</artifactId>
-    	<version>4.0.6</version>
-    	<type>pom</type>
-    </dependency>
-    <dependency>
-    	<groupId>org.twitter4j</groupId>
-    	<artifactId>twitter4j-core</artifactId>
-    	<version>4.0.6</version>
-    </dependency>
-  </dependencies>
-  <parent>
-  	<groupId>org.dkpro.tc</groupId>
-  	<artifactId>dkpro-tc</artifactId>
-  	<version>0.9.0</version> <!-- <version>1.0.0-SNAPSHOT</version> -->
-  </parent>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.11.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.twitter4j</groupId>
+			<artifactId>twitter4j</artifactId>
+			<version>4.0.6</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.twitter4j</groupId>
+			<artifactId>twitter4j-core</artifactId>
+			<version>4.0.6</version>
+		</dependency>
+	</dependencies>
+	<parent>
+		<groupId>org.dkpro.tc</groupId>
+		<artifactId>dkpro-tc</artifactId>
+		<version>0.9.0</version> <!-- <version>1.0.0-SNAPSHOT</version> -->
+	</parent>
 </project>
