@@ -4,7 +4,9 @@ import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDesc
 
 import java.io.File;
 import java.text.BreakIterator;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -25,14 +27,16 @@ import org.dkpro.tc.ml.ExperimentTrainTest;
 import org.dkpro.tc.ml.crfsuite.CRFSuiteAdapter;
 import org.dkpro.tc.ml.report.BatchCrossValidationReport;
 import org.dkpro.tc.ml.report.BatchTrainTestReport;
+import org.dkpro.tc.ml.weka.WekaClassificationAdapter;
 
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import reader.TweetReader;
+import weka.classifiers.bayes.NaiveBayes;
 
 // TODO: classifiers
 enum Classifier {
-	CRFSuite,
+	WekaNaiveBayes,
 	Deeplearning4j
 }
 
@@ -55,7 +59,7 @@ public class Pipeline implements Constants {
 		Pipeline pipeline = new Pipeline();
 		
 		try {
-			pipeline.runTrainTest(getParameterSpace(), Classifier.CRFSuite);
+			pipeline.runTrainTest(getParameterSpace(), Classifier.WekaNaiveBayes);
 			// demo.runCrossValidation(getParameterSpace(), Classifiers.CRFSuite);
 			
 		}catch(Exception e) {
@@ -65,9 +69,9 @@ public class Pipeline implements Constants {
 	
 	// Cross validation
 	protected void runCrossValidation(ParameterSpace pSpace, int num_folds, Classifier clf) throws Exception {
-		if(clf == Classifier.CRFSuite) {
+		if(clf == Classifier.WekaNaiveBayes) {
 			// TODO
-			ExperimentCrossValidation batch = new ExperimentCrossValidation("TwitterSherlockCRFSuite", CRFSuiteAdapter.class, num_folds);
+			ExperimentCrossValidation batch = new ExperimentCrossValidation("TwitterSherlockWekaNB", WekaClassificationAdapter.class, num_folds);
 			batch.setPreprocessing(getPreprocessing());
 			batch.setParameterSpace(pSpace);
 			batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
@@ -83,9 +87,9 @@ public class Pipeline implements Constants {
 
 	// Train/Test evaluation
 	protected void runTrainTest(ParameterSpace pSpace, Classifier clf) throws Exception {
-		if(clf == Classifier.CRFSuite) {
+		if(clf == Classifier.WekaNaiveBayes) {
 			// TODO
-			ExperimentTrainTest batch = new ExperimentTrainTest("TwitterSherlockCRFSuite", CRFSuiteAdapter.class);
+			ExperimentTrainTest batch = new ExperimentTrainTest("TwitterSherlockWekaNB", WekaClassificationAdapter.class);
 			batch.setPreprocessing(getPreprocessing());
 			batch.setParameterSpace(pSpace);
 			batch.addReport(BatchTrainTestReport.class);
@@ -123,10 +127,14 @@ public class Pipeline implements Constants {
 
 		Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET, new TcFeatureSet(
 				TcFeatureFactory.create(NrOfChars.class)));
+		
+		@SuppressWarnings("unchecked")
+		Dimension<List<String>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
+                Arrays.asList(new String[] { NaiveBayes.class.getName() }));
 
 		ParameterSpace pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
 				Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
-				Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT), dimFeatureSets);
+				Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT), dimFeatureSets, dimClassificationArgs);
 
 		return pSpace;
 	}
