@@ -126,7 +126,7 @@ public class Pipeline implements Constants {
 
 		ParameterSpace pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
 				Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
-				Dimension.create(DIM_FEATURE_MODE, Constants.FM_SEQUENCE), dimFeatureSets);
+				Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT), dimFeatureSets);
 
 		return pSpace;
 	}

@@ -41,7 +41,7 @@ import edu.stanford.nlp.ie.machinereading.structure.MachineReadingAnnotations.Do
  * @author Daniel Wehner
  *
  */
-public class TweetReader extends TextReader implements TCReaderSingleLabel {
+public class TweetReader extends JCasCollectionReader_ImplBase implements TCReaderSingleLabel {
 	public final static String PARAM_TEXT_FOLDER = "TextFolder";
 
 	// path to folder to read
@@ -65,7 +65,7 @@ public class TweetReader extends TextReader implements TCReaderSingleLabel {
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
 		//super.initialize(context);
-
+//			Thanks Clemens
 		// iterate over all files in the folder
 		for (File d : new File(pathToFolder).listFiles()) {
 			// check if f is a file
@@ -82,11 +82,9 @@ public class TweetReader extends TextReader implements TCReaderSingleLabel {
 										String text = parse(line, "full_text");
 										docs.add(text);
 										golds.add(d.getName() + "-" + d2.getName());
-										System.out.println(d.getName() + "-" + d2.getName());
-										System.out.println(text);
 										
 									}catch(Exception e) {
-										e.printStackTrace();
+//										e.printStackTrace();
 									}
 								}
 								
@@ -127,57 +125,55 @@ public class TweetReader extends TextReader implements TCReaderSingleLabel {
 		return current < docs.size();
 	}
 
-	/**
-	 * Get the next document from the collection.
-	 * 
-	 * @param jCas
-	 */
 	@Override
-	public void getNext(CAS aCas) throws IOException, CollectionException {
-				
-		JCas jCas = null;
-		
-		try {
-			jCas = aCas.getJCas();
-		} catch (CASException e) {
-			e.printStackTrace();
-		}
-		
-		jCas.setDocumentText(docs.get(current));
-		
-		Sentence sentenceAnno = new Sentence(jCas);
-        sentenceAnno.setBegin(0);
-        sentenceAnno.setEnd(jCas.getDocumentText().length());
-        sentenceAnno.addToIndexes();
-        
-        TextClassificationTarget unit = new TextClassificationTarget(jCas, sentenceAnno.getBegin(), sentenceAnno.getEnd());
-		unit.addToIndexes();
-		
-		TextClassificationOutcome outcome = new TextClassificationOutcome(jCas);
-		outcome.setOutcome(golds.get(current));
-		outcome.setBegin(sentenceAnno.getBegin());
-		outcome.setEnd(sentenceAnno.getEnd());
-		outcome.addToIndexes();
-		
-		DocumentMetaData dmd = DocumentMetaData.create(jCas); //DocumentMetaData.get(jCas);
-		dmd.setDocumentId("RuegenwalderTeewurst - " + fileOffset);
-		dmd.setDocumentTitle(dmd.getDocumentTitle() + "-" + fileOffset);
-		dmd.setDocumentUri(dmd.getDocumentUri() + "-" + fileOffset);
-		
-		fileOffset++;
-		
-		current++;
+	public String getTextClassificationOutcome(JCas jcas) throws CollectionException {
+//		try {
+//            String uriString = DocumentMetaData.get(jcas).getDocumentUri();
+//            return new File(new URI(uriString).getPath()).getParentFile().getName() + "-" + new File(new URI(uriString).getPath()).getParentFile().getParentFile().getName();
+//        }
+//        catch (URISyntaxException e) {
+//            throw new CollectionException(e);
+//        }
+		return null;
 	}
 
 	@Override
-	public String getTextClassificationOutcome(JCas jcas) throws CollectionException {
-		try {
-            String uriString = DocumentMetaData.get(jcas).getDocumentUri();
-            return new File(new URI(uriString).getPath()).getParentFile().getName() + "-" + new File(new URI(uriString).getPath()).getParentFile().getParentFile().getName();
-        }
-        catch (URISyntaxException e) {
-            throw new CollectionException(e);
-        }
+	public void getNext(JCas jCas) throws IOException, CollectionException {
+//		JCas jCas = null;
+		
+//		try {
+//			jCas = aCas.getJCas();
+//		} catch (CASException e) {
+//			e.printStackTrace();
+//		}
+		
+		jCas.setDocumentText(docs.get(current));
+		
+//		Sentence sentenceAnno = new Sentence(jCas);
+//        sentenceAnno.setBegin(0);
+//        sentenceAnno.setEnd(jCas.getDocumentText().length());
+//        sentenceAnno.addToIndexes();
+        
+//        TextClassificationTarget unit = new TextClassificationTarget(jCas, sentenceAnno.getBegin(), sentenceAnno.getEnd());
+//		unit.addToIndexes();
+        TextClassificationTarget fullDoc = new TextClassificationTarget(jCas, 0, jCas.getDocumentText().length());
+        fullDoc.addToIndexes();
+
+		
+		DocumentMetaData dmd = DocumentMetaData.create(jCas); 
+		//DocumentMetaData.get(jCas);
+		dmd.setDocumentId(String.valueOf(current));
+		dmd.setDocumentTitle("RuegenwalderSchinkenspicker - " + fileOffset);
+		dmd.setDocumentUri("RuegenwalderSchinkenspicker - " + fileOffset);
+		
+		TextClassificationOutcome outcome = new TextClassificationOutcome(jCas, 0, jCas.getDocumentText().length());
+		outcome.setOutcome(golds.get(current));
+//		outcome.setBegin(sentenceAnno.getBegin());
+//		outcome.setEnd(sentenceAnno.getEnd());
+		outcome.addToIndexes();
+		
+		fileOffset++;
+		current++;		
 	}
 
 }
