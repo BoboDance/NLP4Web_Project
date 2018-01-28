@@ -19,16 +19,14 @@ import org.dkpro.lab.task.ParameterSpace;
 import org.dkpro.tc.api.features.TcFeatureFactory;
 import org.dkpro.tc.api.features.TcFeatureSet;
 import org.dkpro.tc.core.Constants;
-import org.dkpro.tc.features.length.AvgNrOfCharsPerSentence;
-import org.dkpro.tc.features.length.AvgNrOfCharsPerToken;
 import org.dkpro.tc.features.length.NrOfChars;
-import org.dkpro.tc.features.length.NrOfSentences;
 import org.dkpro.tc.features.length.NrOfTokens;
 import org.dkpro.tc.features.length.NrOfTokensPerSentence;
 import org.dkpro.tc.features.style.ContextualityMeasureFeatureExtractor;
 import org.dkpro.tc.features.style.ExclamationFeatureExtractor;
-import org.dkpro.tc.features.style.ModalVerbsFeatureExtractor;
 import org.dkpro.tc.features.style.TypeTokenRatioFeatureExtractor;
+import org.dkpro.tc.features.syntax.PastVsFutureFeatureExtractor;
+import org.dkpro.tc.features.syntax.SuperlativeRatioFeatureExtractor;
 import org.dkpro.tc.features.twitter.EmoticonRatio;
 import org.dkpro.tc.features.twitter.NumberOfHashTags;
 import org.dkpro.tc.ml.ExperimentCrossValidation;
@@ -39,9 +37,8 @@ import org.dkpro.tc.ml.weka.WekaClassificationAdapter;
 
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
-import featureExtractor.CharacterFeatureExtractor;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import featureExtractor.CharacterFeatureExtractor;
 import reader.TweetReader;
 import weka.classifiers.bayes.NaiveBayes;
 
@@ -144,8 +141,8 @@ public class Pipeline implements Constants {
                 		TcFeatureFactory.create(ContextualityMeasureFeatureExtractor.class),
                 		//TcFeatureFactory.create(ModalVerbsFeatureExtractor.class),
                 		TcFeatureFactory.create(ExclamationFeatureExtractor.class),
-                		//TcFeatureFactory.create(SuperlativeRatioFeatureExtractor.class),
-                		//TcFeatureFactory.create(PastVsFutureFeatureExtractor.class), //Penn Treebank Tagset only for this one!!!
+                		TcFeatureFactory.create(SuperlativeRatioFeatureExtractor.class),
+                		TcFeatureFactory.create(PastVsFutureFeatureExtractor.class), //Penn Treebank Tagset only for this one!!!
                         TcFeatureFactory.create(EmoticonRatio.class),
                         TcFeatureFactory.create(NumberOfHashTags.class),
 //                        TcFeatureFactory.create(AvgNrOfCharsPerSentence.class),
