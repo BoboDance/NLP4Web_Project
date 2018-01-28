@@ -21,6 +21,9 @@ import org.dkpro.tc.api.features.TcFeatureFactory;
 import org.dkpro.tc.api.features.TcFeatureSet;
 import org.dkpro.tc.core.Constants;
 import org.dkpro.tc.features.length.NrOfTokensPerSentence;
+import org.dkpro.tc.features.style.ContextualityMeasureFeatureExtractor;
+import org.dkpro.tc.features.style.ExclamationFeatureExtractor;
+import org.dkpro.tc.features.style.ModalVerbsFeatureExtractor;
 import org.dkpro.tc.features.style.TypeTokenRatioFeatureExtractor;
 import org.dkpro.tc.features.twitter.EmoticonRatio;
 import org.dkpro.tc.features.twitter.NumberOfHashTags;
@@ -32,6 +35,7 @@ import org.dkpro.tc.ml.weka.WekaClassificationAdapter;
 
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import reader.TweetReader;
 import weka.classifiers.bayes.NaiveBayes;
@@ -131,6 +135,11 @@ public class Pipeline implements Constants {
                 DIM_FEATURE_SET,
                 new TcFeatureSet(TcFeatureFactory.create(NrOfTokensPerSentence.class),
                 		TcFeatureFactory.create(TypeTokenRatioFeatureExtractor.class),
+                		TcFeatureFactory.create(ContextualityMeasureFeatureExtractor.class),
+                		//TcFeatureFactory.create(ModalVerbsFeatureExtractor.class),
+                		TcFeatureFactory.create(ExclamationFeatureExtractor.class),
+                		//TcFeatureFactory.create(SuperlativeRatioFeatureExtractor.class),
+                		//TcFeatureFactory.create(PastVsFutureFeatureExtractor.class), //Penn Treebank Tagset only for this one!!!
                         TcFeatureFactory.create(EmoticonRatio.class),
                         TcFeatureFactory.create(NumberOfHashTags.class)));
 		
@@ -151,7 +160,8 @@ public class Pipeline implements Constants {
 		return createEngineDescription(
 				createEngineDescription(ArktweetTokenizer.class),
                 createEngineDescription(ArktweetPosTagger.class, ArktweetPosTagger.PARAM_LANGUAGE,
-                        "en", ArktweetPosTagger.PARAM_VARIANT, "default"));
+                        "en", ArktweetPosTagger.PARAM_VARIANT, "default"),
+                createEngineDescription(OpenNlpPosTagger.class, OpenNlpPosTagger.PARAM_LANGUAGE, "en"));
 	}
 	
 }
