@@ -10,7 +10,6 @@ import java.util.Map;
 
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
-import org.apache.uima.fit.component.NoOpAnnotator;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.dkpro.lab.Lab;
@@ -20,6 +19,11 @@ import org.dkpro.lab.task.ParameterSpace;
 import org.dkpro.tc.api.features.TcFeatureFactory;
 import org.dkpro.tc.api.features.TcFeatureSet;
 import org.dkpro.tc.core.Constants;
+import org.dkpro.tc.features.length.AvgNrOfCharsPerSentence;
+import org.dkpro.tc.features.length.AvgNrOfCharsPerToken;
+import org.dkpro.tc.features.length.NrOfChars;
+import org.dkpro.tc.features.length.NrOfSentences;
+import org.dkpro.tc.features.length.NrOfTokens;
 import org.dkpro.tc.features.length.NrOfTokensPerSentence;
 import org.dkpro.tc.features.style.TypeTokenRatioFeatureExtractor;
 import org.dkpro.tc.features.twitter.EmoticonRatio;
@@ -32,7 +36,7 @@ import org.dkpro.tc.ml.weka.WekaClassificationAdapter;
 
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import featureExtractor.CharacterFeatureExtractor;
 import reader.TweetReader;
 import weka.classifiers.bayes.NaiveBayes;
 
@@ -129,10 +133,19 @@ public class Pipeline implements Constants {
 
 		Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(
                 DIM_FEATURE_SET,
-                new TcFeatureSet(TcFeatureFactory.create(NrOfTokensPerSentence.class),
+                new TcFeatureSet(
+                		TcFeatureFactory.create(NrOfTokensPerSentence.class),
                 		TcFeatureFactory.create(TypeTokenRatioFeatureExtractor.class),
                         TcFeatureFactory.create(EmoticonRatio.class),
-                        TcFeatureFactory.create(NumberOfHashTags.class)));
+                        TcFeatureFactory.create(NumberOfHashTags.class),
+//                        TcFeatureFactory.create(AvgNrOfCharsPerSentence.class),
+//                        TcFeatureFactory.create(AvgNrOfCharsPerToken.class),
+                        TcFeatureFactory.create(NrOfChars.class),
+//                        TcFeatureFactory.create(NrOfSentences.class),
+                        TcFeatureFactory.create(NrOfTokens.class),
+                        TcFeatureFactory.create(CharacterFeatureExtractor.class)
+
+                        ));
 		
 		@SuppressWarnings("unchecked")
 		Dimension<List<String>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
