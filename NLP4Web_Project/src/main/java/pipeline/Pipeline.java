@@ -19,7 +19,7 @@ import org.dkpro.lab.task.ParameterSpace;
 import org.dkpro.tc.api.features.TcFeatureFactory;
 import org.dkpro.tc.api.features.TcFeatureSet;
 import org.dkpro.tc.core.Constants;
-import org.dkpro.tc.core.DeepLearningConstants;
+//import org.dkpro.tc.core.DeepLearningConstants;
 import org.dkpro.tc.features.length.NrOfChars;
 import org.dkpro.tc.features.length.NrOfTokens;
 import org.dkpro.tc.features.length.NrOfTokensPerSentence;
@@ -33,10 +33,10 @@ import org.dkpro.tc.features.syntax.PastVsFutureFeatureExtractor;
 import org.dkpro.tc.features.syntax.SuperlativeRatioFeatureExtractor;
 import org.dkpro.tc.features.twitter.EmoticonRatio;
 import org.dkpro.tc.features.twitter.NumberOfHashTags;
-import org.dkpro.tc.ml.DeepLearningExperimentTrainTest;
+//import org.dkpro.tc.ml.DeepLearningExperimentTrainTest;
 import org.dkpro.tc.ml.ExperimentCrossValidation;
 import org.dkpro.tc.ml.ExperimentTrainTest;
-import org.dkpro.tc.ml.deeplearning4j.Deeplearning4jAdapter;
+//import org.dkpro.tc.ml.deeplearning4j.Deeplearning4jAdapter;
 import org.dkpro.tc.ml.report.BatchCrossValidationReport;
 import org.dkpro.tc.ml.report.BatchTrainTestReport;
 import org.dkpro.tc.ml.weka.WekaClassificationAdapter;
@@ -45,7 +45,7 @@ import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
-import deeplearning.Dl4jDocumentUserCode;
+//import deeplearning.Dl4jDocumentUserCode;
 import featureExtractor.CharacterFeatureExtractor;
 import featureExtractor.VocabularyRichnessFeatureExtractor;
 import reader.TweetReader;
@@ -112,13 +112,13 @@ public class Pipeline implements Constants {
 
 			Lab.getInstance().run(batch);			
 		}else if (clf == Classifier.Deeplearning4j) {
-			DeepLearningExperimentTrainTest batch = new DeepLearningExperimentTrainTest("TwitterSherlockDeeplearning4j", Deeplearning4jAdapter.class);
-	        batch.setPreprocessing(getPreprocessing(clf));
-	        batch.setParameterSpace(pSpace);
-	        batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
-
-	        // Run
-	        Lab.getInstance().run(batch);
+//			DeepLearningExperimentTrainTest batch = new DeepLearningExperimentTrainTest("TwitterSherlockDeeplearning4j", Deeplearning4jAdapter.class);
+//	        batch.setPreprocessing(getPreprocessing(clf));
+//	        batch.setParameterSpace(pSpace);
+//	        batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
+//
+//	        // Run
+//	        Lab.getInstance().run(batch);
 		}
 
 	}
@@ -175,16 +175,16 @@ public class Pipeline implements Constants {
 		
 		} else if(clf == Classifier.Deeplearning4j) {
 			
-			pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
-	                Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT),
-	                Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
-	                Dimension.create(DeepLearningConstants.DIM_USER_CODE,
-	                        new Dl4jDocumentUserCode()),
-	                Dimension.create(DeepLearningConstants.DIM_MAXIMUM_LENGTH, 280),
-	                Dimension.create(DeepLearningConstants.DIM_VECTORIZE_TO_INTEGER, true),
-	                Dimension.create(DeepLearningConstants.DIM_PRETRAINED_EMBEDDINGS,
-	                        "src/main/resources/wordvector/glove.6B.50d_250.txt")); //glove.twitter.27B.100d.txt
-			
+//			pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
+//	                Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT),
+//	                Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
+//	                Dimension.create(DeepLearningConstants.DIM_USER_CODE,
+//	                        new Dl4jDocumentUserCode()),
+//	                Dimension.create(DeepLearningConstants.DIM_MAXIMUM_LENGTH, 280),
+//	                Dimension.create(DeepLearningConstants.DIM_VECTORIZE_TO_INTEGER, true),
+//	                Dimension.create(DeepLearningConstants.DIM_PRETRAINED_EMBEDDINGS,
+//	                        "src/main/resources/wordvector/glove.6B.50d_250.txt")); //glove.twitter.27B.100d.txt
+//			
 		}	
 		return pSpace;
 	}
@@ -201,7 +201,8 @@ public class Pipeline implements Constants {
 		} else if(clf == Classifier.Deeplearning4j) {
 			return createEngineDescription(BreakIteratorSegmenter.class);
 		} else {
-			return createEngineDescription(NoOpAnnotator.class);
+//			return createEngineDescription(NoOpAnnotator.class);
+			return null;
 		}
 	}
 
