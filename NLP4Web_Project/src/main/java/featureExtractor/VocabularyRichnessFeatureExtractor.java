@@ -24,7 +24,7 @@ public class VocabularyRichnessFeatureExtractor extends FeatureExtractorResource
 	public Set<Feature> extract(JCas jcas, TextClassificationTarget target) throws TextClassificationException {
 
 		FrequencyDistribution<String> fd = new FrequencyDistribution<String>();
-		Set<Feature> featSet = new HashSet<Feature>();
+        Set<Feature> featSet = new HashSet<Feature>();
 
 		for (Token token : JCasUtil.selectCovered(jcas, Token.class, target)) {
 			fd.inc(token.getCoveredText().toLowerCase());
@@ -100,4 +100,5 @@ public class VocabularyRichnessFeatureExtractor extends FeatureExtractorResource
 		// featSet.add(new Feature("HapaxDislegomena", hapaxDislegomena));
 
 		return featSet;
-	}}
+	}
+}
