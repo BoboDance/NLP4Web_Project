@@ -49,39 +49,56 @@ public class VocabularyRichnessFeatureExtractor extends FeatureExtractorResource
 			hapaxDislegomena = map.get(2L);
 
 		// Yule's K
-//		final long[] s2 = { 0 };
-//		map.forEach((k, v) -> s2[0] += Math.pow(k, 2) * v);
-//		long yulesK = (long) (C * (s2[0] - N) / Math.pow(N, 2));
+		final long[] s2 = { 0 };
+		double yulesK = 0;
+		if (N > 0) {
+			map.forEach((k, v) -> s2[0] += Math.pow(k, 2) * v);
+			yulesK = (C * (s2[0] - N) / Math.pow(N, 2));
+		}
 
 		// Simpson's D
 		final long[] simpsonD = { 0 };
-//		if(N > 1) {
-//			map.forEach((k, v) -> simpsonD[0] += v * (k / N) * ((k - 1) / (N - 1)));
-//		}
-
+		if (N > 1) {
+			map.forEach((k, v) -> simpsonD[0] += v * (k / N) * ((k - 1) / (N - 1)));
+		}
 
 		// Honore's R
-		double honoreR = 100 * Math.log(N) / (1 - hapaxLegomena / V);
-
+		double honoreR = 0;
+		if (hapaxLegomena != V && V > 0) {
+			honoreR = 100 * Math.log(N) / (1 - hapaxLegomena / V);
+		}
 		// Brunet's W
 		double brunetW = Math.pow(N, V - 0.17);
 
 		// Sichel's S
-		double sichelS = hapaxDislegomena / V;
-
+		double sichelS = 0;
+		if (V > 0) {
+			sichelS = hapaxDislegomena / V;
+		}
 		// Uber Index
-		double uberIndex = Math.pow(Math.log(N), 2) / (Math.log(N) - Math.log(V));
+		double uberIndex = 0;
+		if (N > 0 && N != V) {
+			uberIndex = Math.pow(Math.log(N), 2) / (Math.log(N) - Math.log(V));
+		}
 
-//		featSet.add(new Feature("JulesK", yulesK));
-//		featSet.add(new Feature("SimpsonsD", simpsonD));
-		featSet.add(new Feature("HonoresR", honoreR));
-		featSet.add(new Feature("BrunetsW", brunetW));
-		featSet.add(new Feature("SichelsS", sichelS));
-		featSet.add(new Feature("UberIndex", uberIndex));
-		featSet.add(new Feature("HapaxLegonmena", hapaxLegomena));
-		featSet.add(new Feature("HapaxDislegomena", hapaxDislegomena));
-		
+		// Herdan Vm
+		final double[] sumHerdan = { 0 };
+		double herdanVm = 0;
+		if (N > 0) {
+			map.forEach((k, v) -> s2[0] += v * Math.pow((k / N), 2) - (1 / V));
+			herdanVm = Math.sqrt(sumHerdan[0]);
+		}
+
+		featSet.add(new Feature("JulesK", yulesK));
+		featSet.add(new Feature("HerdanVm", herdanVm));
+		// featSet.add(new Feature("SimpsonsD", simpsonD));
+		// featSet.add(new Feature("HonoresR", honoreR));
+		// featSet.add(new Feature("BrunetsW", brunetW));
+		// featSet.add(new Feature("SichelsS", sichelS));
+		// featSet.add(new Feature("UberIndex", uberIndex));
+		// featSet.add(new Feature("HapaxLegonmena", hapaxLegomena));
+		// featSet.add(new Feature("HapaxDislegomena", hapaxDislegomena));
+
 		return featSet;
 	}
-
 }

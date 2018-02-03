@@ -1,122 +1,188 @@
 package pipeline;
 
-import static de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase.INCLUDE_PREFIX;
 import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
-import org.apache.uima.fit.component.NoOpAnnotator;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.dkpro.lab.Lab;
+import org.dkpro.lab.task.BatchTask.ExecutionPolicy;
 import org.dkpro.lab.task.Dimension;
 import org.dkpro.lab.task.ParameterSpace;
-import org.dkpro.lab.task.BatchTask.ExecutionPolicy;
 import org.dkpro.tc.api.features.TcFeatureFactory;
 import org.dkpro.tc.api.features.TcFeatureSet;
 import org.dkpro.tc.core.Constants;
 import org.dkpro.tc.features.length.NrOfChars;
+import org.dkpro.tc.features.length.NrOfTokens;
+import org.dkpro.tc.features.length.NrOfTokensPerSentence;
+import org.dkpro.tc.features.ngram.LuceneNGram;
+import org.dkpro.tc.features.ngram.LucenePOSNGram;
+import org.dkpro.tc.features.spelling.SpellingErrorRatioExtractor;
+import org.dkpro.tc.features.style.ContextualityMeasureFeatureExtractor;
+import org.dkpro.tc.features.style.ExclamationFeatureExtractor;
+import org.dkpro.tc.features.style.TypeTokenRatioFeatureExtractor;
+import org.dkpro.tc.features.syntax.PastVsFutureFeatureExtractor;
+import org.dkpro.tc.features.syntax.SuperlativeRatioFeatureExtractor;
+import org.dkpro.tc.features.twitter.EmoticonRatio;
+import org.dkpro.tc.features.twitter.NumberOfHashTags;
 import org.dkpro.tc.ml.ExperimentCrossValidation;
 import org.dkpro.tc.ml.ExperimentTrainTest;
-import org.dkpro.tc.ml.crfsuite.CRFSuiteAdapter;
 import org.dkpro.tc.ml.report.BatchCrossValidationReport;
 import org.dkpro.tc.ml.report.BatchTrainTestReport;
+import org.dkpro.tc.ml.weka.WekaClassificationAdapter;
+
+import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
+import featureExtractor.CharacterFeatureExtractor;
+import featureExtractor.VocabularyRichnessFeatureExtractor;
+import reader.TweetReader;
+import weka.classifiers.bayes.NaiveBayes;
 
 // TODO: classifiers
 enum Classifier {
-	CRFSuite,
-	DeepRNN
+	WekaNaiveBayes, Deeplearning4j
 }
 
-public class Pipeline {
-	
-	//TODO: path to data folders
-	private static final String corpusFilePathTrain = "src/main/resources/data/train";
-	private static final String corpusFilePathDev = "src/main/resources/data/test";
-	private static final String corpusFilePathTest = "TODO";
-	
+public class Pipeline implements Constants {
+
+	private static final String PATH_TO_TWEETS_TRAIN = new File(Pipeline.class.getResource("/tweets_train/").getFile())
+			.getAbsolutePath().replace("target\\classes", "src\\main\\resources").replaceAll("%20", " ");
+
+	private static final String PATH_TO_TWEETS_TEST = new File(Pipeline.class.getResource("/tweets_test/").getFile())
+			.getAbsolutePath().replace("target\\classes", "src\\main\\resources").replaceAll("%20", " ");
+
 	public static void main(String[] args) {
 		System.setProperty("java.util.logging.config.file", "src/main/resources/logging.properties");
-		
+
 		// ensure DKPRO_HOME environment variable is set
 		DemoUtils.setDkproHome(Pipeline.class.getSimpleName());
-		
+
 		Pipeline pipeline = new Pipeline();
-		
+
 		try {
-			pipeline.runTrainTest(getParameterSpace(), Classifier.CRFSuite);
+			pipeline.runTrainTest(getParameterSpace(), Classifier.WekaNaiveBayes);
 			// demo.runCrossValidation(getParameterSpace(), Classifiers.CRFSuite);
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// Cross validation
 	protected void runCrossValidation(ParameterSpace pSpace, int num_folds, Classifier clf) throws Exception {
-		if(clf == Classifier.CRFSuite) {
+		if (clf == Classifier.WekaNaiveBayes) {
 			// TODO
-			ExperimentCrossValidation batch = new ExperimentCrossValidation("TODO", CRFSuiteAdapter.class, num_folds);
+			ExperimentCrossValidation batch = new ExperimentCrossValidation("TwitterSherlockWekaNB",
+					WekaClassificationAdapter.class, num_folds);
 			batch.setPreprocessing(getPreprocessing());
 			batch.setParameterSpace(pSpace);
 			batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
 			batch.addReport(BatchCrossValidationReport.class);
-			
+
 			Lab.getInstance().run(batch);
-			
-		}else if (clf == Classifier.DeepRNN) {
+
+		} else if (clf == Classifier.Deeplearning4j) {
 			// TODO
 		}
-		
+
 	}
 
 	// Train/Test evaluation
 	protected void runTrainTest(ParameterSpace pSpace, Classifier clf) throws Exception {
-		if(clf == Classifier.CRFSuite) {
+		if (clf == Classifier.WekaNaiveBayes) {
 			// TODO
-			ExperimentTrainTest batch = new ExperimentTrainTest("TODO", CRFSuiteAdapter.class);
+			ExperimentTrainTest batch = new ExperimentTrainTest("TwitterSherlockWekaNB",
+					WekaClassificationAdapter.class);
 			batch.setPreprocessing(getPreprocessing());
 			batch.setParameterSpace(pSpace);
 			batch.addReport(BatchTrainTestReport.class);
 			batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
-			
+
 			Lab.getInstance().run(batch);
-			
-		}else if (clf == Classifier.DeepRNN) {
+
+		} else if (clf == Classifier.Deeplearning4j) {
 			// TODO
+			// DemoUtils.setDkproHome(DeepLearning4jDocumentTrainTest.class.getSimpleName());
+			//
+			// DeepLearningExperimentTrainTest batch = new
+			// DeepLearningExperimentTrainTest("TwitterSherlockDeeplearning4j",
+			// Deeplearning4jAdapter.class);
+			// batch.setPreprocessing(getPreprocessing());
+			// batch.setParameterSpace(pSpace);
+			// batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
+			//
+			// // Run
+			// Lab.getInstance().run(batch);
 		}
 
 	}
-	
+
 	// TODO: readers and features
 	public static ParameterSpace getParameterSpace() throws ResourceInitializationException {
-		
-//		CollectionReaderDescription readerTrain = CollectionReaderFactory.createReaderDescription(NERDemoReader.class,
-//				NERDemoReader.PARAM_LANGUAGE, "en", NERDemoReader.PARAM_SOURCE_LOCATION, corpusFilePathTrain,
-//				NERDemoReader.PARAM_PATTERNS, INCLUDE_PREFIX + "*.txt");
 
-//		Map<String, Object> dimReaders = new HashMap<String, Object>();
-//		dimReaders.put(DIM_READER_TRAIN, readerTrain);
-//		dimReaders.put(DIM_READER_TEST, readerDev);
-//		dimReaders.put(DIM_READER_TEST, readerTest);
+		CollectionReaderDescription readerTrain = CollectionReaderFactory.createReaderDescription(TweetReader.class,
+				TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS_TRAIN);
 
-//		Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET, new TcFeatureSet(
-//				TcFeatureFactory.create(NrOfChars.class)));
+		CollectionReaderDescription readerTest = CollectionReaderFactory.createReaderDescription(TweetReader.class,
+				TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS_TEST);
 
-//		ParameterSpace pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
-//				Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
-//				Dimension.create(DIM_FEATURE_MODE, Constants.FM_SEQUENCE), dimFeatureSets);
+		Map<String, Object> dimReaders = new HashMap<String, Object>();
+		dimReaders.put(DIM_READER_TRAIN, readerTrain);
+		dimReaders.put(DIM_READER_TEST, readerTest);
 
-//		return pSpace;
-		
-		return null;
+		Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET,
+				new TcFeatureSet(TcFeatureFactory.create(NrOfTokensPerSentence.class),
+						TcFeatureFactory.create(TypeTokenRatioFeatureExtractor.class),
+						TcFeatureFactory.create(ContextualityMeasureFeatureExtractor.class),
+						// TcFeatureFactory.create(ModalVerbsFeatureExtractor.class),
+						TcFeatureFactory.create(ExclamationFeatureExtractor.class),
+						TcFeatureFactory.create(SuperlativeRatioFeatureExtractor.class),
+						// TcFeatureFactory.create(PastVsFutureFeatureExtractor.class), //Penn Treebank
+						// Tagset only for this one!!!
+						TcFeatureFactory.create(EmoticonRatio.class), TcFeatureFactory.create(NumberOfHashTags.class),
+						// TcFeatureFactory.create(AvgNrOfCharsPerSentence.class),
+						// TcFeatureFactory.create(AvgNrOfCharsPerToken.class),
+						TcFeatureFactory.create(NrOfChars.class),
+						// TcFeatureFactory.create(NrOfSentences.class),
+						TcFeatureFactory.create(NrOfTokens.class),
+						TcFeatureFactory.create(CharacterFeatureExtractor.class),
+						// TcFeatureFactory.create(VocabularyRichnessFeatureExtractor.class),
+						TcFeatureFactory.create(LuceneNGram.class, LuceneNGram.PARAM_NGRAM_USE_TOP_K, 1000,
+								LuceneNGram.PARAM_NGRAM_MIN_N, 1, LuceneNGram.PARAM_NGRAM_MAX_N, 3,
+								LuceneNGram.PARAM_TF_IDF_CALCULATION, true),
+						TcFeatureFactory.create(LucenePOSNGram.class, LuceneNGram.PARAM_NGRAM_USE_TOP_K, 1000,
+								LuceneNGram.PARAM_NGRAM_MIN_N, 1, LuceneNGram.PARAM_NGRAM_MAX_N, 3,
+								LuceneNGram.PARAM_TF_IDF_CALCULATION, true),
+						TcFeatureFactory.create(SpellingErrorRatioExtractor.class)
+
+				));
+
+		@SuppressWarnings("unchecked")
+		Dimension<List<String>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
+				Arrays.asList(new String[] { NaiveBayes.class.getName() }));
+
+		ParameterSpace pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
+				Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
+				Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT), dimFeatureSets, dimClassificationArgs);
+
+		return pSpace;
 	}
 
 	protected AnalysisEngineDescription getPreprocessing() throws ResourceInitializationException {
-		return createEngineDescription(NoOpAnnotator.class); //TODO: preprocessing
+		// return createEngineDescription(NoOpAnnotator.class);
+
+		return createEngineDescription(createEngineDescription(ArktweetTokenizer.class),
+				createEngineDescription(ArktweetPosTagger.class, ArktweetPosTagger.PARAM_LANGUAGE, "en",
+						ArktweetPosTagger.PARAM_VARIANT, "default"),
+				createEngineDescription(OpenNlpPosTagger.class, OpenNlpPosTagger.PARAM_LANGUAGE, "en"));
 	}
-	
+
 }
