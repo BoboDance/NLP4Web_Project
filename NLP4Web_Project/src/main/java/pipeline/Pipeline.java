@@ -19,6 +19,7 @@ import org.dkpro.lab.task.ParameterSpace;
 import org.dkpro.tc.api.features.TcFeatureFactory;
 import org.dkpro.tc.api.features.TcFeatureSet;
 import org.dkpro.tc.core.Constants;
+import org.dkpro.tc.core.DeepLearningConstants;
 import org.dkpro.tc.features.length.NrOfChars;
 import org.dkpro.tc.features.length.NrOfTokens;
 import org.dkpro.tc.features.length.NrOfTokensPerSentence;
@@ -32,8 +33,10 @@ import org.dkpro.tc.features.syntax.PastVsFutureFeatureExtractor;
 import org.dkpro.tc.features.syntax.SuperlativeRatioFeatureExtractor;
 import org.dkpro.tc.features.twitter.EmoticonRatio;
 import org.dkpro.tc.features.twitter.NumberOfHashTags;
+import org.dkpro.tc.ml.DeepLearningExperimentTrainTest;
 import org.dkpro.tc.ml.ExperimentCrossValidation;
 import org.dkpro.tc.ml.ExperimentTrainTest;
+import org.dkpro.tc.ml.deeplearning4j.Deeplearning4jAdapter;
 import org.dkpro.tc.ml.report.BatchCrossValidationReport;
 import org.dkpro.tc.ml.report.BatchTrainTestReport;
 import org.dkpro.tc.ml.weka.WekaClassificationAdapter;
@@ -41,6 +44,8 @@ import org.dkpro.tc.ml.weka.WekaClassificationAdapter;
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import deeplearning.Dl4jDocumentUserCode;
 import featureExtractor.CharacterFeatureExtractor;
 import featureExtractor.VocabularyRichnessFeatureExtractor;
 import reader.TweetReader;
@@ -68,10 +73,11 @@ public class Pipeline implements Constants {
 		Pipeline pipeline = new Pipeline();
 
 		try {
-			pipeline.runTrainTest(getParameterSpace(), Classifier.WekaNaiveBayes);
-			// demo.runCrossValidation(getParameterSpace(), Classifiers.CRFSuite);
-
-		} catch (Exception e) {
+			System.out.println("Launching TrainTestRun");
+			pipeline.runTrainTest(getParameterSpace(Classifier.Deeplearning4j), Classifier.Deeplearning4j);
+			System.out.println("DONE with TrainTestRun");
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -80,17 +86,16 @@ public class Pipeline implements Constants {
 	protected void runCrossValidation(ParameterSpace pSpace, int num_folds, Classifier clf) throws Exception {
 		if (clf == Classifier.WekaNaiveBayes) {
 			// TODO
-			ExperimentCrossValidation batch = new ExperimentCrossValidation("TwitterSherlockWekaNB",
-					WekaClassificationAdapter.class, num_folds);
-			batch.setPreprocessing(getPreprocessing());
+			ExperimentCrossValidation batch = new ExperimentCrossValidation("TwitterSherlockWekaNB", WekaClassificationAdapter.class, num_folds);
+			batch.setPreprocessing(getPreprocessing(clf));
 			batch.setParameterSpace(pSpace);
 			batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
 			batch.addReport(BatchCrossValidationReport.class);
 
 			Lab.getInstance().run(batch);
-
-		} else if (clf == Classifier.Deeplearning4j) {
-			// TODO
+			
+		}else if (clf == Classifier.Deeplearning4j) {
+			//TODO
 		}
 
 	}
@@ -99,46 +104,41 @@ public class Pipeline implements Constants {
 	protected void runTrainTest(ParameterSpace pSpace, Classifier clf) throws Exception {
 		if (clf == Classifier.WekaNaiveBayes) {
 			// TODO
-			ExperimentTrainTest batch = new ExperimentTrainTest("TwitterSherlockWekaNB",
-					WekaClassificationAdapter.class);
-			batch.setPreprocessing(getPreprocessing());
+			ExperimentTrainTest batch = new ExperimentTrainTest("TwitterSherlockWekaNB", WekaClassificationAdapter.class);
+			batch.setPreprocessing(getPreprocessing(clf));
 			batch.setParameterSpace(pSpace);
 			batch.addReport(BatchTrainTestReport.class);
 			batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
 
-			Lab.getInstance().run(batch);
+			Lab.getInstance().run(batch);			
+		}else if (clf == Classifier.Deeplearning4j) {
+			DeepLearningExperimentTrainTest batch = new DeepLearningExperimentTrainTest("TwitterSherlockDeeplearning4j", Deeplearning4jAdapter.class);
+	        batch.setPreprocessing(getPreprocessing(clf));
+	        batch.setParameterSpace(pSpace);
+	        batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
 
-		} else if (clf == Classifier.Deeplearning4j) {
-			// TODO
-			// DemoUtils.setDkproHome(DeepLearning4jDocumentTrainTest.class.getSimpleName());
-			//
-			// DeepLearningExperimentTrainTest batch = new
-			// DeepLearningExperimentTrainTest("TwitterSherlockDeeplearning4j",
-			// Deeplearning4jAdapter.class);
-			// batch.setPreprocessing(getPreprocessing());
-			// batch.setParameterSpace(pSpace);
-			// batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
-			//
-			// // Run
-			// Lab.getInstance().run(batch);
+	        // Run
+	        Lab.getInstance().run(batch);
 		}
 
 	}
-
-	// TODO: readers and features
-	public static ParameterSpace getParameterSpace() throws ResourceInitializationException {
-
-		CollectionReaderDescription readerTrain = CollectionReaderFactory.createReaderDescription(TweetReader.class,
-				TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS_TRAIN);
-
-		CollectionReaderDescription readerTest = CollectionReaderFactory.createReaderDescription(TweetReader.class,
-				TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS_TEST);
+	
+	public static ParameterSpace getParameterSpace(Classifier clf) throws ResourceInitializationException {
+		
+		CollectionReaderDescription readerTrain = CollectionReaderFactory.createReaderDescription(
+				TweetReader.class, TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS_TRAIN);
+		
+		CollectionReaderDescription readerTest = CollectionReaderFactory.createReaderDescription(
+				TweetReader.class, TweetReader.PARAM_TEXT_FOLDER, PATH_TO_TWEETS_TEST);
 
 		Map<String, Object> dimReaders = new HashMap<String, Object>();
 		dimReaders.put(DIM_READER_TRAIN, readerTrain);
 		dimReaders.put(DIM_READER_TEST, readerTest);
-
-		Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET,
+		
+		ParameterSpace pSpace = null;
+		
+		if(clf == Classifier.WekaNaiveBayes) {
+			Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET,
 				new TcFeatureSet(TcFeatureFactory.create(NrOfTokensPerSentence.class),
 						TcFeatureFactory.create(TypeTokenRatioFeatureExtractor.class),
 						TcFeatureFactory.create(ContextualityMeasureFeatureExtractor.class),
@@ -164,25 +164,45 @@ public class Pipeline implements Constants {
 						TcFeatureFactory.create(SpellingErrorRatioExtractor.class)
 
 				));
-
-		@SuppressWarnings("unchecked")
-		Dimension<List<String>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
-				Arrays.asList(new String[] { NaiveBayes.class.getName() }));
-
-		ParameterSpace pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
-				Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
-				Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT), dimFeatureSets, dimClassificationArgs);
-
+			
+			@SuppressWarnings("unchecked")
+			Dimension<List<String>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
+	                Arrays.asList(new String[] { NaiveBayes.class.getName() }));
+			
+			pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
+					Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
+					Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT), dimFeatureSets, dimClassificationArgs);
+		
+		} else if(clf == Classifier.Deeplearning4j) {
+			
+			pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
+	                Dimension.create(DIM_FEATURE_MODE, Constants.FM_DOCUMENT),
+	                Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
+	                Dimension.create(DeepLearningConstants.DIM_USER_CODE,
+	                        new Dl4jDocumentUserCode()),
+	                Dimension.create(DeepLearningConstants.DIM_MAXIMUM_LENGTH, 280),
+	                Dimension.create(DeepLearningConstants.DIM_VECTORIZE_TO_INTEGER, true),
+	                Dimension.create(DeepLearningConstants.DIM_PRETRAINED_EMBEDDINGS,
+	                        "src/main/resources/wordvector/glove.6B.50d_250.txt")); //glove.twitter.27B.100d.txt
+			
+		}	
 		return pSpace;
 	}
 
-	protected AnalysisEngineDescription getPreprocessing() throws ResourceInitializationException {
-		// return createEngineDescription(NoOpAnnotator.class);
-
-		return createEngineDescription(createEngineDescription(ArktweetTokenizer.class),
-				createEngineDescription(ArktweetPosTagger.class, ArktweetPosTagger.PARAM_LANGUAGE, "en",
-						ArktweetPosTagger.PARAM_VARIANT, "default"),
-				createEngineDescription(OpenNlpPosTagger.class, OpenNlpPosTagger.PARAM_LANGUAGE, "en"));
+	protected AnalysisEngineDescription getPreprocessing(Classifier clf) throws ResourceInitializationException {
+		
+		if(clf == Classifier.WekaNaiveBayes) {
+			return createEngineDescription(
+					createEngineDescription(ArktweetTokenizer.class),
+	                createEngineDescription(ArktweetPosTagger.class, ArktweetPosTagger.PARAM_LANGUAGE,
+	                        "en", ArktweetPosTagger.PARAM_VARIANT, "default"),
+	                createEngineDescription(OpenNlpPosTagger.class, OpenNlpPosTagger.PARAM_LANGUAGE, "en"));
+		
+		} else if(clf == Classifier.Deeplearning4j) {
+			return createEngineDescription(BreakIteratorSegmenter.class);
+		} else {
+			return createEngineDescription(NoOpAnnotator.class);
+		}
 	}
 
 }
