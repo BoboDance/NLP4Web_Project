@@ -46,6 +46,26 @@ Millions of texts and posts are published on social media platforms such as Twit
 \vspace{-2mm}
 To answer these questions we tried various combinations of features, classifiers and genres such as politics and sports and evaluated these combinations.
 
+
+\section{Twitter Crawler}
+In order to fulfill our research problem, we have to acquire many tweets that have been written by a single author in the english language. Therefor we need to identify Twitteraccounts, that are operated by a single user and have a large amount of original tweets. To find these Twitteraccounts, data from https://www.socialbakers.com has been analyzed. 
+
+The site lists the most followed Twitteraccounts grouped by country of the user and his/her profession (e.g. Actor, UK). However, it does not distinguish between how many people operate the Twitteraccount, nor how many tweets have been written. Still one can assume that a Twitteraccount that is among the most followed accounts worldwide, is named after a single Person, is verified, contains a lot of personal information including original pictures of said person and does not state that it is operated by another person, contains a large amount of original tweets. 
+
+Therefor the list provided by the website has been the primary source of the data used. The Twitteraccounts selected have been identified by the following steps. First four fields of profession have been selected ('Actor', 'Broadcast Star', 'Politics', 'Sport Star') due to a high densitiy of single-author accounts. To get reliable english language tweets, USA and United Kingdom have been selected as the only two possible countries of origin. Also to get a fair distribution between american english and british english the top twelve accounts per country will be added as potential accounts to be crawled. 
+
+Twitter users have a timeline that provides all Tweets, Retweets and information about the account itself, such as total amount of Tweets tweeted. In this amount Retweets are counted as Tweets. During the process of identification the goal was set to get at least 20 distinct authors per category with at least 1000 original tweets each and an about equal distribution between US and UK citizens. Since the only information on the amount of tweets a user has sent includes Retweets, which contain text the user hasn't written, accounts with less than 3000 Tweets in total have been filtered out. Finally an extra category of Twitteraccounts with less tweets and possibly not only english language tweets has been added with selected accounts that may be interesting ('FunMix'). 
+
+After the accounts have been identified, each of them has been reviewed and determined, whether or not it is likely, that it is run by a single user. Also the total amount of tweets has been checked. Disqualified accounts then have been replaced by the next Twitteraccount from the list provided by https://www.socialbakers.com, that fulfills the requirements.
+
+The list of users has been stored in a JSON file containing the names, countries and Twitterhandles of the users. This JSON file was then read by the Twittercrawler, and each user's timeline requested from Twitter using the TwitterAPI and the Java library 'twitter4j'. 
+
+The timeline is divided into pages containing up to 100 Tweets, that each have to be requested individually. To limit the traffic and optimize the data output, a single page was requested, filtered locally for original tweets only and checked, if the 1000 Tweets were reached. If not, the process was repeated, which is the reason for minor differences between the amount of Tweets per user. At the end of the crawling step, all Tweets were saved as JSON files. 
+
+In total 100 Twitteraccounts have been identified and crawled, resulting in 1000 to 1099 (mean 1043) original tweets per author.  
+
+
+
 \section{Data Provisioning}
 \label{sec:provisioning}
 \vspace{-2mm}
