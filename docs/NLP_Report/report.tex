@@ -1,4 +1,4 @@
-\documentclass[journal, a4paper]{IEEEtran}
+\documentclass[journal, a4paper, 12pt]{IEEEtran}
 
 \usepackage{cite}
 \usepackage{graphicx}
@@ -19,6 +19,8 @@
 \setlength{\parskip}{\baselineskip}%
 \setlength{\parindent}{0pt}%
 
+
+
 \renewcommand{\arraystretch}{1.35}
 
 \begin{document}
@@ -35,17 +37,19 @@ In our project we worked on the authorship detection of Twitter tweets. This rep
 	
 \section{Introduction and Research Problem}
 Millions of texts and posts are published on social media platforms such as Twitter or Facebook every day. The identification of the authorship is often a crucial task in Natural Language Processing. This might be helpful when checking the authenticity of a post. In this project we therefore aim to classify Twitter Tweets to identify the authors of the tweets and try to answer the following questions:
-
+\vspace{-2mm}
 \begin{itemize}
-\item Which types of writing-style features are effective for identifying the authorship of online messages? For that we tried various combinations of features and evaluated those combinations.
+\item Which types of writing-style features are effective for identifying the authorship of online messages?
 \item Which classifiers perform best for identifying the authorship of online messages?
-\item To what extent can authorship-identification techniques be applied to online messages with different numbers of authors and messages?
+\item To what extent can authorship-identification techniques be applied to online messages across different genres such as politics or sports?
 \end{itemize}
+\vspace{-2mm}
+To answer these questions we tried various combinations of features, classifiers and genres such as politics and sports and evaluated these combinations.
 
 \section{Data Provisioning}
 \label{sec:provisioning}
-
-As already mentioned, Twitter will be the source for the data to be analyzed. We focused on tweets of 20 famous politicians of the English-speaking world since we confined ourselves to english tweets. We collected tweets from the following accounts:
+\vspace{-2mm}
+As already mentioned, Twitter will be the source for the data to be analyzed. We focused on tweets of 20 famous politicians, sportsmen, actors and broadcast stars of the English-speaking world since we confined ourselves to english tweets. For instance, we collected tweets from the following accounts of politicians:
 
 \footnotesize
 \textit{
@@ -53,11 +57,11 @@ realDonaldTrump, BarackObama, ChuckGrassley, RepJaredPolis, BorisJohnson, claire
 }
 \normalsize
 
-The number of tweets collected per account is 1,000, which makes 20,000 tweets in total. When guessing the authors randomly, we would get an accuracy of approximaltey 5\,\% (since the training data consists of tweets from 20 different authors). This is our baseline. We should have an accuracy better than 5\,\%.
+The number of politicians' tweets collected per account is 1,000, which makes 20,000 tweets in total. When guessing the authors randomly, we would get an accuracy of approximaltey 5\,\% (since the training data consists of tweets from 20 different authors). This is our baseline. We should have an accuracy better than 5\,\%.
 
 \begin{figure}
 \caption{JSON representation of a tweet written by Barack Obama that was crawled from Twitter}
-\footnotesize
+\tiny
 \begin{verbatim}
 {  
    "in_reply_to_status_id_str":null,
@@ -116,6 +120,7 @@ The number of tweets collected per account is 1,000, which makes 20,000 tweets i
 
 \section{Pipeline}
 \label{sec:pipeline}
+The general process for the authorship identification follows a usual NLP pipeline approach as depicted in Figure 2. The single steps will be described further in the following sections. The \textit{Data Provisiong} was described in the last section. The preprocessing depends on the features which are used, e.\,g. the contextuality measure requires part-of-speech tagging.
 
 \begin{figure}[h]
 	\caption{Visualization of the pipeline built for the authorship identification. After providing the data by the crawler, the data is
@@ -123,6 +128,7 @@ The number of tweets collected per account is 1,000, which makes 20,000 tweets i
 	The last step is the evaluation of the model.}
 	\vspace*{5mm}
 	\begin{tikzpicture}
+		\small
 		\node[rectangle,fill=lightgray,draw=black,minimum height=3cm, minimum width=1.25cm] (A) at (0,0) {};
 		\node[rectangle,fill=lightgray,draw=black,minimum height=3cm, minimum width=1.25cm] (B) at (1.75,0) {};
 		\node[rectangle,fill=lightgray,draw=black,minimum height=3cm, minimum width=1.25cm] (C) at (3.5,0) {};
@@ -151,7 +157,7 @@ The number of tweets collected per account is 1,000, which makes 20,000 tweets i
 \section{Feature Engineering}
 \label{sec:features}
 
-The feature engineering phase is crucial for the success of the project since the performance of the classifiers depends significantly on the quality of the features used. Table \ref{tab:features} summarizes the features which we have taken into account when training the classifiers.  
+The feature engineering phase is crucial for the success of the project since the performance of the classifiers depends significantly on the quality of the features used. Table \ref{tab:features} summarizes the features which we have taken into account when training the classifiers.
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -193,7 +199,7 @@ Also very characteristic for specific authors is the number of hashtags they use
 \end{equation}
 
 Other measures for lexical diversity/vocabulary richness:
-
+\small
 \begin{equation}
 \text{Yule's $K$} = C \left[ -\frac{1}{N} + \sum_{m=1}^{m_{max}} V(m,N)\left(\frac{m}{N}\right)^2 \right]
 \end{equation}
@@ -231,9 +237,11 @@ Other measures for lexical diversity/vocabulary richness:
     	m_{max}	& maximal frequency
 \end{tabular}
 
+\normalsize
 Another feature of interest is the contextuality measure which indicates how context-dependent a text is. The contextuality measure produces values between 0 and 100. A value of 0 indicates a very context-dependent text which contains many pronouns, adverbs, etc. The higher the value the less context-dependent the text is (the text is then said to be \textit{formal} as opposed to \textit{contextual}). This is the formula which computes the score:
 
 \begin{equation}
+\small
 F = \frac{n + a + p + d - pr - v - ad - if + 100}{2}
 \end{equation}
 
@@ -252,7 +260,7 @@ F = \frac{n + a + p + d - pr - v - ad - if + 100}{2}
 \section{Evaluation}
 \label{sec:training-eval}
 
-As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the DKPro\,TC GitHub Repository which resulted in an accuracy of approximately $13\,\%_{\text{Naive Bayes}}$, approximately $8.5\,\%_{\text{Random Forest}}$ and approximately $8\,\%_{\text{Logistic}}$ (Used features in the demo: EmoticonRate and Number of Hashtags, Number of Tokens per Sentence). We used this as the baseline and added further features. The results which could be generated are summarized in tables \ref{tab:results-nb} (\textbf{Naive Bayes}),  \ref{tab:results-rf} (\textbf{Random Forest}) and \ref{tab:results-logistic} (\textbf{Logistic Regression}) and in figures \ref{fig:results-nb} (\textbf{Naive Bayes}), \ref{fig:results-rf} (\textbf{Random Forest}) and \ref{fig:results-logistic} (\textbf{Logistic Regression}) respectively.
+As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the DKPro\,TC GitHub Repository resulting in an accuracy of approximately $13\,\%_{\text{Naive Bayes}}$, approximately $8.5\,\%_{\text{Random Forest}}$ and approximately $8\,\%_{\text{Logistic}}$ (Used features in the demo: EmoticonRate and Number of Hashtags, Number of Tokens per Sentence). We used this as the baseline and added further features. The evaluation is based on a test set of 10\% of the tweets per genre. The results for different features and classifiers are summarized in tables \ref{tab:results-nb} (\textbf{Naive Bayes}),  \ref{tab:results-rf} (\textbf{Random Forest}) and \ref{tab:results-logistic} (\textbf{Logistic Regression}) and in figures \ref{fig:results-nb} (\textbf{Naive Bayes}), \ref{fig:results-rf} (\textbf{Random Forest}) and \ref{fig:results-logistic} (\textbf{Logistic Regression}) respectively.
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -265,22 +273,30 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
 			\rowcolor{lightgray}
 			\textbf{Nr.}		&	\textbf{Setup}					& \textbf{Accuracy}		\\ \hline\hline
 			1			&	\texttt{WekaTwitterSentimentDemo}	& \textbf{12.88\,\%}		\\ \hline
-			2			&	TTR 	(Type-Token-Ratio)			& \textbf{0.00\,\%}		\\ \hline
-			3			&	TTR + Contextuality Measure			& \textbf{0.00\,\%}		\\ \hline
+			2			&	TTR 	(Type-Token-Ratio)			& \textbf{13.48\,\%}		\\ \hline
+			3			&	TTR + Contextuality Measure			& \textbf{16.60\,\%}		\\ \hline
 			4			&	TTR + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces
-																& \textbf{0.00\,\%}		\\ \hline
+																& \textbf{16.59\,\%}		\\ \hline
 			5			& 	TTR + Contextuality Measure + Exclamation Ratio
-																& \textbf{0.00\,\%}		\\ \hline
-			6			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio + PastVsFuture 
-																& \textbf{0.00\,\%}		\\ \hline
-			7			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio 
-																& \textbf{0.00\,\%}		\\ \hline
-			8			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio +
-							Nr of Tokens + Character Features + N-Grams
-																& \textbf{0.00\,\%}		\\ \hline
-			9			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio +
-							Nr of Tokens + Character Features + N-Grams + POS-NGrams
-																& \textbf{0.00\,\%}		\\ \hline
+																& \textbf{19.25\,\%}		\\ \hline
+			6			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio
+																& \textbf{18.19\,\%}		\\ \hline
+			7			&	TTR + Contextuality Measure + Exclamation Ratio + PastVsFuture
+																& \textbf{19.38\,\%}		\\ \hline
+			8			&	TTR + Contextuality Measure + Exclamation Ratio + PastVsFuture + Avg Nr of Chars per Sentence
+																& \textbf{20.22\,\%}		\\ \hline
+			9			&	TTR + Contextuality Measure + Exclamation Ratio + PastVsFuture + Avg Nr of Chars per Sentence + Avg Nr of Chars per Token + Nr of Chars + Nr of Sentences + Nr of Tokens
+																& \textbf{19.90\,\%}		\\ \hline
+			10			&	TTR + Contextuality Measure + Exclamation Ratio + PastVsFuture + Avg Nr of Chars per Sentence + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces
+																& \textbf{21.06\,\%}		\\ \hline
+			11			&	TTR + Contextuality Measure + Exclamation Ratio + PastVsFuture + Avg Nr of Chars per Sentence + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces + Yule's $K$ + Herdan $V_m$
+																& \textbf{21.19\,\%}		\\ \hline
+			12			&	TTR + Contextuality Measure + Exclamation Ratio + PastVsFuture + Avg Nr of Chars per Sentence + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces + N-Grams (up to trigrams)
+																& \textbf{40.26\,\%}		\\ \hline
+			13		&	TTR + Contextuality Measure + Exclamation Ratio + PastVsFuture + Avg Nr of Chars per Sentence + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces + N-Grams (up to trigrams) + POS N-Grams (up to trigrams)
+																& \textbf{41.20\,\%}		\\ \hline
+			14		&	TTR + Contextuality Measure + Exclamation Ratio + PastVsFuture + Avg Nr of Chars per Sentence + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces + N-Grams (up to trigrams) + POS N-Grams (up to trigrams) + SpellingErrorRatio
+																& \textbf{41.20\,\%}		\\ \hline
 			\hline
 		\end{tabularx}
 	\end{center}
@@ -293,28 +309,34 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
 		\label{fig:results-nb}
 		\vspace{5mm}
 		\begin{tikzpicture}
+			\small
 			\begin{axis}[
-    				ybar, bar width=10pt,
+    				ybar, bar width=7pt,
 				nodes near coords, nodes near coords align=above, point meta=rawy,
  				axis x line=bottom, axis y line=left, ymajorgrids=true,
 				ylabel=$\mathrm{Accuracy\ in\ \%}$, ymin=0, ytick={0,10,20,30,40,50,60,70,80,90,100},
 				enlargelimits=auto,
-    				xlabel=Setups as listed in table \ref{tab:results-nb}, symbolic x coords={1,2,3,4,5,6,7,8,9},
+    				xlabel=Setups as listed in table \ref{tab:results-nb}, symbolic x coords={1,2,3,4,5,6,7,8,9,10,11,12,13,14},
     				x tick label style={rotate=30,anchor=north east},
     			]
-
-    				\addplot[fill=lightgray] coordinates {
+    			
+    				\addplot[fill=lightgray,font=\tiny] coordinates {
       					(1,12.9)
-      					(2,0.00)
-					(3,0.00)
-					(4,0.00)
-					(5,0.00)
-					(6,0.00)
-					(7,0.00)
-					(8,0.00)
-					(9,0.00)
+      					(2,13.5)
+						(3,16.6)
+						(4,16.6)
+						(5,19.3)
+						(6,18.2)
+						(7,19.4)
+						(8,20.2)
+						(9,19.9)
+						(10,21.1)
+						(11,21.2)
+						(12,40.3)
+						(13,41.2)
+						(14,41.2)
     				};
-  			\end{axis} 
+  			\end{axis}
 		\end{tikzpicture}
 	\end{center}
 \end{figure}
@@ -499,7 +521,9 @@ Extracting the features is very tedious and it is more or less a trial and error
 \section{Component Diagram}
 
 \section{Conclusion}
-This section summarizes the paper.
+The experiments showed that character-based linguistic style features such as the frequencies of upper case, alphabetic, digit and white- and tabspace characters are good indicators for an author's style in writing tweets. Likewise the Contextuality Measure and PastVsFuture features increased accuracy. In contrast, sentence-based features such as the number of sentences or the average number of characters in a sentence decreased accuracy, which can be explained by the general brevity of tweets and the fact that tweets often do not include clear sentence boundaries. Some of the measures for lexical diversity/vocabulary richness did not contribute to the accuracy, therefore only Yule's $K$ and Herdan $V_m$ were used. Using N-Grams and Part-of-Speech N-Grams significantly improved the accuracy, presumably because they incorporate the author's specific vocabulary.\\
+The final accuracy of 95.08\% using a random forest classifier and the features shown in table III (column 8) is remarkably high for the task of authorship identification and might not generalize well to other domains, since the N-Grams are very specific with respect to the training data.\\
+Future experiments will have to investigate if the features used here can be applied in and across different domains. Furthermore, deep learning has to be considered for including an implicit feature extraction in the classifier training.
 
 \begin{thebibliography}{2}
 
