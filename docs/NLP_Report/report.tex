@@ -65,7 +65,7 @@ In total 100 Twitteraccounts have been identified and crawled, resulting in 1000
 \section{Data Provisioning}
 \label{sec:provisioning}
 \vspace{-2mm}
-As already mentioned, Twitter will be the source for the data to be analyzed. We focused on tweets of 20 famous politicians, sportsmen, actors and broadcast stars of the English-speaking world since we confined ourselves to english tweets. For instance, we collected tweets from the following accounts of politicians:
+As previously described, crawled tweets from Twitter will be analyzed. We focused on tweets of 20 english authors per category: politicians, sportsmen, actors and broadcast stars. For instance, we collected tweets from the following accounts of politicians:
 
 \footnotesize
 \textit{
@@ -73,7 +73,7 @@ realDonaldTrump, BarackObama, ChuckGrassley, RepJaredPolis, BorisJohnson, claire
 }
 \normalsize
 
-The number of politicians' tweets collected per account is 1,000, which makes 20,000 tweets in total. When guessing the authors randomly, we would get an accuracy of approximaltey 5\,\% (since the training data consists of tweets from 20 different authors). This is our baseline. We should have an accuracy better than 5\,\%.
+The number of politicians' tweets collected per account is 1,000, which makes 20,000 tweets in total. Thus, when guessing the authors randomly, we would get an accuracy of approximately 5\,\% (since the training data consists of tweets from 20 different authors). This is our baseline. We should at least have an accuracy better than 5\,\%.
 
 \begin{figure}
 \caption{JSON representation of a tweet written by Barack Obama that was crawled from Twitter}
@@ -546,7 +546,7 @@ The implementation uses DKPro TC for the main processing pipeline and \textit{js
 
 \section{Conclusion}
 The experiments showed that character-based linguistic style features such as the frequencies of upper case, alphabetic, digit and white- and tabspace characters are good indicators for an author's style in writing tweets. Likewise the Contextuality Measure and PastVsFuture features increased accuracy. In contrast, sentence-based features such as the number of sentences or the average number of characters in a sentence decreased accuracy, which can be explained by the general brevity of tweets and the fact that tweets often do not include clear sentence boundaries. Some of the measures for lexical diversity/vocabulary richness did not contribute to the accuracy, therefore only Yule's $K$ and Herdan $V_m$ were used. Using N-Grams and Part-of-Speech N-Grams significantly improved the accuracy, presumably because they incorporate the author's specific vocabulary.\\
-The highest accuracy of 95.08\% using a random forest classifier and the features shown in table III (column 8) is remarkably high for the task of authorship identification and might not generalize well to other domains, since the N-Grams are very specific with respect to the training data. Deep learning was not applied in this project, since the integration of the Deeplearning4j framework in DKPro TC version 1.0.0 was not yet mature and stable enough for productive use.\\
+The highest accuracy of 95.08\,\% using a random forest classifier and the features shown in table III (column 8) is remarkably high for the task of authorship identification and might not generalize well to other domains, since the N-Grams are very specific with respect to the training data. Deep learning was not applied in this project, since the integration of the Deeplearning4j framework in DKPro TC version 1.0.0 was not yet mature and stable enough for productive use.\\
 Future experiments will have to investigate if the features used here can be applied in and across different domains. It can be assumed that with fewer training examples the linguistic style features become more important than e.\,g. N-Grams, since these would be too sparse to represent meaningful features with little data. Furthermore, deep learning has to be considered for including an implicit feature extraction in the classifier training.
 
 \begin{thebibliography}{2}
