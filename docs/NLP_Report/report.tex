@@ -15,7 +15,6 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usetikzlibrary{shapes}
-
 \setlength{\parskip}{\baselineskip}%
 \setlength{\parindent}{0pt}%
 
@@ -45,6 +44,23 @@ Millions of texts and posts are published on social media platforms such as Twit
 \end{itemize}
 \vspace{-2mm}
 To answer these questions we tried various combinations of features, classifiers and genres such as politics and sports and evaluated these combinations.
+
+\section{Twitter Crawler}
+In order to fulfill our research problem, we have to acquire many tweets that have been written by a single author in the english language. Therefor we need to identify Twitteraccounts, that are operated by a single user and have a large amount of original tweets. To find these Twitteraccounts, data from https://www.socialbakers.com has been analyzed. 
+
+The site lists the most followed Twitteraccounts grouped by country of the user and his/her profession (e.g. Actor, UK). However, it does not distinguish between how many people operate the Twitteraccount, nor how many tweets have been written. Still one can assume that a Twitteraccount that is among the most followed accounts worldwide, is named after a single Person, is verified, contains a lot of personal information including original pictures of said person and does not state that it is operated by another person, contains a large amount of original tweets. 
+
+Therefor the list provided by the website has been the primary source of the data used. The Twitteraccounts selected have been identified by the following steps. First four fields of profession have been selected ('Actor', 'Broadcast Star', 'Politics', 'Sport Star') due to a high densitiy of single-author accounts. To get reliable english language tweets, USA and United Kingdom have been selected as the only two possible countries of origin. Also to get a fair distribution between american english and british english the top twelve accounts per country will be added as potential accounts to be crawled. 
+
+Twitter users have a timeline that provides all Tweets, Retweets and information about the account itself, such as total amount of Tweets tweeted. In this amount Retweets are counted as Tweets. During the process of identification the goal was set to get at least 20 distinct authors per category with at least 1000 original tweets each and an about equal distribution between US and UK citizens. Since the only information on the amount of tweets a user has sent includes Retweets, which contain text the user hasn't written, accounts with less than 3000 Tweets in total have been filtered out. Finally an extra category of Twitteraccounts with less tweets and possibly not only english language tweets has been added with selected accounts that may be interesting ('FunMix'). 
+
+After the accounts have been identified, each of them has been reviewed and determined, whether or not it is likely, that it is run by a single user. Also the total amount of tweets has been checked. Disqualified accounts then have been replaced by the next Twitteraccount from the list provided by https://www.socialbakers.com, that fulfills the requirements.
+
+The list of users has been stored in a JSON file containing the names, countries and Twitterhandles of the users. This JSON file was then read by the Twittercrawler, and each user's timeline requested from Twitter using the TwitterAPI and the Java library 'twitter4j'. 
+
+The timeline is divided into pages containing up to 100 Tweets, that each have to be requested individually. To limit the traffic and optimize the data output, a single page was requested, filtered locally for original tweets only and checked, if the 1000 Tweets were reached. If not, the process was repeated, which is the reason for minor differences between the amount of Tweets per user. At the end of the crawling step, all Tweets were saved as JSON files. 
+
+In total 100 Twitteraccounts have been identified and crawled, resulting in 1000 to 1099 (mean 1043) original tweets per author.
 
 \section{Data Provisioning}
 \label{sec:provisioning}
@@ -518,12 +534,20 @@ Extracting the features is very tedious and it is more or less a trial and error
 	\end{tikzpicture}
 \end{figure}
 
-\section{Component Diagram}
+\section{Component of the implementation}
+The implementation uses DKPro TC for the main processing pipeline and \textit{jsoup} for the crawler. The Java class \textit{Crawler} reads twitter posts, the Java class \textit{TweetReader} reads the resulting JSON using the \textit{gson} framework and adds the plain tweet text to the jCas to make it available for further processing. The \textit{TweetReader} class implements the interface \textit{TCReaderSingleLabel} and is used in the main class \textit{Pipeline} as a DKPro TC reader. In the \textit{Pipeline} class all further preprocessing steps are defined, different classifiers are included and the evaluation is performed with the \textit{BatchTrainTestReport} of DKPro TC. Additional feature extractors are provided by other Java classes. An overview of the main components is given in figure \ref{fig:components}.
+\begin{figure}[h]
+	\caption{Overview of implementation components}
+	\label{fig:components}
+	\centering
+	\vspace{5mm}
+	\includegraphics[width=0.48\textwidth]{components.PNG}
+\end{figure}
 
 \section{Conclusion}
 The experiments showed that character-based linguistic style features such as the frequencies of upper case, alphabetic, digit and white- and tabspace characters are good indicators for an author's style in writing tweets. Likewise the Contextuality Measure and PastVsFuture features increased accuracy. In contrast, sentence-based features such as the number of sentences or the average number of characters in a sentence decreased accuracy, which can be explained by the general brevity of tweets and the fact that tweets often do not include clear sentence boundaries. Some of the measures for lexical diversity/vocabulary richness did not contribute to the accuracy, therefore only Yule's $K$ and Herdan $V_m$ were used. Using N-Grams and Part-of-Speech N-Grams significantly improved the accuracy, presumably because they incorporate the author's specific vocabulary.\\
-The final accuracy of 95.08\% using a random forest classifier and the features shown in table III (column 8) is remarkably high for the task of authorship identification and might not generalize well to other domains, since the N-Grams are very specific with respect to the training data.\\
-Future experiments will have to investigate if the features used here can be applied in and across different domains. Furthermore, deep learning has to be considered for including an implicit feature extraction in the classifier training.
+The highest accuracy of 95.08\% using a random forest classifier and the features shown in table III (column 8) is remarkably high for the task of authorship identification and might not generalize well to other domains, since the N-Grams are very specific with respect to the training data. Deep learning was not applied in this project, since the integration of the Deeplearning4j framework in DKPro TC version 1.0.0 was not yet mature and stable enough for productive use.\\
+Future experiments will have to investigate if the features used here can be applied in and across different domains. It can be assumed that with fewer training examples the linguistic style features become more important than e.\,g. N-Grams, since these would be too sparse to represent meaningful features with little data. Furthermore, deep learning has to be considered for including an implicit feature extraction in the classifier training.
 
 \begin{thebibliography}{2}
 
