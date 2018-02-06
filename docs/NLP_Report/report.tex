@@ -19,6 +19,8 @@
 \setlength{\parskip}{\baselineskip}%
 \setlength{\parindent}{0pt}%
 
+\renewcommand{\arraystretch}{1.35}
+
 \begin{document}
 
 \title{NLP Project: Authorship Detection of Twitter Tweets}
@@ -209,7 +211,7 @@ Other measures for lexical diversity/vocabulary richness:
 \end{equation}
 
 \begin{equation}
-\text{Honores $R$} = 100 \frac{\log \left(N\right)}{1 - \frac{V(1,N)}{V(N)}}
+\text{Honore's $R$} = 100 \frac{\log \left(N\right)}{1 - \frac{V(1,N)}{V(N)}}
 \end{equation}
 
 \begin{equation}
@@ -246,10 +248,11 @@ F = \frac{n + a + p + d - pr - v - ad - if + 100}{2}
     if			& interjection frequency \\	
 \end{tabular}
 
+\enlargethispage{\baselineskip}
 \section{Evaluation}
 \label{sec:training-eval}
 
-As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the DKPro\,TC GitHub Repository which resulted in an accuracy of approximately 9\,\% (Used features in the demo: EmoticonRate and Number of Hashtags, Number of Tokens per Sentence). We used this as the baseline and added further features. The results which could be generated are summarized in table \ref{tab:results} and in figure \ref{fig:results} respectively.
+As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the DKPro\,TC GitHub Repository which resulted in an accuracy of approximately $13\,\%_{\text{Naive Bayes}}$, approximately $8.5\,\%_{\text{Random Forest}}$ and approximately $8\,\%_{\text{Logistic}}$ (Used features in the demo: EmoticonRate and Number of Hashtags, Number of Tokens per Sentence). We used this as the baseline and added further features. The results which could be generated are summarized in tables \ref{tab:results-nb} (\textbf{Naive Bayes}),  \ref{tab:results-rf} (\textbf{Random Forest}) and \ref{tab:results-logistic} (\textbf{Logistic Regression}) and in figures \ref{fig:results-nb} (\textbf{Naive Bayes}), \ref{fig:results-rf} (\textbf{Random Forest}) and \ref{fig:results-logistic} (\textbf{Logistic Regression}) respectively.
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -261,23 +264,23 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
 			\multicolumn{3}{| c |}{\textbf{Naive Bayes}} 									\\ \hline
 			\rowcolor{lightgray}
 			\textbf{Nr.}		&	\textbf{Setup}					& \textbf{Accuracy}		\\ \hline\hline
-			1			&	\texttt{WekaTwitterSentimentDemo}	& \textbf{9.00\,\%}		\\ \hline
-			2			&	TTR 	(Type-Token-Ratio)			& \textbf{15.49\,\%}		\\ \hline
-			3			&	TTR + Contextuality Measure			& \textbf{19.49\,\%}		\\ \hline
+			1			&	\texttt{WekaTwitterSentimentDemo}	& \textbf{12.88\,\%}		\\ \hline
+			2			&	TTR 	(Type-Token-Ratio)			& \textbf{0.00\,\%}		\\ \hline
+			3			&	TTR + Contextuality Measure			& \textbf{0.00\,\%}		\\ \hline
 			4			&	TTR + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces
-																& \textbf{20.23\,\%}		\\ \hline
+																& \textbf{0.00\,\%}		\\ \hline
 			5			& 	TTR + Contextuality Measure + Exclamation Ratio
-																& \textbf{22.45\,\%}		\\ \hline
+																& \textbf{0.00\,\%}		\\ \hline
 			6			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio + PastVsFuture 
-																& \textbf{24.00\,\%}		\\ \hline
+																& \textbf{0.00\,\%}		\\ \hline
 			7			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio 
-																& \textbf{25.32\,\%}		\\ \hline
+																& \textbf{0.00\,\%}		\\ \hline
 			8			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio +
 							Nr of Tokens + Character Features + N-Grams
-																& \textbf{42.40\,\%}		\\ \hline
+																& \textbf{0.00\,\%}		\\ \hline
 			9			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio +
 							Nr of Tokens + Character Features + N-Grams + POS-NGrams
-																& \textbf{44.31\,\%}		\\ \hline
+																& \textbf{0.00\,\%}		\\ \hline
 			\hline
 		\end{tabularx}
 	\end{center}
@@ -286,8 +289,9 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
 % Bar diagram which visualizes the results of the different setups
 \begin{figure}[!hbt]
 	\begin{center}
-		\caption{Evaluation results for different feature/classifier setups ordered by increasing accuracy}
-		\label{fig:results}
+		\caption{Evaluation results for different feature setups. Results for \textbf{Naive Bayes} classifier}
+		\label{fig:results-nb}
+		\vspace{5mm}
 		\begin{tikzpicture}
 			\begin{axis}[
     				ybar, bar width=10pt,
@@ -300,15 +304,15 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
     			]
 
     				\addplot[fill=lightgray] coordinates {
-      					(1,9.0)
-      					(2,15.5)
-					(3,19.5)
-					(4,20.2)
-					(5,22.5)
-					(6,24.0)
-					(7,25.3)
-					(8,42.4)
-					(9,44.3)
+      					(1,12.9)
+      					(2,0.00)
+					(3,0.00)
+					(4,0.00)
+					(5,0.00)
+					(6,0.00)
+					(7,0.00)
+					(8,0.00)
+					(9,0.00)
     				};
   			\end{axis} 
 		\end{tikzpicture}
@@ -326,27 +330,34 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
 			\multicolumn{3}{| c |}{\textbf{Random Forest}} 								\\ \hline
 			\rowcolor{lightgray}
 			\textbf{Nr.}		&	\textbf{Setup}					& \textbf{Accuracy}		\\ \hline\hline
-			1			&	\texttt{WekaTwitterSentimentDemo}	& \textbf{9.35\,\%}		\\ \hline
-			2			&	TTR (Type-Token-Ratio)				& \textbf{17.59\,\%}		\\ \hline
-			3			&	TTR + Contextuality Measure			& \textbf{97.30\,\%}		\\ \hline
+			1			&	\texttt{WekaTwitterSentimentDemo}	& \textbf{8.49\,\%}		\\ \hline
+			2			&	TTR (Type-Token-Ratio)				& \textbf{8.49\,\%}		\\ \hline
+			3			&	TTR + Contextuality Measure			& \textbf{8.49\,\%}		\\ \hline
 			4			&	TTR + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces
-																& \textbf{0.00\,\%}		\\ \hline
+																& \textbf{95.02\,\%}		\\ \hline
 			5			& 	TTR + Contextuality Measure + Exclamation Ratio
-																& \textbf{0.00\,\%}		\\ \hline
+																& \textbf{8.49\,\%}		\\ \hline
 			6			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio + PastVsFuture 
-																& \textbf{0.00\,\%}		\\ \hline
+																& \textbf{8.49\,\%}		\\ \hline
 			7			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio 
-																& \textbf{0.00\,\%}		\\ \hline
+																& \textbf{8.49\,\%}		\\ \hline
+			8			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio +
+							Nr of Tokens + Character Features + N-Grams
+																& \textbf{95.08\,\%}		\\ \hline
+			9			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio +
+							Nr of Tokens + Character Features + N-Grams + POS-NGrams
+																& \textbf{95.03\,\%}		\\ \hline
 			\hline
 		\end{tabularx}
 	\end{center}
 \end{table}
 
 % Bar diagram which visualizes the results of the different setups
-\begin{figure}[!hbt]
+\begin{figure}[!h]
 	\begin{center}
-		\caption{Evaluation results for different feature/classifier setups ordered by increasing accuracy}
-		\label{fig:results}
+		\caption{Evaluation results for different feature setups. Results for \textbf{Random Forest} classifier}
+		\label{fig:results-rf}
+		\vspace{5mm}
 		\begin{tikzpicture}
 			\begin{axis}[
     				ybar, bar width=10pt,
@@ -354,18 +365,86 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
  				axis x line=bottom, axis y line=left, ymajorgrids=true,
 				ylabel=$\mathrm{Accuracy\ in\ \%}$, ymin=0, ytick={0,10,20,30,40,50,60,70,80,90,100},
 				enlargelimits=auto,
-    				xlabel=Setups as listed in table \ref{tab:results-rf}, symbolic x coords={1,2,3,4,5,6,7},
+    				xlabel=Setups as listed in table \ref{tab:results-rf}, symbolic x coords={1,2,3,4,5,6,7,8,9},
     				x tick label style={rotate=30,anchor=north east},
     			]
 
     				\addplot[fill=lightgray] coordinates {
-      					(1,9.4)
-      					(2,17.6)
-					(3,97.3)
-					(4,0.00)
-					(5,0.00)
-					(6,0.00)
-					(7,0.00)
+      					(1,8.5)
+      					(2,8.5)
+					(3,8.5)
+					(4,95)
+					(5,8.5)
+					(6,8.5)
+					(7,8.5)
+					(8,95)
+					(9,95)
+    				};
+  			\end{axis} 
+		\end{tikzpicture}
+	\end{center}
+\end{figure}
+
+\begin{table}[!hbt]
+	\begin{center}
+		\caption{Evaluation results for different feature setups ordered by increasing accuracy.
+		Classifier = \textbf{Logistic Regression}}
+		\label{tab:results-logistic}
+		\begin{tabularx}{80mm}{| l | X | r |}
+			\hline
+			\rowcolor{lightgray}
+			\multicolumn{3}{| c |}{\textbf{Logistic Regression}} 								\\ \hline
+			\rowcolor{lightgray}
+			\textbf{Nr.}		&	\textbf{Setup}					& \textbf{Accuracy}		\\ \hline\hline
+			1			&	\texttt{WekaTwitterSentimentDemo}	& \textbf{7.96\,\%}		\\ \hline
+			2			&	TTR (Type-Token-Ratio)				& \textbf{7.96\,\%}		\\ \hline
+			3			&	TTR + Contextuality Measure			& \textbf{7.96\,\%}		\\ \hline
+			4			&	TTR + UpperCase + Alphabetic + Digits + WhiteSpaces + TabSpaces
+																& \textbf{20.20\,\%}		\\ \hline
+			5			& 	TTR + Contextuality Measure + Exclamation Ratio
+																& \textbf{7.96\,\%}		\\ \hline
+			6			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio + PastVsFuture 
+																& \textbf{7.96\,\%}		\\ \hline
+			7			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio 
+																& \textbf{7.96\,\%}		\\ \hline
+			8			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio +
+							Nr of Tokens + Character Features + N-Grams
+																& \textbf{20.20\,\%}		\\ \hline
+			9			&	TTR + Contextuality Measure + Exclamation Ratio + Superlative Ratio +
+							Nr of Tokens + Character Features + N-Grams + POS-NGrams
+																& \textbf{20.20\,\%}		\\ \hline
+			\hline
+		\end{tabularx}
+	\end{center}
+\end{table}
+
+% Bar diagram which visualizes the results of the different setups
+\begin{figure}[!h]
+	\begin{center}
+		\caption{Evaluation results for different feature setups. Results for \textbf{Logistic Regression} classifier}
+		\label{fig:results-logistic}
+		\vspace{5mm}
+		\begin{tikzpicture}
+			\begin{axis}[
+    				ybar, bar width=10pt,
+				nodes near coords, nodes near coords align=above, point meta=rawy,
+ 				axis x line=bottom, axis y line=left, ymajorgrids=true,
+				ylabel=$\mathrm{Accuracy\ in\ \%}$, ymin=0, ytick={0,10,20,30,40,50,60,70,80,90,100},
+				enlargelimits=auto,
+    				xlabel=Setups as listed in table \ref{tab:results-rf}, symbolic x coords={1,2,3,4,5,6,7,8,9},
+    				x tick label style={rotate=30,anchor=north east},
+    			]
+
+    				\addplot[fill=lightgray] coordinates {
+      					(1,8.0)
+      					(2,8.0)
+					(3,8.0)
+					(4,20.20)
+					(5,8.0)
+					(6,8.0)
+					(7,8.0)
+					(8,20.20)
+					(9,20.20)
     				};
   			\end{axis} 
 		\end{tikzpicture}
@@ -377,8 +456,9 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
 Extracting the features is very tedious and it is more or less a trial and error process. There are many combinations of features that have to be taken into account and which have to be evaluated. A remedy for that is for example a \textbf{Deep Learning} approach. Such approaches have become very famous recently and also for Natural Language Processing there are several application areas for such methods. Deep Learning is capable of automating this combersome process by making use of several layers that are responsible for feature extraction and transformation. The results of one layer represent the input of the next layers. Very often \textbf{Artificial Neural Networks (ANN)} are used in such cases.
 
 \begin{figure}[h]
-	\caption{A simple neural network}
+	\caption{A simple neural network with two hidden layers.}
 	\centering
+	\vspace{5mm}
 	\begin{tikzpicture}
 		\foreach \y in {1, 2, 3, 4, 5, 6, 7, 8}{
 			\draw (0,3) -- (2,\y);

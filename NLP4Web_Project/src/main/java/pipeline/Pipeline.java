@@ -50,10 +50,12 @@ import featureExtractor.CharacterFeatureExtractor;
 import featureExtractor.VocabularyRichnessFeatureExtractor;
 import reader.TweetReader;
 import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.functions.Logistic;
+import weka.classifiers.trees.RandomForest;
 
 // TODO: classifiers
 enum Classifier {
-	WekaNaiveBayes, Deeplearning4j
+	WekaNaiveBayes, Deeplearning4j, RandomForest, Logistic
 }
 
 public class Pipeline implements Constants {
@@ -74,7 +76,7 @@ public class Pipeline implements Constants {
 
 		try {
 			System.out.println("Launching TrainTestRun");
-			pipeline.runTrainTest(getParameterSpace(Classifier.Deeplearning4j), Classifier.Deeplearning4j);
+			pipeline.runTrainTest(getParameterSpace(Classifier.Logistic), Classifier.Logistic);
 			System.out.println("DONE with TrainTestRun");
 			
 		}catch(Exception e) {
@@ -84,7 +86,7 @@ public class Pipeline implements Constants {
 
 	// Cross validation
 	protected void runCrossValidation(ParameterSpace pSpace, int num_folds, Classifier clf) throws Exception {
-		if (clf == Classifier.WekaNaiveBayes) {
+		if (clf == Classifier.WekaNaiveBayes || clf == Classifier.RandomForest || clf == Classifier.Logistic) {
 			// TODO
 			ExperimentCrossValidation batch = new ExperimentCrossValidation("TwitterSherlockWekaNB", WekaClassificationAdapter.class, num_folds);
 			batch.setPreprocessing(getPreprocessing(clf));
@@ -102,7 +104,7 @@ public class Pipeline implements Constants {
 
 	// Train/Test evaluation
 	protected void runTrainTest(ParameterSpace pSpace, Classifier clf) throws Exception {
-		if (clf == Classifier.WekaNaiveBayes) {
+		if (clf == Classifier.WekaNaiveBayes || clf == Classifier.RandomForest || clf == Classifier.Logistic) {
 			// TODO
 			ExperimentTrainTest batch = new ExperimentTrainTest("TwitterSherlockWekaNB", WekaClassificationAdapter.class);
 			batch.setPreprocessing(getPreprocessing(clf));
@@ -137,37 +139,37 @@ public class Pipeline implements Constants {
 		
 		ParameterSpace pSpace = null;
 		
-		if(clf == Classifier.WekaNaiveBayes) {
+		if(clf == Classifier.WekaNaiveBayes || clf == Classifier.RandomForest || clf == Classifier.Logistic) {
 			Dimension<TcFeatureSet> dimFeatureSets = Dimension.create(DIM_FEATURE_SET,
-				new TcFeatureSet(TcFeatureFactory.create(NrOfTokensPerSentence.class),
+				new TcFeatureSet(
+//						TcFeatureFactory.create(NrOfTokensPerSentence.class),
 						TcFeatureFactory.create(TypeTokenRatioFeatureExtractor.class),
 						TcFeatureFactory.create(ContextualityMeasureFeatureExtractor.class),
-						// TcFeatureFactory.create(ModalVerbsFeatureExtractor.class),
-						TcFeatureFactory.create(ExclamationFeatureExtractor.class),
-						TcFeatureFactory.create(SuperlativeRatioFeatureExtractor.class),
-						// TcFeatureFactory.create(PastVsFutureFeatureExtractor.class), //Penn Treebank
-						// Tagset only for this one!!!
-						TcFeatureFactory.create(EmoticonRatio.class), TcFeatureFactory.create(NumberOfHashTags.class),
-						// TcFeatureFactory.create(AvgNrOfCharsPerSentence.class),
-						// TcFeatureFactory.create(AvgNrOfCharsPerToken.class),
-						TcFeatureFactory.create(NrOfChars.class),
-						// TcFeatureFactory.create(NrOfSentences.class),
-						TcFeatureFactory.create(NrOfTokens.class),
-						TcFeatureFactory.create(CharacterFeatureExtractor.class),
-						// TcFeatureFactory.create(VocabularyRichnessFeatureExtractor.class),
-						TcFeatureFactory.create(LuceneNGram.class, LuceneNGram.PARAM_NGRAM_USE_TOP_K, 1000,
-								LuceneNGram.PARAM_NGRAM_MIN_N, 1, LuceneNGram.PARAM_NGRAM_MAX_N, 3,
-								LuceneNGram.PARAM_TF_IDF_CALCULATION, true),
-						TcFeatureFactory.create(LucenePOSNGram.class, LuceneNGram.PARAM_NGRAM_USE_TOP_K, 1000,
-								LuceneNGram.PARAM_NGRAM_MIN_N, 1, LuceneNGram.PARAM_NGRAM_MAX_N, 3,
-								LuceneNGram.PARAM_TF_IDF_CALCULATION, true),
-						TcFeatureFactory.create(SpellingErrorRatioExtractor.class)
-
+//						TcFeatureFactory.create(ModalVerbsFeatureExtractor.class),
+//						TcFeatureFactory.create(ExclamationFeatureExtractor.class),
+//						TcFeatureFactory.create(SuperlativeRatioFeatureExtractor.class),
+//						TcFeatureFactory.create(PastVsFutureFeatureExtractor.class), //Penn Treebank
+						TcFeatureFactory.create(EmoticonRatio.class),
+						TcFeatureFactory.create(NumberOfHashTags.class),
+//						TcFeatureFactory.create(AvgNrOfCharsPerSentence.class),
+//						TcFeatureFactory.create(AvgNrOfCharsPerToken.class),
+//						TcFeatureFactory.create(NrOfChars.class),
+//						TcFeatureFactory.create(NrOfSentences.class),
+						TcFeatureFactory.create(NrOfTokens.class)
+//						TcFeatureFactory.create(CharacterFeatureExtractor.class)
+//						TcFeatureFactory.create(VocabularyRichnessFeatureExtractor.class),
+//						TcFeatureFactory.create(LuceneNGram.class, LuceneNGram.PARAM_NGRAM_USE_TOP_K, 1000,
+//								LuceneNGram.PARAM_NGRAM_MIN_N, 1, LuceneNGram.PARAM_NGRAM_MAX_N, 3,
+//								LuceneNGram.PARAM_TF_IDF_CALCULATION, true)
+//						TcFeatureFactory.create(LucenePOSNGram.class, LuceneNGram.PARAM_NGRAM_USE_TOP_K, 1000,
+//								LuceneNGram.PARAM_NGRAM_MIN_N, 1, LuceneNGram.PARAM_NGRAM_MAX_N, 3,
+//								LuceneNGram.PARAM_TF_IDF_CALCULATION, true),
+//						TcFeatureFactory.create(SpellingErrorRatioExtractor.class)
 				));
 			
 			@SuppressWarnings("unchecked")
 			Dimension<List<String>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
-	                Arrays.asList(new String[] { NaiveBayes.class.getName() }));
+	                Arrays.asList(new String[] { Logistic.class.getName() }));
 			
 			pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
 					Dimension.create(DIM_LEARNING_MODE, Constants.LM_SINGLE_LABEL),
