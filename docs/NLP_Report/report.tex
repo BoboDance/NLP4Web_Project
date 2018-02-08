@@ -46,7 +46,7 @@ Millions of texts and posts are published on social media platforms such as Twit
 To answer these questions we tried various combinations of features, classifiers and genres such as politics and sports and evaluated these combinations.
 
 \section{Twitter Crawler}
-In order to fulfill our research problem, we have to acquire many tweets that have been written by a single author in the english language. Therefore we need to identify Twitteraccounts, that are operated by a single user and have a large amount of original tweets. To find these Twitteraccounts, data from https://www.socialbakers.com has been analyzed. 
+In order to fulfill our research problem, we have to acquire many tweets that have been written by a single author in the english language. Therefor we need to identify Twitteraccounts, that are operated by a single user and have a large amount of original tweets. To find these Twitteraccounts, data from https://www.socialbakers.com has been analyzed. 
 
 The site lists the most followed Twitteraccounts grouped by country of the user and his/her profession (e.g. Actor, UK). However, it does not distinguish between how many people operate the Twitteraccount, nor how many tweets have been written. Still one can assume that a Twitteraccount that is among the most followed accounts worldwide, is named after a single Person, is verified, contains a lot of personal information including original pictures of said person and does not state that it is operated by another person, contains a large amount of original tweets. 
 
@@ -60,7 +60,7 @@ The list of users has been stored in a JSON file containing the names, countries
 
 The timeline is divided into pages containing up to 100 Tweets, that each have to be requested individually. To limit the traffic and optimize the data output, a single page was requested, filtered locally for original tweets only and checked, if the 1000 Tweets were reached. If not, the process was repeated, which is the reason for minor differences between the amount of Tweets per user. At the end of the crawling step, all Tweets were saved as JSON files. 
 
-In total 100 Twitteraccounts have been identified and crawled, resulting in 1000 to 1099 (mean 1043) original tweets per author.
+In total 100 Twitteraccounts have been identified and crawled, resulting in 1000 to 1099 (mean 1043) original tweets per author.  
 
 \section{Data Provisioning}
 \label{sec:provisioning}
