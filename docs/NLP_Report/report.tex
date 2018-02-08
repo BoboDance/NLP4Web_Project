@@ -31,7 +31,7 @@
 \maketitle
 
 \begin{abstract}
-In our project we worked on the authorship detection of Twitter tweets. This report gives a short summary of the results which we could produce during the project.
+In our project we worked on the authorship detection for Twitter tweets. This report gives a short summary of the results which we could produce during the project. The usage of token n-grams and part-of-speech n-grams gave promising results, yet for cases with few training data more linguistically motivated features may yield better results than these token-frequency-based approaches.
 \end{abstract}
 	
 \section{Introduction and Research Problem}
@@ -46,7 +46,7 @@ Millions of texts and posts are published on social media platforms such as Twit
 To answer these questions we tried various combinations of features, classifiers and genres such as politics and sports and evaluated these combinations.
 
 \section{Twitter Crawler}
-In order to fulfill our research problem, we have to acquire many tweets that have been written by a single author in the english language. Therefor we need to identify Twitteraccounts, that are operated by a single user and have a large amount of original tweets. To find these Twitteraccounts, data from https://www.socialbakers.com has been analyzed. 
+In order to fulfill our research problem, we have to acquire many tweets that have been written by a single author in the english language. Therefore we need to identify Twitteraccounts, that are operated by a single user and have a large amount of original tweets. To find these Twitteraccounts, data from https://www.socialbakers.com has been analyzed. 
 
 The site lists the most followed Twitteraccounts grouped by country of the user and his/her profession (e.g. Actor, UK). However, it does not distinguish between how many people operate the Twitteraccount, nor how many tweets have been written. Still one can assume that a Twitteraccount that is among the most followed accounts worldwide, is named after a single Person, is verified, contains a lot of personal information including original pictures of said person and does not state that it is operated by another person, contains a large amount of original tweets. 
 
@@ -195,6 +195,7 @@ The feature engineering phase is crucial for the success of the project since th
 			Exclamation Ratio			& How many exclamation marks are used?		\\ \hline
 			Superlative Ratio			& Proportion of superlatives in the tweet?		\\ \hline
 			PastVsFuture				& Ratio of verbs in past tense/present tense		\\ \hline
+			SpellingErrorRatio			& Ratio of spelling errors on all tokens		\\ \hline
 			\hline
 		\end{tabularx}
 	\end{center}
@@ -491,8 +492,7 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
 
 \section{Deep Learning}
 
-Extracting the features is very tedious and it is more or less a trial and error process. There are many combinations of features that have to be taken into account and which have to be evaluated. A remedy for that is for example a \textbf{Deep Learning} approach. Such approaches have become very famous recently and also for Natural Language Processing there are several application areas for such methods. Deep Learning is capable of automating this combersome process by making use of several layers that are responsible for feature extraction and transformation. The results of one layer represent the input of the next layers. Very often \textbf{Artificial Neural Networks (ANN)} are used in such cases.
-
+Extracting the features is very tedious and it is more or less a trial and error process. There are many combinations of features that have to be taken into account and which have to be evaluated. A remedy for that is for example a \textbf{Deep Learning} approach. Such approaches have become very famous recently and also for Natural Language Processing there are several application areas for such methods. Deep Learning is capable of automating this combersome process by making use of several layers that are responsible for feature extraction and transformation. The results of one layer represent the input of the next layers. Very often \textbf{Artificial Neural Networks (ANN)} are used in such cases.\newline
 \begin{figure}[h]
 	\caption{A simple neural network with two hidden layers.}
 	\centering
@@ -533,9 +533,11 @@ Extracting the features is very tedious and it is more or less a trial and error
 			\node[circle,draw=black,fill=white] at (6,\y) {};
 	\end{tikzpicture}
 \end{figure}
+We used a \textit{keras} implementation of a convolutional LSTM network which is provided with DKPro TC 1.0.0 and made the following modifications. We increased the batch size to 50, reduced the initial dropout probability to 0.10 and changed the loss function to \textit{sparse\_categorical\_crossentropy} so that our categorical labels can be conveniently used (therefore the final dense layer with a sigmoid activation function had to be enlarged as well). The network consists of an embedding layer, a dropout layer, a convolution layer (64 filters, kernel size 5$\times$5, stride size of 1, valid padding, 4$\times$4 max pooling), an LSTM hidden layer with 70 units and a dense layer with a sigmoid activation function applied. For the embedding layer of this neural network using 50-dimensional Glove embeddings which were pretrained on Twitter data did not improve the accuracy, therefore the embeddings are trained from scratch. We use a \textit{tensorflow} backend and the Adam optimizer implementation provided by this framework.\\
+After 10 training epochs the network achieves an accuracy of above 95\%. This is a very high score for the task of authorship identification that can only be achieved, because plenty of training data (tweets) for the chosen authors is available on Twitter. This might not always be the case in other real life applications. Another explanation might be that the model is overfitting. TODO!!! Since an exhaustive hyperparameter tuning is computationally very expensive we limited the experiments to the parameters mentioned above to achieve a good baseline accuracy for the neural network. Thus, the achieved accuracy might still be suboptimal and future projects can build upon this. Further experiments will have to examine how sensitive the neural network reacts to a reduction of training examples, further parameter optimizations and changes in the network architecture and whether the dropout probability has to be further increased to prevent overfitting.
 
-\section{Component of the implementation}
-The implementation uses DKPro TC for the main processing pipeline and \textit{jsoup} for the crawler. The Java class \textit{Crawler} reads twitter posts, the Java class \textit{TweetReader} reads the resulting JSON using the \textit{gson} framework and adds the plain tweet text to the jCas to make it available for further processing. The \textit{TweetReader} class implements the interface \textit{TCReaderSingleLabel} and is used in the main class \textit{Pipeline} as a DKPro TC reader. In the \textit{Pipeline} class all further preprocessing steps are defined, different classifiers are included and the evaluation is performed with the \textit{BatchTrainTestReport} of DKPro TC. Additional feature extractors are provided by other Java classes. An overview of the main components is given in figure \ref{fig:components}.
+\section{Components of the implementation}
+The implementation uses DKPro TC for the main processing pipeline and \textit{jsoup} for the crawler. The Java class \textit{Crawler} reads twitter posts, the Java class \textit{TweetReader} reads the resulting JSON using the \textit{gson} framework and adds the plain tweet text to the jCas to make it available for further processing. The \textit{TweetReader} class implements the interface \textit{TCReaderSingleLabel} and is used in the main class \textit{Pipeline} as a DKPro TC reader. In the \textit{Pipeline} class all further preprocessing steps are defined, different classifiers are included and the evaluation is performed with the \textit{BatchTrainTestReport} of DKPro TC. In the \textit{Pipeline} class the \textit{Weka} implementation of the mentioned classifiers is used. Furthermore, experiments with a neural network implemented in the python script \textit{cnn\_lstm.py} were performed using the \textit{keras} library which is integrated with DKPro TC version 1.0.0. Additional feature extractors are provided by other Java classes such as \textit{CharacterFeatureExtractor} (for UpperCase, Alphabetic, Digit and WhiteSpaces frequency features) and \textit{VocabularyRichnessFeatureExtractor}. An overview of the main components is given in figure \ref{fig:components}.
 \begin{figure}[h]
 	\caption{Overview of implementation components}
 	\label{fig:components}
@@ -582,6 +584,9 @@ Future experiments will have to investigate if the features used here can be app
 
 	\bibitem{Bhatia}
 	Bhatia Archna et al. TweetNLP, Carnegie Mellon. \url{http://www.cs.cmu.edu/~ark/TweetNLP}
+	
+	\bibitem{PenningtonGlove}
+	Jeffrey Pennington and Richard Socher and Christopher D. Manning. GloVe: Global Vectors for Word Representation. \url{http://www.aclweb.org/anthology/D14-1162}
 
 \end{thebibliography}
 
