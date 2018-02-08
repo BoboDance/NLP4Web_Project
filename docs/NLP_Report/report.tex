@@ -1,5 +1,12 @@
 \documentclass[journal, a4paper, 12pt]{IEEEtran}
 
+% sports NB 24,79
+% actor NB 23,27
+% funmix NB 50,36
+% broadcast NB 31,46
+% broadcast RF 17,62
+% funmix RF 41,45
+
 \usepackage{cite}
 \usepackage{graphicx}
 \usepackage{psfrag} 
@@ -10,6 +17,7 @@
 \usepackage{colortbl}
 \usepackage{xcolor}
 \usepackage{tikz}
+
 \usepackage{pgfplots}
 \interdisplaylinepenalty=2500
 \usepackage{array}
@@ -23,7 +31,7 @@
 
 \begin{document}
 
-\title{\includegraphics[scale=0.1]{logo.png} NLP Project: Authorship Detection of Twitter Tweets}
+\title{\includegraphics[scale=0.1]{logo.png} NLP Project: Authorship Detection of Tweets}
 \author{Clemens Biehl, Daniel Wehner, Fabian Otto, Philipp Kapelle
 \thanks{TU Darmstadt, WS 2017/2018.}}
 \markboth{Natural Language Processing and the Web}{}
@@ -276,7 +284,7 @@ F = \frac{n + a + p + d - pr - v - ad - if + 100}{2}
 \section{Evaluation}
 \label{sec:training-eval}
 
-As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the DKPro\,TC GitHub Repository resulting in an accuracy of approximately $13\,\%_{\text{Naive Bayes}}$, approximately $8.5\,\%_{\text{Random Forest}}$ and approximately $8\,\%_{\text{Logistic}}$ (Used features in the demo: EmoticonRate and Number of Hashtags, Number of Tokens per Sentence). We used this as the baseline and added further features. The evaluation is based on a test set of 10\% of the tweets per genre. The results for different features and classifiers are summarized in tables \ref{tab:results-nb} (\textbf{Naive Bayes}),  \ref{tab:results-rf} (\textbf{Random Forest}) and \ref{tab:results-logistic} (\textbf{Logistic Regression}) and in figures \ref{fig:results-nb} (\textbf{Naive Bayes}), \ref{fig:results-rf} (\textbf{Random Forest}) and \ref{fig:results-logistic} (\textbf{Logistic Regression}) respectively.
+We used accuracy to evaluate the classifiers bsed on a train/test split of 90/10\,\%, since our dataset is balanced and there is plenty of training data. As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the DKPro\,TC GitHub Repository resulting in an accuracy of approximately $13\,\%_{\text{Naive Bayes}}$, approximately $8.5\,\%_{\text{Random Forest}}$ and approximately $8\,\%_{\text{Logistic}}$ (Used features in the demo: EmoticonRate and Number of Hashtags, Number of Tokens per Sentence). We used this as the baseline and added further features. The evaluation is based on a test set of 10\% of the tweets per genre. The results for different features and classifiers are summarized in tables \ref{tab:results-nb} (\textbf{Naive Bayes}),  \ref{tab:results-rf} (\textbf{Random Forest}) and \ref{tab:results-logistic} (\textbf{Logistic Regression}) and in figures \ref{fig:results-nb} (\textbf{Naive Bayes}), \ref{fig:results-rf} (\textbf{Random Forest}) and \ref{fig:results-logistic} (\textbf{Logistic Regression}) respectively.
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -356,6 +364,39 @@ As a basis we used the \texttt{WekaTwitterSentimentDemo} which we found in the D
 		\end{tikzpicture}
 	\end{center}
 \end{figure}
+
+% NB on different data sets
+\begin{figure}[!hbt]
+	\begin{center}
+		\caption{Evaluation results of Naive Bayes on different domains with optimal features. Results for \textbf{Naive Bayes} classifier}
+		\label{fig:results-nb-diff}
+		\vspace{5mm}
+		\begin{tikzpicture}
+			\small
+			\begin{axis}[
+    				ybar, bar width=10pt,
+				nodes near coords, nodes near coords align=above, point meta=rawy,
+ 				axis x line=bottom, axis y line=left, ymajorgrids=true,
+				ylabel=$\mathrm{Accuracy\ in\ \%}$, ymin=0, ytick={0,10,20,30,40,50,60,70,80,90,100},
+				enlargelimits=auto,
+    				xlabel=, symbolic x coords={Politics,Sports,Actor,Funmix,Broadcast},
+    				x tick label style={rotate=30,anchor=north east},
+    			]
+    			
+    				\addplot[fill=lightgray,font=\tiny] coordinates {
+						(Politics,41.2)
+						(Sports,24.79)
+						(Actor,23.27)
+						(Funmix,50.36)
+						(Broadcast,31.46)
+    				};
+  			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{figure}
+
+Figure 4 shows the performance of the Naive Bayes classifier using the features in row 13 of table II. The performance of the classifier using these features, which were engineered on the politics domain tweets, decreases on all other domains apart from the funmix domain. This is surprising since one would not expect politicians' style of writing tweets to be similar to the style of people who own fun accounts (such as \textit{@Lord\_Voldemort7}).\newline
+Training the Naive Bayes classifier across all domains yielded an accuracy of about 7\,\%, which is above the 5\,\% baseline but shows that the features do not generalize well across domain.
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -533,7 +574,7 @@ Extracting the features is very tedious and it is more or less a trial and error
 	\end{tikzpicture}
 \end{figure}
 We used a \textit{keras} implementation of a convolutional LSTM network which is provided with DKPro TC 1.0.0 and made the following modifications. We increased the batch size to 50, reduced the initial dropout probability to 0.10 and changed the loss function to \textit{sparse\_categorical\_crossentropy} so that our categorical labels can be conveniently used (therefore the final dense layer with a sigmoid activation function had to be enlarged as well). The network consists of an embedding layer, a dropout layer, a convolution layer (64 filters, kernel size 5$\times$5, stride size of 1, valid padding, 4$\times$4 max pooling), an LSTM hidden layer with 70 units and a dense layer with a sigmoid activation function applied. For the embedding layer of this neural network using 50-dimensional Glove embeddings which were pretrained on Twitter data did not improve the accuracy, therefore the embeddings are trained from scratch. We use a \textit{tensorflow} backend and the Adam optimizer implementation provided by this framework.\\
-After 10 training epochs the network achieves an accuracy of above 95\%. This is a very high score for the task of authorship identification that can only be achieved, because plenty of training data (tweets) for the chosen authors is available on Twitter. This might not always be the case in other real life applications. Another explanation might be that the model is overfitting. TODO!!! Since an exhaustive hyperparameter tuning is computationally very expensive we limited the experiments to the parameters mentioned above to achieve a good baseline accuracy for the neural network. Thus, the achieved accuracy might still be suboptimal and future projects can build upon this. Further experiments will have to examine how sensitive the neural network reacts to a reduction of training examples, further parameter optimizations and changes in the network architecture and whether the dropout probability has to be further increased to prevent overfitting.
+After 10 training epochs the network achieves an accuracy of above 95\%. This is a very high score for the task of authorship identification that can only be achieved, because plenty of training data (tweets) for the chosen authors is available on Twitter. This might not always be the case in other real life applications. Another explanation might be that the model is overfitting. Since an exhaustive hyperparameter tuning is computationally very expensive we limited the experiments to the parameters mentioned above to achieve a good baseline accuracy for the neural network. Thus, the achieved accuracy might still be suboptimal and future projects can build upon this. Further experiments will have to examine how sensitive the neural network reacts to a reduction of training examples, further parameter optimizations and changes in the network architecture and whether the dropout probability has to be further increased to prevent overfitting.
 
 \section{Components of the implementation}
 The implementation uses DKPro TC for the main processing pipeline and \textit{jsoup} for the crawler. The Java class \textit{Crawler} reads twitter posts, the Java class \textit{TweetReader} reads the resulting JSON using the \textit{gson} framework and adds the plain tweet text to the jCas to make it available for further processing. The \textit{TweetReader} class implements the interface \textit{TCReaderSingleLabel} and is used in the main class \textit{Pipeline} as a DKPro TC reader. In the \textit{Pipeline} class all further preprocessing steps are defined, different classifiers are included and the evaluation is performed with the \textit{BatchTrainTestReport} of DKPro TC. In the \textit{Pipeline} class the \textit{Weka} implementation of the mentioned classifiers is used. Furthermore, experiments with a neural network implemented in the python script \textit{cnn\_lstm.py} were performed using the \textit{keras} library which is integrated with DKPro TC version 1.0.0. Additional feature extractors are provided by other Java classes such as \textit{CharacterFeatureExtractor} (for UpperCase, Alphabetic, Digit and WhiteSpaces frequency features) and \textit{VocabularyRichnessFeatureExtractor}. An overview of the main components is given in figure \ref{fig:components}.
@@ -547,8 +588,9 @@ The implementation uses DKPro TC for the main processing pipeline and \textit{js
 
 \section{Conclusion}
 The experiments showed that character-based linguistic style features such as the frequencies of upper case, alphabetic, digit and white- and tabspace characters are good indicators for an author's style in writing tweets. Likewise the Contextuality Measure and PastVsFuture features increased accuracy. In contrast, sentence-based features such as the number of sentences or the average number of characters in a sentence decreased accuracy, which can be explained by the general brevity of tweets and the fact that tweets often do not include clear sentence boundaries. Some of the measures for lexical diversity/vocabulary richness did not contribute to the accuracy, therefore only Yule's $K$ and Herdan $V_m$ were used. Using N-Grams and Part-of-Speech N-Grams significantly improved the accuracy, presumably because they incorporate the author's specific vocabulary.\\
-The highest accuracy of 95.08\,\% using a random forest classifier and the features shown in table III (column 8) is remarkably high for the task of authorship identification and might not generalize well to other domains, since the N-Grams are very specific with respect to the training data.\\
-Future experiments will have to investigate if the features used here can be applied in and across different domains. It can be assumed that with fewer training examples the linguistic style features become more important than e.\,g. N-Grams, since these would be too sparse to represent meaningful features with little data. Furthermore, deep learning has to be investigated further to make use an efficient implicit feature extraction during the classifier training.
+The highest accuracy of 95.08\,\% using a random forest classifier and the features shown in table III (column 8) is remarkably high for the task of authorship identification, but does not generalize well to other domains, since the vocabulary used for the N-Gram features is very specific with respect to the domain. Training a Naive Bayes classifier across all domains indicated that the features do not generalize well across domains.\\
+Future experiments will have to investigate if the features used here can be successfully applied in other domains. It can be assumed that with fewer training examples the linguistic style features become more important than e.\,g. N-Grams, since these would be too sparse to represent meaningful features with little data. Furthermore, deep learning has to be investigated further to make use an efficient implicit feature extraction during the classifier training.\\
+The code as well as the responsibilities of the group members for this NLP project can be found in the Github repository: \url{https://github.com/BoboDance/NLP4Web_Project}.
 
 \begin{thebibliography}{2}
 
